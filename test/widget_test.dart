@@ -7,13 +7,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:futter_project_tfg/app/loaded_app.dart';
 
-import 'package:futter_project_tfg/main.dart';
+Widget buildTestableWidget(Widget widget) {
+  return MediaQuery(data: MediaQueryData(), child: MaterialApp(home: widget));
+}
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(buildTestableWidget(MyHomePage(title: 'test',)));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "164716265397",
+    "firebase_url": "https://appvallboi.firebaseio.com",
+    "project_id": "appvallboi",
+    "storage_bucket": "appvallboi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164716265397:android:e5ab23707a9559c150a3fc",
+        "android_client_info": {
+          "package_name": "com.example.futter_project_tfg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164716265397-sc8663n352bhddb45ufm7nsasu08btoa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYcYsd_hgm2_dGd5tysNr4Zjk-gUkQ_Ew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164716265397-sc8663n352bhddb45ufm7nsasu08btoa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
