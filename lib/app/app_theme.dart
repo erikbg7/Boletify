@@ -6,8 +6,9 @@ ThemeData buildThemeData() {
       brightness: Brightness.dark,
       primaryColor: Colors.black,
       textTheme: TextTheme(
-        //For AppBar
-        headline1:TextStyle(color: Colors.grey[200])
-      )
-  );
+        headline1: TextStyle(color: Colors.grey[200], fontSize: 38),
+        headline3: TextStyle(color: Colors.grey[200], fontSize: 20),
+        headline4: TextStyle(color: Colors.grey[200], fontSize: 17),
+        headline5: TextStyle(color: Colors.grey[200], fontSize: 15),
+      ));
 }

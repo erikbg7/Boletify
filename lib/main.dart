@@ -26,12 +26,12 @@ class MyApp extends StatelessWidget {
           }
           if (snapshot.connectionState == ConnectionState.done) {
             return MaterialApp(
-              title: 'Flutter Demo',
+              title: 'Boletus AI',
               theme: ThemeData(
                 primarySwatch: Colors.blue,
                 visualDensity: VisualDensity.adaptivePlatformDensity,
               ),
-              home: MyHomePage(title: 'Flutter Demo Home Page'),
+              home: LoadedApp(),
             );
           }
 
