@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/screens/home/home_screen.dart';
-import 'package:futter_project_tfg/screens/search_screen.dart';
+import 'package:futter_project_tfg/screens/search/search_screen.dart';
 
 Container buildBottomNavBar(Function onTap, int currentIndex) {
   return Container(
