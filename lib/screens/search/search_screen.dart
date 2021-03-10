@@ -29,90 +29,99 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: _buildBody2());
-  }
-
-  _buildBody2() {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/search.jpg"),
-          fit: BoxFit.cover,
-        ),
-      ),
-      padding: EdgeInsets.symmetric(vertical: 60, horizontal: 30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-              padding: EdgeInsets.all(10),
-              alignment: Alignment.center,
-              child: Text("New Observation",
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline1)),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SearchButton(
-                  text: 'Camera',
-                  icon: Icons.photo_camera,
-                  onPressed: pickImage,
-                ),
-                SearchButton(
-                  text: 'Gallery',
-                  icon: Icons.image,
-                  onPressed: pickImage,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  _buildBody() {
     return _loading
         ? Container(
             alignment: Alignment.center,
             child: CircularProgressIndicator(),
           )
         : Container(
-            width: MediaQuery.of(context).size.width,
-            height: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _image == null ? Container() : Image.file(_image),
-                SizedBox(
-                  height: 20,
-                ),
-                _outputs != null
-                    ? Text(
-                        "${_outputs[0]["label"]}",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20.0,
-                          background: Paint()..color = Colors.white,
-                        ),
-                      )
-                    : Container()
-              ],
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                colorFilter: ColorFilter.mode(
+                    Colors.blue.withOpacity(0.7), BlendMode.dstATop),
+                image: AssetImage("assets/search.jpg"),
+                fit: BoxFit.cover,
+              ),
             ),
+            padding: EdgeInsets.symmetric(vertical: 60, horizontal: 30),
+            child: _outputs != null ? _resultElements() : _searchElements(),
           );
   }
 
+  _searchElements() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+            padding: EdgeInsets.symmetric(vertical: 100, horizontal: 10),
+            alignment: Alignment.center,
+            child: Text("New Observation",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 38, fontWeight: FontWeight.w900))),
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SearchButton(
+                text: 'Camera',
+                icon: Icons.photo_camera,
+                onPressed: pickImage,
+              ),
+              SearchButton(
+                text: 'Gallery',
+                icon: Icons.image,
+                onPressed: pickImage,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  _resultElements() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            alignment: Alignment.center,
+            child: Text("Results",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 38, fontWeight: FontWeight.w900))),
+        Container(
+          width: 150.0,
+          height: 150.0,
+          decoration: BoxDecoration(
+            color: Color(0xff7c94b6),
+            image: DecorationImage(
+              image: _image == null
+                  ? Image.asset('assets/grey.jpg')
+                  : FileImage(_image),
+              fit: BoxFit.cover,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(300.0)),
+            border: Border.all(
+              color: Colors.white,
+              width: 3.0,
+            ),
+          ),
+        ),
+        Text(
+          "${_outputs[0]["label"]}",
+          style: TextStyle(
+            fontSize: 20.0,
+          ),
+        )
+      ],
+    );
+  }
+
   pickImage() async {
-    print('piicking iimage');
     var image = File(await _picker
         .getImage(source: ImageSource.gallery)
         .then((pickedImage) => pickedImage.path)
         .catchError((e) => {print('jjjjjjj')}));
-    print('sadsadsad');
-    print(image);
     if (image == null) return null;
     setState(() {
       _loading = true;
