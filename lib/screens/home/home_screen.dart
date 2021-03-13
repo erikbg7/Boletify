@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
         title: Text("Boletus AI"),
       ),
       body: Container(
-        color: Colors.blue,
+        color: Colors.black,
         height: double.infinity,
         width: double.infinity,
         child: Text("Gallery", style: Theme.of(context).textTheme.headline3,),

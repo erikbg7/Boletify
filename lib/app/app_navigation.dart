@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/screens/home/home_screen.dart';
-import 'package:futter_project_tfg/screens/search/search_screen.dart';
 
 Container buildBottomNavBar(Function onTap, int currentIndex) {
   return Container(
@@ -23,13 +22,10 @@ Container buildBottomNavBar(Function onTap, int currentIndex) {
 
 final _navBarItems = <BottomNavigationBarItem>[
   BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-  BottomNavigationBarItem(
-      icon: Icon(Icons.camera_enhance), label: 'Search'),
   BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
 ];
 
 final appPages = <Widget>[
   HomeScreen(),
-  SearchScreen(),
   HomeScreen(),
 ];
