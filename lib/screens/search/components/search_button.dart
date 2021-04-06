@@ -15,7 +15,7 @@ class SearchButton extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       borderSide: BorderSide(color: Colors.white, width: 1.8),
       onPressed: onPressed,
-      color: Colors.blue,
+      color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
