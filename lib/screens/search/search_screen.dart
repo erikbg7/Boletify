@@ -49,39 +49,40 @@ class _SearchScreenState extends State<SearchScreen> {
             padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
             child: _outputs != null
                 ? SearchResults(
-                    image: _image, result: '${_outputs[0]["label"]}')
+                    image: _image,
+                    result: '${_outputs[0]["label"]}',
+                    confidence: double.parse('${_outputs[0]["confidence"]}'))
                 : SearchIdentify(
-                    uploadFromGallery: pickImage, uploadFromCamera: pickImage),
+                    uploadFromGallery: () => pickImage(ImageSource.gallery),
+                    uploadFromCamera: () => pickImage(ImageSource.camera)),
           );
   }
 
-  pickImage() async {
-    var image = File(await _picker
-        .getImage(source: ImageSource.gallery)
-        .then((pickedImage) => pickedImage.path)
-        .catchError((e) => {print('Error: cannot pick image from gallery')}));
-    if (image == null) return null;
+  pickImage(ImageSource source) async {
     setState(() {
       _loading = true;
-      _image = image;
     });
-    classifyImage(image);
+    final errorMessage = 'Error: cannot pick image from $source';
+    await _picker
+        .getImage(source: source)
+        .then((pickedImage) => File(pickedImage.path))
+        .then((imageFile) => classifyImage(imageFile))
+        .catchError((error) => handleError('[$errorMessage] $error'));
   }
 
   classifyImage(File image) async {
-    var output = await Tflite.runModelOnImage(
+    final errorMessage = 'Error: Unable to classify image $image';
+    await Tflite.runModelOnImage(
       path: image.path,
       numResults: 2,
       threshold: 0.5,
       imageMean: 127.5,
       imageStd: 127.5,
-    );
-    print('dsnajkdnjansdjnsanjkd');
-    print(output);
-    setState(() {
-      _loading = false;
+    ).then((output) => setState((){
+      _image = image;
       _outputs = output;
-    });
+      _loading = false;
+    })).catchError((error) => handleError('[$errorMessage] $error'));
   }
 
   loadModel() async {
@@ -89,6 +90,13 @@ class _SearchScreenState extends State<SearchScreen> {
       model: "assets/model_unquant.tflite",
       labels: "assets/labels.txt",
     );
+  }
+
+  handleError(String errorMessage) {
+    print(errorMessage);
+    setState(() {
+      _loading = false;
+    });
   }
 
   @override
