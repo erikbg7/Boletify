@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/screens/search/components/search_button.dart';
 import 'package:futter_project_tfg/screens/search/components/search_ttle.dart';
+import 'package:image_picker/image_picker.dart';
 
 class SearchIdentify extends StatelessWidget {
+  final Function picker;
 
-  final Function uploadFromGallery;
-  final Function uploadFromCamera;
+  const SearchIdentify({Key key, this.picker}) : super(key: key);
 
-  const SearchIdentify({Key key, this.uploadFromGallery, this.uploadFromCamera}) : super(key: key);
+  pickFromCamera() => picker(ImageSource.camera);
+
+  pickFromGallery() => picker(ImageSource.gallery);
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +26,12 @@ class SearchIdentify extends StatelessWidget {
               SearchButton(
                 text: 'Camara',
                 icon: Icons.photo_camera_outlined,
-                onPressed: uploadFromCamera,
+                onPressed: pickFromCamera,
               ),
               SearchButton(
                 text: 'Galeria',
                 icon: Icons.broken_image_outlined,
-                onPressed: uploadFromGallery,
+                onPressed: pickFromGallery,
               ),
             ],
           ),
