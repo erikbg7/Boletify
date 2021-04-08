@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +11,7 @@ class HomeScreen extends StatelessWidget {
         color: Colors.black,
         height: double.infinity,
         width: double.infinity,
-        child: Center(child: Text("HOME", style: Theme.of(context).textTheme.headline3,)),
+        child: Center(child: Text("SETTINGS", style: Theme.of(context).textTheme.headline3,)),
       ),
     );
   }
