@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/classifier_output_model.dart';
-import 'package:futter_project_tfg/screens/search/components/search_identify.dart';
+import 'package:futter_project_tfg/screens/search/components/search_methods.dart';
 import 'package:futter_project_tfg/screens/search/components/search_results.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
@@ -47,7 +47,7 @@ class _SearchScreenState extends State<SearchScreen> {
             padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
             child: _output != null
                 ? SearchResults(result: _output)
-                : SearchIdentify(picker: pickImage),
+                : SearchMethods(picker: pickImage),
           );
   }
 

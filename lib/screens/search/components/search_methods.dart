@@ -3,10 +3,10 @@ import 'package:futter_project_tfg/screens/search/components/search_button.dart'
 import 'package:futter_project_tfg/screens/search/components/search_ttle.dart';
 import 'package:image_picker/image_picker.dart';
 
-class SearchIdentify extends StatelessWidget {
+class SearchMethods extends StatelessWidget {
   final Function picker;
 
-  const SearchIdentify({Key key, this.picker}) : super(key: key);
+  const SearchMethods({Key key, this.picker}) : super(key: key);
 
   pickFromCamera() => picker(ImageSource.camera);
 

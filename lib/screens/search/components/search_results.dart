@@ -15,9 +15,10 @@ class SearchResults extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SearchTitle(text: 'RESULTATS'),
-        SearchConfidence(confidence: result.confidence),
         SearchImage(image: result.image),
-        Text(result.label, style: TextStyle(fontSize: 20.0))
+        SizedBox(height: 20),
+        Text(result.label, style: TextStyle(fontSize: 20.0)),
+        SearchConfidence(confidence: result.confidence),
       ],
     );
   }
