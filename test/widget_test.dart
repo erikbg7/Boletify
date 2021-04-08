@@ -17,8 +17,7 @@ void main() {
   testWidgets('Displays Gallery and Camera buttons', (WidgetTester tester) async {
 
     await tester.pumpWidget(buildTestableWidget(SearchIdentify(
-      uploadFromGallery: () {},
-      uploadFromCamera: () {},
+      picker: () {}
     )));
 
     expect(find.text('Camara'), findsOneWidget);
