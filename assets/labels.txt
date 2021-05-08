@@ -1,0 +1,3 @@
+0 amanita
+1 mushroom
+2 ouReig

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:futter_project_tfg/app/app_theme.dart';
 import 'package:futter_project_tfg/app/loaded_app.dart';
+import 'package:futter_project_tfg/screens/offline/offline_screen.dart';
+import 'package:futter_project_tfg/screens/splash/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,32 +17,16 @@ class MyApp extends StatelessWidget {
         future: _initialization,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            print('----------');
-            print(snapshot.hasError);
-            print(snapshot.error);
-            print(snapshot.toString());
-            return Container(
-                color: Colors.blue,
-                height: double.infinity,
-                width: double.infinity
-            );
+            return OfflineScreen();
           }
           if (snapshot.connectionState == ConnectionState.done) {
             return MaterialApp(
-              title: 'Flutter Demo',
-              theme: ThemeData(
-                primarySwatch: Colors.blue,
-                visualDensity: VisualDensity.adaptivePlatformDensity,
-              ),
-              home: MyHomePage(title: 'Flutter Demo Home Page'),
+              title: 'Boletus AI',
+              theme: buildThemeData(),
+              home: LoadedApp(),
             );
           }
-
-          return Container(
-              color: Colors.red,
-              height: double.infinity,
-              width: double.infinity
-          );
+          return SplashScreen();
         });
   }
 }
