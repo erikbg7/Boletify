@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:futter_project_tfg/screens/search/components/search_identify.dart';
+import 'package:futter_project_tfg/screens/search/components/search_methods.dart';
 
 Widget buildTestableWidget(Widget widget) {
   return MediaQuery(data: MediaQueryData(), child: MaterialApp(home: widget));
@@ -16,7 +16,7 @@ Widget buildTestableWidget(Widget widget) {
 void main() {
   testWidgets('Displays Gallery and Camera buttons', (WidgetTester tester) async {
 
-    await tester.pumpWidget(buildTestableWidget(SearchIdentify(
+    await tester.pumpWidget(buildTestableWidget(SearchMethods(
       picker: () {}
     )));
 
