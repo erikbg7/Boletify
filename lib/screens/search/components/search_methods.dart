@@ -21,7 +21,7 @@ class SearchMethods extends StatelessWidget {
         Container(
           padding: EdgeInsets.only(bottom: 40),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SearchButton(
                 text: 'Camara',

@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 
 class SearchImage extends StatelessWidget {
   final File image;
@@ -34,25 +36,16 @@ class SearchImage extends StatelessWidget {
   }
 
   void _navigateTo(BuildContext context) {
+    final List<MushroomInfo> list = getMushrooms();
+    final MushroomInfo selected = list.firstWhere(
+        (element) => element.name == 'Amanita',
+        orElse: () => MushroomInfo('', ''));
+
+    print('---------selected');
+    print(selected.description);
+
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (ctx) => Scaffold(
-        body: Center(
-          child: Hero(
-            tag: 'result-image',
-            child: Container(
-              width: double.infinity,
-              height: 300.0,
-              decoration: BoxDecoration(
-                color: Color(0xff7c94b6),
-                image: DecorationImage(
-                  image: FileImage(image),
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+      builder: (ctx) => DetailScreen(image: image, mushroom: selected),
     ));
   }
 }
