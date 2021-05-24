@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
-import 'package:futter_project_tfg/widgets/custom_icon.dart';
+import 'package:futter_project_tfg/screens/detail/components/detail_image.dart';
+
+import 'components/detail_labels.dart';
 
 class DetailScreen extends StatelessWidget {
   final File image;
@@ -18,45 +20,73 @@ class DetailScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Center(
-            child: Hero(
-              tag: 'result-image',
-              child: Container(
-                width: double.infinity,
-                height: 300.0,
-                decoration: BoxDecoration(
-                  color: Color(0xff7c94b6),
-                  image: DecorationImage(
-                    image: FileImage(image),
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          DetailImage(image: image),
           Expanded(
             flex: 1,
             child: new SingleChildScrollView(
+              padding: EdgeInsets.all(20),
               scrollDirection: Axis.vertical, //.horizontal
               child: Column(
                 children: mushroom.name.isEmpty
                     ? [Text(notFoundMessage)]
                     : [
-                  CustomIcon(type: EdibleType.poisonous, image: 'assets/edibility/edible.png', tooltip: 'this is a tooltip', color: Colors.green,),
-                  Text(mushroom.name),
-                        Text(mushroom.nameScientific),
-                        if (mushroom.nameAKA.isEmpty) Text('Second Widget'),
-                        Text(mushroom.season),
-                        Text(mushroom.edibility.toString()),
-                        Text(mushroom.description),
-                        Text(mushroom.description),
-                        Text(mushroom.description),
-                        Text(mushroom.location),
-                        Text(mushroom.observations),
-                        Text(mushroom.observations),
-                        Text(mushroom.observations),
-                        Text(mushroom.observations),
-                        Text(mushroom.observations),
+                        Container(
+                          width: double.infinity,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              DetailLabels(labels: ['toxic', 'autum']),
+                              SizedBox(width: double.infinity, height: 15),
+                              Text(
+                                'Amanita'.toUpperCase(),
+                                style: TextStyle(
+                                    fontFamily: 'Milliard', fontSize: 20),
+                              ),
+                              Text(
+                                'Amanita Muscaria',
+                                style: TextStyle(
+                                    fontFamily: 'Milliard',
+                                    fontSize: 20,
+                                    color: Colors.white70),
+                              ),
+//                              SizedBox(width: double.infinity, height: 25),
+//                              DetailLabels(
+//                                  labels: ['edible', 'spring', 'summer']),
+//                              SizedBox(width: double.infinity, height: 15),
+//                              Text(
+//                                'Ou de Reig'.toUpperCase(),
+//                                style: TextStyle(
+//                                    fontFamily: 'Milliard', fontSize: 20),
+//                              ),
+//                              Text(
+//                                'Amanita Caesaria',
+//                                style: TextStyle(
+//                                    fontFamily: 'Milliard',
+//                                    fontSize: 20,
+//                                    color: Colors.white70),
+//                              ),
+                            ],
+                          ),
+                        ),
+//                        Text(mushroom.nameScientific),
+//                        if (mushroom.nameAKA.isEmpty) Text('Second Widget'),
+//                        Text(mushroom.season),
+//                        Text(mushroom.edibility.toString()),
+                        Text(
+                          mushroom.description,
+                          textAlign: TextAlign.justify,
+                          style: Theme.of(context).textTheme.headline3,
+                        ),
+                        Text(
+                          mushroom.location,
+                          textAlign: TextAlign.justify,
+                          style: Theme.of(context).textTheme.headline3,
+                        ),
+                        Text(
+                          mushroom.observations,
+                          textAlign: TextAlign.justify,
+                          style: Theme.of(context).textTheme.headline3,
+                        ),
                       ],
               ),
             ),

@@ -38,6 +38,7 @@ class CustomIcon extends StatelessWidget {
     return Tooltip(
       message: tooltip,
       child: Container(
+        margin: EdgeInsets.all(5),
         width: 50,
         height: 50,
         decoration:
