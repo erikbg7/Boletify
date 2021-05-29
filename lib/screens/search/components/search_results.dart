@@ -16,7 +16,7 @@ class SearchResults extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SearchTitle(text: 'RESULTATS'),
-//        SearchImage(image: result.image),
+        SearchImage(image: result.image),
         SizedBox(height: 20),
         DetailLabels(labels: ['toxic', 'autum']),
         SizedBox(width: double.infinity, height: 15),
