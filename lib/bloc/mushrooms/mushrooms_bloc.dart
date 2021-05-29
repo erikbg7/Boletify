@@ -93,10 +93,11 @@ class MushroomsBloc extends Bloc<MushroomsEvent, MushroomsState> {
         final List<MushroomInfo> activities =
             await _mushroomsRepository.getMushroomsList();
 
-        final MushroomInfo result = activities
-            .firstWhere((element) => element.name == event.mushroomId);
+        final MushroomInfo result = activities.firstWhere(
+            (element) => element.name == event.mushroomId,
+            orElse: () => MushroomInfo('', ''));
 
-        print('bhjbdhjabhjdabjhabjdabdab ${result.toConcatString()}');
+        print('ToConcatString: ${result.toConcatString()}');
 
         yield MushroomFound(result);
       } catch (_) {
