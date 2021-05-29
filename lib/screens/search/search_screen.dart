@@ -1,10 +1,9 @@
-import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/models/classifier_output_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:futter_project_tfg/bloc/mushrooms/mushrooms_bloc.dart';
 import 'package:futter_project_tfg/screens/search/components/search_methods.dart';
 import 'package:futter_project_tfg/screens/search/components/search_results.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -13,66 +12,18 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  final ImagePicker _picker = ImagePicker();
   final int bgImage = Random().nextInt(5);
-
-  bool _loading = false;
-  ClassifierOutput _output;
 
   @override
   void initState() {
     super.initState();
-    setLoadingState(true);
-    loadModel().then(setLoadingState(false));
+    loadModel();
   }
 
   @override
-  Widget build(BuildContext context) {
-    return _loading
-        ? Container(
-            alignment: Alignment.center,
-            child: CircularProgressIndicator(),
-          )
-        : Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                colorFilter: ColorFilter.mode(
-                  Colors.blue.withOpacity(0.7),
-                  BlendMode.dstATop,
-                ),
-                image: AssetImage("assets/search_background/$bgImage.jpg"),
-                fit: BoxFit.cover,
-              ),
-            ),
-            padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
-            child: _output != null
-                ? SearchResults(result: _output)
-                : SearchMethods(picker: pickImage),
-          );
-  }
-
-  pickImage(ImageSource source) async {
-    setLoadingState(true);
-    final errorMessage = 'Error: cannot pick image from $source';
-    await _picker
-        .getImage(source: source)
-        .then((pickedImage) => File(pickedImage.path))
-        .then((imageFile) => classifyImage(imageFile))
-        .catchError((error) => handleError('[$errorMessage] $error'));
-  }
-
-  classifyImage(File image) async {
-    final errorMessage = 'Error: Unable to classify image $image';
-    await Tflite.runModelOnImage(
-      path: image.path,
-      numResults: 2,
-      threshold: 0.5,
-      imageMean: 127.5,
-      imageStd: 127.5,
-    ).then((output) {
-      _output = new ClassifierOutput.fromTFLite(output, image);
-      setLoadingState(false);
-    }).catchError((error) => handleError('[$errorMessage] $error'));
+  void dispose() {
+    Tflite.close();
+    super.dispose();
   }
 
   loadModel() async {
@@ -82,21 +33,43 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  setLoadingState(bool state) {
-    setState(() {
-      _loading = state;
-    });
-  }
-
-  // TODO: handle error properly (redirect, etc)
-  handleError(String errorMessage) {
-    print(errorMessage);
-    setLoadingState(false);
-  }
-
   @override
-  void dispose() {
-    Tflite.close();
-    super.dispose();
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          colorFilter:
+              ColorFilter.mode(Colors.blue.withOpacity(0.7), BlendMode.dstATop),
+          image: AssetImage("assets/search_background/$bgImage.jpg"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
+      child: BlocProvider(
+        create: (BuildContext context) => MushroomsBloc(),
+        child: BlocBuilder<MushroomsBloc, MushroomsState>(
+            builder: (context, state) {
+          print('---------- STATE $state');
+          if (state is MushroomsInitial) {
+            return SearchMethods();
+          }
+          if (state is MushroomClassified) {
+            return SearchResults(result: state.output);
+          }
+          if (state is MushroomsLoading) {
+            return Container(
+              color: Colors.black12,
+              alignment: Alignment.center,
+              child: CircularProgressIndicator(),
+            );
+          }
+          return Container(
+            color: Colors.red,
+            width: double.infinity,
+            height: double.infinity,
+          );
+        }),
+      ),
+    );
   }
 }
