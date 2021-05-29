@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/screens/search/components/search_identify.dart';
+import 'package:futter_project_tfg/models/classifier_output_model.dart';
+import 'package:futter_project_tfg/screens/search/components/search_methods.dart';
 import 'package:futter_project_tfg/screens/search/components/search_results.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
@@ -12,22 +13,17 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  List _outputs;
-  File _image;
-  bool _loading = false;
   final ImagePicker _picker = ImagePicker();
-  int bgImage = Random().nextInt(5);
+  final int bgImage = Random().nextInt(5);
+
+  bool _loading = false;
+  ClassifierOutput _output;
 
   @override
   void initState() {
     super.initState();
-    _loading = true;
-
-    loadModel().then((value) {
-      setState(() {
-        _loading = false;
-      });
-    });
+    setLoadingState(true);
+    loadModel().then(setLoadingState(false));
   }
 
   @override
@@ -41,27 +37,22 @@ class _SearchScreenState extends State<SearchScreen> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 colorFilter: ColorFilter.mode(
-                    Colors.blue.withOpacity(0.7), BlendMode.dstATop),
+                  Colors.blue.withOpacity(0.7),
+                  BlendMode.dstATop,
+                ),
                 image: AssetImage("assets/search_background/$bgImage.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
             padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
-            child: _outputs != null
-                ? SearchResults(
-                    image: _image,
-                    result: '${_outputs[0]["label"]}',
-                    confidence: double.parse('${_outputs[0]["confidence"]}'))
-                : SearchIdentify(
-                    uploadFromGallery: () => pickImage(ImageSource.gallery),
-                    uploadFromCamera: () => pickImage(ImageSource.camera)),
+            child: _output != null
+                ? SearchResults(result: _output)
+                : SearchMethods(picker: pickImage),
           );
   }
 
   pickImage(ImageSource source) async {
-    setState(() {
-      _loading = true;
-    });
+    setLoadingState(true);
     final errorMessage = 'Error: cannot pick image from $source';
     await _picker
         .getImage(source: source)
@@ -78,11 +69,10 @@ class _SearchScreenState extends State<SearchScreen> {
       threshold: 0.5,
       imageMean: 127.5,
       imageStd: 127.5,
-    ).then((output) => setState((){
-      _image = image;
-      _outputs = output;
-      _loading = false;
-    })).catchError((error) => handleError('[$errorMessage] $error'));
+    ).then((output) {
+      _output = new ClassifierOutput.fromTFLite(output, image);
+      setLoadingState(false);
+    }).catchError((error) => handleError('[$errorMessage] $error'));
   }
 
   loadModel() async {
@@ -92,11 +82,16 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
+  setLoadingState(bool state) {
+    setState(() {
+      _loading = state;
+    });
+  }
+
+  // TODO: handle error properly (redirect, etc)
   handleError(String errorMessage) {
     print(errorMessage);
-    setState(() {
-      _loading = false;
-    });
+    setLoadingState(false);
   }
 
   @override
