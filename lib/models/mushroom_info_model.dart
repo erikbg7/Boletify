@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class MushroomInfo {
   final String name;
   final String nameScientific;
@@ -15,6 +17,15 @@ class MushroomInfo {
       this.season = '',
       this.observations = '',
       this.edibility = 0});
+
+  toConcatString(){
+    return '$name, $nameScientific';
+  }
+
+  factory MushroomInfo.fromFirestore(DocumentSnapshot doc) {
+    Map<String, dynamic> data = doc.data();
+    return MushroomInfo(data['name'] ?? 'unknown', data['scientificName'] ?? '');
+  }
 }
 
 getMushrooms() {

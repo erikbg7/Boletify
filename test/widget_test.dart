@@ -14,11 +14,9 @@ Widget buildTestableWidget(Widget widget) {
 }
 
 void main() {
-  testWidgets('Displays Gallery and Camera buttons', (WidgetTester tester) async {
-
-    await tester.pumpWidget(buildTestableWidget(SearchMethods(
-      picker: () {}
-    )));
+  testWidgets('Displays Gallery and Camera buttons',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(buildTestableWidget(SearchMethods()));
 
     expect(find.text('Camara'), findsOneWidget);
     expect(find.text('Galeria'), findsOneWidget);
