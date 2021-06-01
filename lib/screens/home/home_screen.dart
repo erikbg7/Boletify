@@ -49,21 +49,6 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 25),
-                    Text(
-                      "EDIBILITY ICONS",
-                      style: Theme.of(context).textTheme.headline3,
-                    ),
-                    SizedBox(height: 20),
-                    DetailLabels(labels: ['edible', 'toxic', 'unknown']),
-                    SizedBox(height: 25),
-                    Text(
-                      "SEASON ICONS",
-                      style: Theme.of(context).textTheme.headline3,
-                    ),
-                    SizedBox(height: 20),
-                    DetailLabels(
-                        labels: ['spring', 'summer', 'autum', 'winter']),
                   ],
                 ),
               );
