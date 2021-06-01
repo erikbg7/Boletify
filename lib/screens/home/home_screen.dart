@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/mushrooms/mushrooms_bloc.dart';
-import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
+import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -27,6 +27,8 @@ class HomeScreen extends StatelessWidget {
                       "HOME",
                       style: Theme.of(context).textTheme.headline3,
                     ),
+                    SizedBox(height: 25),
+                    SecurityDisclaimer(),
                     SizedBox(height: 25),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
