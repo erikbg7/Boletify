@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -26,14 +27,23 @@ class SettingsScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,
               ),
               SizedBox(height: 20),
-              DetailLabels(labels: ['edible', 'toxic', 'unknown']),
+              DetailLabels(labels: [
+                SearchLabels.edible,
+                SearchLabels.toxic,
+                SearchLabels.unknown
+              ]),
               SizedBox(height: 25),
               Text(
                 "SEASON ICONS",
                 style: Theme.of(context).textTheme.headline3,
               ),
               SizedBox(height: 20),
-              DetailLabels(labels: ['spring', 'summer', 'autum', 'winter']),
+              DetailLabels(labels: [
+                SearchLabels.spring,
+                SearchLabels.summer,
+                SearchLabels.autumn,
+                SearchLabels.winter
+              ]),
             ],
           ),
         ),

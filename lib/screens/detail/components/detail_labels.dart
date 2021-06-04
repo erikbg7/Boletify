@@ -2,41 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 import 'package:futter_project_tfg/widgets/custom_icon.dart';
 
-//enum MushroomLabelType {spring, summer, autum, winter, edible, toxic, unknown}
 
-Map<String, MushroomLabel> mushroomLabels = {
-  'spring': MushroomLabel(
-    imageUrl: 'assets/season/spring.png',
-    tooltip: 'Temporada de primavera',
-  ),
-  'summer': MushroomLabel(
-    imageUrl: 'assets/season/summer.png',
-    tooltip: "Temporada d'estiu",
-  ),
-  'autum': MushroomLabel(
-    imageUrl: 'assets/season/autum.png',
-    tooltip: "Temporada de tardor",
-  ),
-  'winter': MushroomLabel(
-    imageUrl: 'assets/season/winter.png',
-    tooltip: "Temporada d'hivern",
-  ),
-  'edible': MushroomLabel(
-    imageUrl: 'assets/edibility/edible.png',
-    tooltip: 'Bon comestible',
-  ),
-  'toxic': MushroomLabel(
-    imageUrl: 'assets/edibility/toxic.png',
-    tooltip: 'Toxic, aluciogen o mortal',
-  ),
-  'unknown': MushroomLabel(
-    imageUrl: 'assets/edibility/unknown.png',
-    tooltip: 'Desconegut o sense informació',
-  )
-};
 
 class DetailLabels extends StatelessWidget {
-  final List<String> labels;
+  final List<SearchLabels> labels;
   //Move icons from home screen to DetailList, send alignment CENTER as optional parameter
   final MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start;
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/classifier_output_model.dart';
+import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 import 'package:futter_project_tfg/screens/search/components/search_confidence.dart';
 import 'package:futter_project_tfg/screens/search/components/search_ttle.dart';
@@ -18,7 +19,7 @@ class SearchResults extends StatelessWidget {
         SearchTitle(text: 'RESULTATS'),
         SearchImage(image: result.image),
         SizedBox(height: 20),
-        DetailLabels(labels: ['toxic', 'autum']),
+        DetailLabels(labels: [SearchLabels.toxic, SearchLabels.autumn]),
         SizedBox(width: double.infinity, height: 15),
         Text('Amanita'.toUpperCase(),
             style: TextStyle(fontFamily: 'Milliard', fontSize: 20)),
