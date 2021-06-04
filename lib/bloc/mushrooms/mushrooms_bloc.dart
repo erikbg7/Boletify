@@ -134,7 +134,7 @@ class MushroomsBloc extends Bloc<MushroomsEvent, MushroomsState> {
 
         final MushroomInfo result = activities.firstWhere(
             (element) => element.name == event.mushroomId,
-            orElse: () => MushroomInfo('', ''));
+            orElse: () => MushroomInfo('', '', []));
 
         print('ToConcatString: ${result.toConcatString()}');
 
