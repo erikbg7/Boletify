@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'mushroom_label_model.dart';
+
 class MushroomInfo {
   final String name;
   final String nameScientific;
+  final List<MushroomLabel> labels;
   String nameAKA;
   String description;
   String location;
@@ -10,7 +13,7 @@ class MushroomInfo {
   String observations;
   num edibility;
 
-  MushroomInfo(this.name, this.nameScientific,
+  MushroomInfo(this.name, this.nameScientific, this.labels,
       {this.nameAKA = '',
       this.description = '',
       this.location = '',
@@ -24,12 +27,12 @@ class MushroomInfo {
 
   factory MushroomInfo.fromFirestore(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data();
-    return MushroomInfo(data['name'] ?? 'unknown', data['scientificName'] ?? '');
+    return MushroomInfo(data['name'] ?? 'unknown', data['scientificName'] ?? '', []);
   }
 }
 
 getMushrooms() {
-  final MushroomInfo amanita = new MushroomInfo('Amanita', 'Amanita Muscaria',
+  final MushroomInfo amanita = new MushroomInfo('Amanita', 'Amanita Muscaria', [],
       nameAKA: '',
       description:
           'Es una seta tóxica que provoca intoxicaciones que se manifiestan al cabo de poco rato de su ingestión (normalmente entre 1 y 4 horas) con trastornos digestivos (diarrea, vómitos, sequedad de boca), aceleración del pulso y trastornos de tipo nervioso: delirio, excitación, alucinaciones, confusión mental.',
