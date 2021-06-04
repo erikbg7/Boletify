@@ -39,7 +39,7 @@ class SearchImage extends StatelessWidget {
     final List<MushroomInfo> list = getMushrooms();
     final MushroomInfo selected = list.firstWhere(
         (element) => element.name == 'Amanita',
-        orElse: () => MushroomInfo('', ''));
+        orElse: () => MushroomInfo('', '', []));
 
     print('---------selected');
     print(selected.description);
