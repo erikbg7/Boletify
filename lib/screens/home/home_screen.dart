@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/mushrooms/mushrooms_bloc.dart';
-import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
+import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/screens/filter/filter_screen.dart';
+import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -28,6 +30,8 @@ class HomeScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline3,
                     ),
                     SizedBox(height: 25),
+                    SecurityDisclaimer(),
+                    SizedBox(height: 25),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -45,25 +49,29 @@ class HomeScreen extends StatelessWidget {
                             BlocProvider.of<MushroomsBloc>(context)
                                 .add(GetAllMushrooms());
                           },
-                          child: Text('GetAllMuhsroms'),
+                          child: Text('GetAllMuhsrooms'),
                         ),
                       ],
                     ),
-                    SizedBox(height: 25),
-                    Text(
-                      "EDIBILITY ICONS",
-                      style: Theme.of(context).textTheme.headline3,
-                    ),
-                    SizedBox(height: 20),
-                    DetailLabels(labels: ['edible', 'toxic', 'unknown']),
-                    SizedBox(height: 25),
-                    Text(
-                      "SEASON ICONS",
-                      style: Theme.of(context).textTheme.headline3,
-                    ),
-                    SizedBox(height: 20),
-                    DetailLabels(
-                        labels: ['spring', 'summer', 'autum', 'winter']),
+                    FlatButton(
+                        color: Colors.blue,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) {
+                                return Scaffold(
+                                  appBar: AppBar(title: Text('Búsqueda')),
+                                  body: FilterScreen(
+                                    filter: [],
+                                    mushroomsList: getMushroomsListMock(),
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        },
+                        child: Text('Go to search'))
                   ],
                 ),
               );
