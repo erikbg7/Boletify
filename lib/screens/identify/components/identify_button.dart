@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SearchButton extends StatelessWidget {
+class IdentifyButton extends StatelessWidget {
   final IconData icon;
   final String text;
   final Function onPressed;
 
-  const SearchButton({Key key, this.icon, this.text, this.onPressed})
+  const IdentifyButton({Key key, this.icon, this.text, this.onPressed})
       : super(key: key);
 
   @override

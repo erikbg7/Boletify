@@ -26,7 +26,7 @@ class _LoadedAppState extends State<LoadedApp> {
         builder: (BuildContext context) {
           return Scaffold(
             appBar: AppBar(title: Text('Nova identificació')),
-            body: SearchScreen(),
+            body: IdentifyScreen(),
           );
         },
       ),

@@ -6,18 +6,18 @@ import 'package:futter_project_tfg/screens/identify/components/identify_confiden
 import 'package:futter_project_tfg/screens/identify/components/identify_title.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_image.dart';
 
-class SearchResults extends StatelessWidget {
+class IdentifyResults extends StatelessWidget {
   final ClassifierOutput result;
 
-  const SearchResults({Key key, this.result}) : super(key: key);
+  const IdentifyResults({Key key, this.result}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        SearchTitle(text: 'RESULTATS'),
-        SearchImage(image: result.image),
+        IdentifyTitle(text: 'RESULTATS'),
+        IdentifyImage(image: result.image),
         SizedBox(height: 20),
         DetailLabels(labels: [SearchLabels.toxic, SearchLabels.autumn]),
         SizedBox(width: double.infinity, height: 15),
@@ -29,7 +29,7 @@ class SearchResults extends StatelessWidget {
               fontFamily: 'Milliard', fontSize: 20, color: Colors.white70),
         ),
 //        Text(result.label, style: TextStyle(fontSize: 20.0)),
-        SearchConfidence(confidence: result.confidence),
+        IdentifyConfidence(confidence: result.confidence),
         Text('${result.confidence}, ${result.label}')
       ],
     );

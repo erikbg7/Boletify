@@ -6,12 +6,12 @@ import 'package:futter_project_tfg/screens/identify/components/identify_methods.
 import 'package:futter_project_tfg/screens/identify/components/identify_results.dart';
 import 'package:tflite/tflite.dart';
 
-class SearchScreen extends StatefulWidget {
+class IdentifyScreen extends StatefulWidget {
   @override
-  _SearchScreenState createState() => _SearchScreenState();
+  _IdentifyScreenState createState() => _IdentifyScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _IdentifyScreenState extends State<IdentifyScreen> {
   final int bgImage = Random().nextInt(5);
 
   @override
@@ -51,10 +51,10 @@ class _SearchScreenState extends State<SearchScreen> {
             builder: (context, state) {
           print('---------- STATE $state');
           if (state is MushroomsInitial) {
-            return SearchMethods();
+            return IdentifyMethods();
           }
           if (state is MushroomClassified) {
-            return SearchResults(result: state.output);
+            return IdentifyResults(result: state.output);
           }
           if (state is MushroomsLoading) {
             return Container(

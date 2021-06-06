@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 // Wee should configure search screen to onnly give a result if confidence > 0.95
-class SearchConfidence extends StatelessWidget {
+class IdentifyConfidence extends StatelessWidget {
   final num confidence;
 
-  const SearchConfidence({Key key, this.confidence}) : super(key: key);
+  const IdentifyConfidence({Key key, this.confidence}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
