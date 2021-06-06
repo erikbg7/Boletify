@@ -6,7 +6,6 @@ import 'package:futter_project_tfg/widgets/custom_icon.dart';
 
 class DetailLabels extends StatelessWidget {
   final List<SearchLabels> labels;
-  //Move icons from home screen to DetailList, send alignment CENTER as optional parameter
   final MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start;
 
   const DetailLabels({Key key, this.labels}) : super(key: key);

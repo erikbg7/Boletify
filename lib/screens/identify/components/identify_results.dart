@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/classifier_output_model.dart';
 import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
-import 'package:futter_project_tfg/screens/search/components/search_confidence.dart';
-import 'package:futter_project_tfg/screens/search/components/search_ttle.dart';
-import 'package:futter_project_tfg/screens/search/components/search_image.dart';
+import 'package:futter_project_tfg/screens/identify/components/identify_confidence.dart';
+import 'package:futter_project_tfg/screens/identify/components/identify_title.dart';
+import 'package:futter_project_tfg/screens/identify/components/identify_image.dart';
 
 class SearchResults extends StatelessWidget {
   final ClassifierOutput result;

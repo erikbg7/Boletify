@@ -2,8 +2,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/mushrooms/mushrooms_bloc.dart';
-import 'package:futter_project_tfg/screens/search/components/search_methods.dart';
-import 'package:futter_project_tfg/screens/search/components/search_results.dart';
+import 'package:futter_project_tfg/screens/identify/components/identify_methods.dart';
+import 'package:futter_project_tfg/screens/identify/components/identify_results.dart';
 import 'package:tflite/tflite.dart';
 
 class SearchScreen extends StatefulWidget {

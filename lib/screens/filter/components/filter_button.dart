@@ -8,11 +8,23 @@ class FilterButton extends StatelessWidget {
   final SearchLabels id;
   final bool isActive;
 
-  const FilterButton({Key key, this.id, this.isActive})
-      : super(key: key);
+  const FilterButton({Key key, this.id, this.isActive}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+//    return MaterialButton(
+//      color: Colors.blue,
+//      shape: CircleBorder(),
+//      onPressed: () {},
+//      child: Padding(
+//        padding: const EdgeInsets.all(100),
+//        child: Text(
+//          'A circle button',
+//          style: TextStyle(color: Colors.white, fontSize: 24),
+//        ),
+//      ),
+//    );
+
     return FlatButton(
       color: isActive ? Colors.blueAccent : Colors.blueGrey,
       onPressed: () {
