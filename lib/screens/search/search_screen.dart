@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/filter/filters_bloc.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 import 'package:futter_project_tfg/screens/search/components/filter_button.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -46,10 +47,26 @@ class SearchScreen extends StatelessWidget {
                               final MushroomInfo item = mushroomsList[index];
                               if (state.filter.every(
                                   (label) => item.labels.contains(label))) {
-                                return ListTile(
-                                  title: Text(
-                                      'Item ${mushroomsList[index].toConcatString()}'),
+                                return Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  padding: EdgeInsets.only(top: 5),
+                                  width: double.infinity,
+                                  color: Colors.black26,
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                          '${item.name} -- ${item.nameScientific}'),
+                                      DetailLabels(labels: item.labels),
+                                      SizedBox(height: 5)
+
+                                    ],
+                                  ),
                                 );
+
+//                                return ListTile(
+//                                  title: Text(
+//                                      'Item ${mushroomsList[index].toConcatString()}'),
+//                                );
                               }
                               return SizedBox();
                             },
