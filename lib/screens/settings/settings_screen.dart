@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 
-class SettingsSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
 class SettingsItem extends StatelessWidget {
   final IconData icon;
   final String text;
