@@ -1,49 +1,76 @@
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/models/mushroom_label_model.dart';
-import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
+
+class SettingsSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class SettingsItem extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  final Function onPressed;
+
+  const SettingsItem({Key key, this.icon, this.text, this.onPressed}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: [
+          SizedBox(width: 20),
+          Icon(icon),
+          SizedBox(width: 20),
+          Text(text),
+        ],
+      ),
+    );
+  }
+}
+
+
+class SettingsSectionSplitter extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        width: double.infinity,
+        height: 2,
+        color: Colors.white30,
+        margin: EdgeInsets.symmetric(vertical: 10));
+  }
+}
+
 
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Boletus AI"),
+        title: Text("Opcions"),
       ),
       body: Container(
+        padding: EdgeInsets.all(10),
         color: Colors.black38,
         height: double.infinity,
         width: double.infinity,
         child: Center(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 50),
-              Text(
-                "SETTINGS",
-                style: Theme.of(context).textTheme.headline3,
-              ),
-              SizedBox(height: 50),
-              Text(
-                "EDIBILITY ICONS",
-                style: Theme.of(context).textTheme.headline3,
-              ),
-              SizedBox(height: 20),
-              DetailLabels(labels: [
-                SearchLabels.edible,
-                SearchLabels.toxic,
-                SearchLabels.unknown
-              ]),
-              SizedBox(height: 25),
-              Text(
-                "SEASON ICONS",
-                style: Theme.of(context).textTheme.headline3,
-              ),
-              SizedBox(height: 20),
-              DetailLabels(labels: [
-                SearchLabels.spring,
-                SearchLabels.summer,
-                SearchLabels.autumn,
-                SearchLabels.winter
-              ]),
+              Text("Dona'ns Support"),
+              SettingsItem(icon: Icons.card_giftcard, text: 'Fes una donació'),
+              SettingsItem(icon: Icons.star, text: "Qualifica l'applicició"),
+              SettingsSectionSplitter(),
+              Text("Informació"),
+              SettingsItem(icon: Icons.info, text: "Credits"),
+              SettingsItem(icon: Icons.privacy_tip, text: "Privacitat"),
+              SettingsItem(icon: Icons.my_library_books, text: "Termes d'us i legals"),
+              SettingsItem(icon: Icons.warning, text: "Renuncia de responsabilitat"),
+              SettingsSectionSplitter(),
+              Text('Versió Actual'),
+              SettingsItem(icon: Icons.phone_android, text: "v0.0.0 (Beta)"),
             ],
           ),
         ),
