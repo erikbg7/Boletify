@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 
-class SearchImage extends StatelessWidget {
+class IdentifyImage extends StatelessWidget {
   final File image;
 
-  const SearchImage({Key key, this.image}) : super(key: key);
+  const IdentifyImage({Key key, this.image}) : super(key: key);
 
 //  Hero tag for this item?
 //  Would have a nice transition to details screen, would look cool

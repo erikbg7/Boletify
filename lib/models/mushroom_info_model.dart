@@ -54,11 +54,14 @@ getMushrooms() {
 
 List<MushroomInfo> getMushroomsListMock() {
   final List<MushroomInfo> mushroomsList = [];
-  mushroomsList.add(MushroomInfo("1", "1", [SearchLabels.autumn]));
-  mushroomsList
-      .add(MushroomInfo("2", "2", [SearchLabels.autumn, SearchLabels.summer]));
-  mushroomsList.add(MushroomInfo("3", "3",
-      [SearchLabels.autumn, SearchLabels.summer, SearchLabels.toxic]));
+  mushroomsList.add(MushroomInfo("Cep", "Boletus Edulis", [SearchLabels.summer,SearchLabels.autumn, SearchLabels.edible]));
+  mushroomsList.add(MushroomInfo("Rovelló", "Lactarius Sanguifluus", [SearchLabels.autumn,SearchLabels.edible]));
+  mushroomsList.add(MushroomInfo("Ou de Reig", "Amanita Caesarea", [SearchLabels.summer,SearchLabels.autumn, SearchLabels.edible]));
+  mushroomsList.add(MushroomInfo("Múrgola", "Morchella Rotunda", [SearchLabels.spring, SearchLabels.edible]));
+  mushroomsList.add(MushroomInfo("Llanega Negra", "Hygrophorus Latitabundus", [SearchLabels.autumn,SearchLabels.winter, SearchLabels.edible]));
+  mushroomsList.add(MushroomInfo("Rossinyol", "Cantharellus Cibarius", [SearchLabels.spring,SearchLabels.summer, SearchLabels.autumn,SearchLabels.winter, SearchLabels.edible]));
+  mushroomsList.add(MushroomInfo("Camagroc", "Cantharellus Lutescens", [SearchLabels.autumn,SearchLabels.winter, SearchLabels.edible]));
+  mushroomsList.add(MushroomInfo("Amanita", "Amanita Muscaria", [SearchLabels.autumn, SearchLabels.summer, SearchLabels.toxic]));
 
   return mushroomsList;
 

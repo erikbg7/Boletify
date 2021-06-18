@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/mushrooms/mushrooms_bloc.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
-import 'package:futter_project_tfg/screens/filter/filter_screen.dart';
+import 'package:futter_project_tfg/screens/search/search_screen.dart';
 import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                               builder: (BuildContext context) {
                                 return Scaffold(
                                   appBar: AppBar(title: Text('Búsqueda')),
-                                  body: FilterScreen(
+                                  body: SearchScreen(
                                     filter: [],
                                     mushroomsList: getMushroomsListMock(),
                                   ),

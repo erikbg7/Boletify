@@ -10,7 +10,7 @@ Widget buildTestableWidget(Widget widget) {
 void main() {
   test('MushroomInfo model has mocked list', (){
     var list = getMushroomsListMock();
-    expect(list.length, 3);
+    expect(list.length, 8);
   });
   test('MushroomInfo model concat labels to string', (){
     var mushroom = MushroomInfo('name', 'name2', [SearchLabels.summer]);
