@@ -54,7 +54,7 @@ class SettingsScreen extends StatelessWidget {
             children: [
               Text("Dona'ns Support"),
               SettingsItem(icon: Icons.card_giftcard, text: 'Fes una donació'),
-              SettingsItem(icon: Icons.star, text: "Qualifica l'applicició"),
+              SettingsItem(icon: Icons.star, text: "Qualifica l'applicació"),
               SettingsSectionSplitter(),
               Text("Informació"),
               SettingsItem(icon: Icons.info, text: "Credits"),
