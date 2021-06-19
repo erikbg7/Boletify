@@ -24,17 +24,44 @@ class SearchScreen extends StatelessWidget {
           if (state is FilterResultState) {
             return Column(
               children: [
-                FilterButton(
-                  id: SearchLabels.toxic,
-                  isActive: state.filter.contains(SearchLabels.toxic),
-                ),
-                FilterButton(
-                  id: SearchLabels.summer,
-                  isActive: state.filter.contains(SearchLabels.summer),
-                ),
-                FilterButton(
-                  id: SearchLabels.autumn,
-                  isActive: state.filter.contains(SearchLabels.autumn),
+                Container(
+                  height: 50,
+                  width: double.infinity,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      FilterButton(
+                        text: 'Comestible',
+                        id: SearchLabels.edible,
+                        isActive: state.filter.contains(SearchLabels.edible),
+                      ),
+                      FilterButton(
+                        text: 'Tóxic',
+                        id: SearchLabels.toxic,
+                        isActive: state.filter.contains(SearchLabels.toxic),
+                      ),
+                      FilterButton(
+                        text: 'Primavera',
+                        id: SearchLabels.spring,
+                        isActive: state.filter.contains(SearchLabels.spring),
+                      ),
+                      FilterButton(
+                        text: 'Estiu',
+                        id: SearchLabels.summer,
+                        isActive: state.filter.contains(SearchLabels.summer),
+                      ),
+                      FilterButton(
+                        text: 'Tardor',
+                        id: SearchLabels.autumn,
+                        isActive: state.filter.contains(SearchLabels.autumn),
+                      ),
+                      FilterButton(
+                        text: 'Hivern',
+                        id: SearchLabels.winter,
+                        isActive: state.filter.contains(SearchLabels.winter),
+                      ),
+                    ],
+                  ),
                 ),
                 Expanded(
                   child: Container(
