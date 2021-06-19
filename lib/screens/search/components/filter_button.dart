@@ -6,9 +6,10 @@ import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 
 class FilterButton extends StatelessWidget {
   final SearchLabels id;
+  final String text;
   final bool isActive;
 
-  const FilterButton({Key key, this.id, this.isActive}) : super(key: key);
+  const FilterButton({Key key, this.id, this.isActive, this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class FilterButton extends StatelessWidget {
         final event = isActive ? RemoveFromFilter(id) : AddToFilter(id);
         BlocProvider.of<SearchFilterBloc>(context).add(event);
       },
-      child: Text('$id'),
+      child: Text(text),
     );
   }
 }

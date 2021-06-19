@@ -76,24 +76,27 @@ class SearchScreen extends StatelessWidget {
                                   (label) => item.labels.contains(label))) {
                                 return Container(
                                   margin: EdgeInsets.only(top: 10),
-                                  padding: EdgeInsets.only(top: 5),
+                                  padding: EdgeInsets.only(top: 5, left: 10),
                                   width: double.infinity,
                                   color: Colors.black26,
                                   child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                          '${item.name} -- ${item.nameScientific}'),
-                                      DetailLabels(labels: item.labels),
+                                        item.name,
+                                        style: TextStyle(fontSize: 25),
+                                      ),
+                                      Text(item.nameScientific),
+                                      DetailLabels(
+                                        labels: item.labels,
+                                        small: true,
+                                        alignment: MainAxisAlignment.start,
+                                      ),
                                       SizedBox(height: 5)
-
                                     ],
                                   ),
                                 );
-
-//                                return ListTile(
-//                                  title: Text(
-//                                      'Item ${mushroomsList[index].toConcatString()}'),
-//                                );
                               }
                               return SizedBox();
                             },
