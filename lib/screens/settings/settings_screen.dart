@@ -1,28 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/config/settings_items_config.dart';
+import 'package:futter_project_tfg/models/settings_item_model.dart';
 
-class SettingsItem extends StatelessWidget {
-  final IconData icon;
-  final String text;
-  final Function onPressed;
+void redirectTo({context: BuildContext, title: String, screen: Widget}) {
+  Navigator.push(
+    context,
+    MaterialPageRoute<void>(
+      builder: (BuildContext context) {
+        return Scaffold(
+            appBar: AppBar(title: Text('Búsqueda')), body: Container());
+      },
+    ),
+  );
+}
 
-  const SettingsItem({Key key, this.icon, this.text, this.onPressed}) : super(key: key);
+class SettingItem extends StatelessWidget {
+  final SettingsItem item;
+
+  const SettingItem({Key key, this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        children: [
-          SizedBox(width: 20),
-          Icon(icon),
-          SizedBox(width: 20),
-          Text(text),
-        ],
+    return InkWell(
+      onTap: () => redirectTo(
+          context: context, title: 'Credits', screen: Container()),
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          children: [
+            SizedBox(width: 20),
+            Icon(settings[item].icon),
+            SizedBox(width: 20),
+            Text(settings[item].text),
+          ],
+        ),
       ),
     );
   }
 }
-
 
 class SettingsSectionSplitter extends StatelessWidget {
   @override
@@ -35,14 +50,11 @@ class SettingsSectionSplitter extends StatelessWidget {
   }
 }
 
-
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Opcions"),
-      ),
+      appBar: AppBar(title: Text("Opcions")),
       body: Container(
         padding: EdgeInsets.all(10),
         color: Colors.black38,
@@ -53,17 +65,17 @@ class SettingsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Dona'ns Support"),
-              SettingsItem(icon: Icons.card_giftcard, text: 'Fes una donació'),
-              SettingsItem(icon: Icons.star, text: "Qualifica l'applicació"),
+              SettingItem(item: SettingsItem.donate),
+              SettingItem(item: SettingsItem.rate),
               SettingsSectionSplitter(),
               Text("Informació"),
-              SettingsItem(icon: Icons.info, text: "Credits"),
-              SettingsItem(icon: Icons.privacy_tip, text: "Privacitat"),
-              SettingsItem(icon: Icons.my_library_books, text: "Termes d'us i legals"),
-              SettingsItem(icon: Icons.warning, text: "Renuncia de responsabilitat"),
+              SettingItem(item: SettingsItem.credits),
+              SettingItem(item: SettingsItem.privacy),
+              SettingItem(item: SettingsItem.terms),
+              SettingItem(item: SettingsItem.disclaimer),
               SettingsSectionSplitter(),
               Text('Versió Actual'),
-              SettingsItem(icon: Icons.phone_android, text: "v0.0.0 (Beta)"),
+              SettingItem(item: SettingsItem.version),
             ],
           ),
         ),
