@@ -18,7 +18,6 @@ void main() {
 
       expect(find.text(mushroom.tooltip), findsOneWidget);
       expect(find.byType(CustomIcon), findsOneWidget);
-      expect(find.byType(LinearGradient), findsOneWidget);
     },
   );
 }
