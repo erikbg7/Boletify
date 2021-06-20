@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/config/mushroom_labels_config.dart';
 import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 import 'package:futter_project_tfg/widgets/custom_icon.dart';
 
