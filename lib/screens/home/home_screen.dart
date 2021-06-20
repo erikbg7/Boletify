@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/mushrooms/mushrooms_bloc.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/screens/home/components/home_card.dart';
 import 'package:futter_project_tfg/screens/icons/icons_screen.dart';
 import 'package:futter_project_tfg/screens/search/search_screen.dart';
 import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
@@ -22,17 +24,22 @@ class HomeScreen extends StatelessWidget {
           width: double.infinity,
           child: BlocBuilder<MushroomsBloc, MushroomsState>(
             builder: (context, state) {
-              return Center(
+              return SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(height: 50),
-                    Text(
-                      "HOME",
-                      style: Theme.of(context).textTheme.headline3,
-                    ),
-                    SizedBox(height: 25),
                     SecurityDisclaimer(),
-                    SizedBox(height: 25),
+                    Wrap(
+                      spacing: 10.0,
+                      runSpacing: 10.0,
+                      children: [
+                        HomeCard(label: SearchLabels.edible),
+                        HomeCard(label: SearchLabels.toxic),
+                        HomeCard(label: SearchLabels.spring),
+                        HomeCard(label: SearchLabels.summer),
+                        HomeCard(label: SearchLabels.autumn),
+                        HomeCard(label: SearchLabels.winter),
+                      ],
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -64,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                               return Scaffold(
                                 appBar: AppBar(title: Text('Búsqueda')),
                                 body: SearchScreen(
-                                  filter: [],
+                                  filter: [SearchLabels.winter],
                                   mushroomsList: getMushroomsListMock(),
                                 ),
                               );

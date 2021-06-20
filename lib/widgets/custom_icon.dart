@@ -1,39 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-enum EdibleType {edible, poisonous, mortal, unknown}
-
-class EdibleIcon extends CustomIcon {
-
-
-  final EdibleType type;
-
-  EdibleIcon(this.type);
-
-
-
-  @override
-  // TODO: implement tooltip
-  String get tooltip => 'askjdnsjndjndjnsj';
-  @override
-  // TODO: implement image
-  String get image => 'assets/edibility/edible.png';
-  @override
-  // TODO: implement color
-  Color get color => Colors.blue;
-}
-
-
 class CustomIcon extends StatelessWidget {
   final String image;
   final String tooltip;
   final Color color;
-  final EdibleType type;
   final double size;
 
 
-  const CustomIcon({Key key, this.image, this.tooltip, this.color, this.type, this.size}) : super(key: key);
+  const CustomIcon({Key key, this.image, this.tooltip, this.color, this.size}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
