@@ -24,17 +24,44 @@ class SearchScreen extends StatelessWidget {
           if (state is FilterResultState) {
             return Column(
               children: [
-                FilterButton(
-                  id: SearchLabels.toxic,
-                  isActive: state.filter.contains(SearchLabels.toxic),
-                ),
-                FilterButton(
-                  id: SearchLabels.summer,
-                  isActive: state.filter.contains(SearchLabels.summer),
-                ),
-                FilterButton(
-                  id: SearchLabels.autumn,
-                  isActive: state.filter.contains(SearchLabels.autumn),
+                Container(
+                  height: 50,
+                  width: double.infinity,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      FilterButton(
+                        text: 'Comestible',
+                        id: SearchLabels.edible,
+                        isActive: state.filter.contains(SearchLabels.edible),
+                      ),
+                      FilterButton(
+                        text: 'Tóxic',
+                        id: SearchLabels.toxic,
+                        isActive: state.filter.contains(SearchLabels.toxic),
+                      ),
+                      FilterButton(
+                        text: 'Primavera',
+                        id: SearchLabels.spring,
+                        isActive: state.filter.contains(SearchLabels.spring),
+                      ),
+                      FilterButton(
+                        text: 'Estiu',
+                        id: SearchLabels.summer,
+                        isActive: state.filter.contains(SearchLabels.summer),
+                      ),
+                      FilterButton(
+                        text: 'Tardor',
+                        id: SearchLabels.autumn,
+                        isActive: state.filter.contains(SearchLabels.autumn),
+                      ),
+                      FilterButton(
+                        text: 'Hivern',
+                        id: SearchLabels.winter,
+                        isActive: state.filter.contains(SearchLabels.winter),
+                      ),
+                    ],
+                  ),
                 ),
                 Expanded(
                   child: Container(
@@ -49,24 +76,27 @@ class SearchScreen extends StatelessWidget {
                                   (label) => item.labels.contains(label))) {
                                 return Container(
                                   margin: EdgeInsets.only(top: 10),
-                                  padding: EdgeInsets.only(top: 5),
+                                  padding: EdgeInsets.only(top: 5, left: 10),
                                   width: double.infinity,
                                   color: Colors.black26,
                                   child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                          '${item.name} -- ${item.nameScientific}'),
-                                      DetailLabels(labels: item.labels),
+                                        item.name,
+                                        style: TextStyle(fontSize: 25),
+                                      ),
+                                      Text(item.nameScientific),
+                                      DetailLabels(
+                                        labels: item.labels,
+                                        small: true,
+                                        alignment: MainAxisAlignment.start,
+                                      ),
                                       SizedBox(height: 5)
-
                                     ],
                                   ),
                                 );
-
-//                                return ListTile(
-//                                  title: Text(
-//                                      'Item ${mushroomsList[index].toConcatString()}'),
-//                                );
                               }
                               return SizedBox();
                             },
