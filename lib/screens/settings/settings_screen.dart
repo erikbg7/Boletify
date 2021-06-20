@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/config/settings_items_config.dart';
 import 'package:futter_project_tfg/models/settings_item_model.dart';
-import 'package:futter_project_tfg/screens/settings/credits/credits_screen.dart';
 
 void redirectTo({context: BuildContext, title: String, screen: Widget}) {
   Navigator.push(
@@ -24,7 +23,7 @@ class SettingItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => redirectTo(
-          context: context, title: 'Credits', screen: CreditsScreen()),
+          context: context, title: 'Credits', screen: Container()),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
         child: Row(
