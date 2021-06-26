@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/config/mushroom_labels_config.dart';
+import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/screens/search/search_screen.dart';
 import 'package:futter_project_tfg/widgets/custom_icon.dart';
 
 class HomeCard extends StatelessWidget {
@@ -13,27 +15,113 @@ class HomeCard extends StatelessWidget {
     final mushroom = mushroomLabels[label];
     Size size = MediaQuery.of(context).size;
 
-    return Container(
-      height: 125,
-      width: size.width*0.4,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          gradient: LinearGradient(
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-              stops: [0.2, 1],
-              colors: mushroom.colors)),
-      child: Stack(
-        alignment: AlignmentDirectional.topEnd,
-        children: [
-          CustomIcon(
-            image: mushroom.imageUrl,
-            tooltip: mushroom.tooltip,
-            size: 25,
-          ),
-          Center(child: Text(mushroom.tooltip, textAlign: TextAlign.center,)),
-        ],
+    return InkWell(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute<void>(builder: (BuildContext context) {
+              return Scaffold(
+                appBar: AppBar(title: Text('Búsqueda')),
+                body: SearchScreen(
+                  filter: [label],
+                  mushroomsList: getMushroomsListMock(),
+                ),
+              );
+            }));
+      },
+      child: Container(
+        width: size.width * 0.4,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                stops: [0.2, 1],
+                colors: mushroom.colors)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            CustomIcon(
+              image: mushroom.imageUrl,
+              tooltip: mushroom.tooltip,
+              size: 25,
+            ),
+            Container(
+              height: 50,
+              color: Colors.black26,
+              child: Center(
+                  child: Text(
+                    mushroom.tooltip,
+                    textAlign: TextAlign.center,
+                  )),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+
+////////////////// SECOND OPTION /////////////////////
+
+//class HomeCard extends StatelessWidget {
+//  final SearchLabels label;
+//
+//  const HomeCard({Key key, this.label}) : super(key: key);
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    final mushroom = mushroomLabels[label];
+//    Size size = MediaQuery.of(context).size;
+//
+//    return InkWell(
+//      onTap: () {
+//        Navigator.push(
+//          context,
+//          MaterialPageRoute<void>(
+//            builder: (BuildContext context) {
+//              return Scaffold(
+//                appBar: AppBar(title: Text('Búsqueda')),
+//                body: SearchScreen(
+//                  filter: [label],
+//                  mushroomsList: getMushroomsListMock(),
+//                ),
+//              );
+//            },
+//          ),
+//        );
+//      },
+//      child: Container(
+//        width: size.width * 0.4,
+//        decoration: BoxDecoration(
+//            borderRadius: BorderRadius.circular(10),
+//            gradient: LinearGradient(
+//                begin: Alignment.bottomLeft,
+//                end: Alignment.topRight,
+//                stops: [0.2, 1],
+//                colors: [mushroom.colors[1], mushroom.colors[0]])),
+//        child: Row(
+//          children: [
+//            CustomIcon(
+//              image: mushroom.imageUrl,
+//              tooltip: mushroom.tooltip,
+//              size: 25,
+//            ),
+//            Expanded(
+//              child: Container(
+//                height: 50,
+//                decoration: BoxDecoration(color: Colors.black45),
+//                child: Center(
+//                  child: Text(
+//                    mushroom.tooltip,
+//                    textAlign: TextAlign.center,
+//                  ),
+//                ),
+//              ),
+//            ),
+//          ],
+//        ),
+//      ),
+//    );
+//  }
+//}
+
