@@ -12,9 +12,9 @@ void main() {
     });
   });
   test('Correct config for settings item config', (){
-    expect(SettingsItem.values.length, settings.length);
-    SettingsItem.values.forEach((settingsItem) {
-      expect(settings[settingsItem] is SettingsItemInfo, true);
+    expect(SettingsItemType.values.length, settingsMap.length);
+    SettingsItemType.values.forEach((settingsItem) {
+      expect(settingsMap[settingsItem] is SettingsItem, true);
     });
   });
 }

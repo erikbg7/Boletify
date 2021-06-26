@@ -38,6 +38,7 @@ class HomeScreen extends StatelessWidget {
                         HomeCard(label: SearchLabels.winter),
                       ],
                     ),
+                    SizedBox(height: 80),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [

@@ -1,37 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/config/settings_items_config.dart';
 import 'package:futter_project_tfg/models/settings_item_model.dart';
+import 'package:futter_project_tfg/utils/utils.dart';
 
-void redirectTo({context: BuildContext, title: String, screen: Widget}) {
-  Navigator.push(
-    context,
-    MaterialPageRoute<void>(
-      builder: (BuildContext context) {
-        return Scaffold(
-            appBar: AppBar(title: Text('Búsqueda')), body: Container());
-      },
-    ),
-  );
+void handleSettingsItemTap(BuildContext context, SettingsItem item) {
+  if (item.screen is Widget) {
+    redirectTo(context: context, screen: item.screen);
+  }
 }
 
 class SettingItem extends StatelessWidget {
   final SettingsItem item;
-
   const SettingItem({Key key, this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => redirectTo(
-          context: context, title: 'Credits', screen: Container()),
+      onTap: () => handleSettingsItemTap(context, item),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
         child: Row(
           children: [
             SizedBox(width: 20),
-            Icon(settings[item].icon),
+            Icon(item.icon),
             SizedBox(width: 20),
-            Text(settings[item].text),
+            Text(item.text),
           ],
         ),
       ),
@@ -39,7 +32,7 @@ class SettingItem extends StatelessWidget {
   }
 }
 
-class SettingsSectionSplitter extends StatelessWidget {
+class SettingsSplitter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -65,17 +58,17 @@ class SettingsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Dona'ns Support"),
-              SettingItem(item: SettingsItem.donate),
-              SettingItem(item: SettingsItem.rate),
-              SettingsSectionSplitter(),
+              SettingItem(item: settingsMap[SettingsItemType.donate]),
+              SettingItem(item: settingsMap[SettingsItemType.rate]),
+              SettingsSplitter(),
               Text("Informació"),
-              SettingItem(item: SettingsItem.credits),
-              SettingItem(item: SettingsItem.privacy),
-              SettingItem(item: SettingsItem.terms),
-              SettingItem(item: SettingsItem.disclaimer),
-              SettingsSectionSplitter(),
+              SettingItem(item: settingsMap[SettingsItemType.credits]),
+              SettingItem(item: settingsMap[SettingsItemType.privacy]),
+              SettingItem(item: settingsMap[SettingsItemType.terms]),
+              SettingItem(item: settingsMap[SettingsItemType.disclaimer]),
+              SettingsSplitter(),
               Text('Versió Actual'),
-              SettingItem(item: SettingsItem.version),
+              SettingItem(item: settingsMap[SettingsItemType.version]),
             ],
           ),
         ),

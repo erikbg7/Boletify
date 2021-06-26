@@ -17,16 +17,18 @@ class HomeCard extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute<void>(builder: (BuildContext context) {
-              return Scaffold(
-                appBar: AppBar(title: Text('Búsqueda')),
-                body: SearchScreen(
-                  filter: [label],
-                  mushroomsList: getMushroomsListMock(),
-                ),
-              );
-            }));
+        Navigator.push(
+          context,
+          MaterialPageRoute<void>(builder: (BuildContext context) {
+            return Scaffold(
+              appBar: AppBar(title: Text('Búsqueda')),
+              body: SearchScreen(
+                filter: [label],
+                mushroomsList: getMushroomsListMock(),
+              ),
+            );
+          }),
+        );
       },
       child: Container(
         width: size.width * 0.4,
@@ -46,13 +48,17 @@ class HomeCard extends StatelessWidget {
               size: 25,
             ),
             Container(
+              decoration: BoxDecoration(
+                  color: Colors.black87,
+                  borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(10),
+                      bottomLeft: Radius.circular(10))),
               height: 50,
-              color: Colors.black26,
               child: Center(
                   child: Text(
-                    mushroom.tooltip,
-                    textAlign: TextAlign.center,
-                  )),
+                mushroom.tooltip,
+                textAlign: TextAlign.center,
+              )),
             ),
           ],
         ),
@@ -124,4 +130,3 @@ class HomeCard extends StatelessWidget {
 //    );
 //  }
 //}
-
