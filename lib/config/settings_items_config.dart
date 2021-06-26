@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/settings_item_model.dart';
 import 'package:futter_project_tfg/screens/settings/credits/credits_screen.dart';
+import 'package:futter_project_tfg/screens/settings/privacy/privacy_screen.dart';
 
 Map<SettingsItemType, SettingsItem> settingsMap = {
   SettingsItemType.donate: SettingsItem(
@@ -19,7 +20,7 @@ Map<SettingsItemType, SettingsItem> settingsMap = {
   SettingsItemType.privacy: SettingsItem(
     icon: Icons.privacy_tip,
     text: "Privacitat",
-    screen: CreditsScreen(),
+    screen: PrivacyScreen(),
   ),
   SettingsItemType.terms: SettingsItem(
     icon: Icons.my_library_books,
