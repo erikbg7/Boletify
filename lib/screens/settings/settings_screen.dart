@@ -16,7 +16,6 @@ void redirectTo({context: BuildContext, title: String, screen: Widget}) {
 
 class SettingItem extends StatelessWidget {
   final SettingsItem item;
-
   const SettingItem({Key key, this.item}) : super(key: key);
 
   @override
@@ -29,9 +28,9 @@ class SettingItem extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(width: 20),
-            Icon(settings[item].icon),
+            Icon(item.icon),
             SizedBox(width: 20),
-            Text(settings[item].text),
+            Text(item.text),
           ],
         ),
       ),
@@ -65,17 +64,17 @@ class SettingsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Dona'ns Support"),
-              SettingItem(item: SettingsItem.donate),
-              SettingItem(item: SettingsItem.rate),
+              SettingItem(item: settingsMap[SettingsItemType.donate]),
+              SettingItem(item: settingsMap[SettingsItemType.rate]),
               SettingsSectionSplitter(),
               Text("Informació"),
-              SettingItem(item: SettingsItem.credits),
-              SettingItem(item: SettingsItem.privacy),
-              SettingItem(item: SettingsItem.terms),
-              SettingItem(item: SettingsItem.disclaimer),
+              SettingItem(item: settingsMap[SettingsItemType.credits]),
+              SettingItem(item: settingsMap[SettingsItemType.privacy]),
+              SettingItem(item: settingsMap[SettingsItemType.terms]),
+              SettingItem(item: settingsMap[SettingsItemType.disclaimer]),
               SettingsSectionSplitter(),
               Text('Versió Actual'),
-              SettingItem(item: SettingsItem.version),
+              SettingItem(item: settingsMap[SettingsItemType.version]),
             ],
           ),
         ),

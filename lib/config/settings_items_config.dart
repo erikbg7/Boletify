@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/settings_item_model.dart';
 
-Map<SettingsItem, SettingsItemInfo> settings = {
-  SettingsItem.donate: SettingsItemInfo(
+Map<SettingsItemType, SettingsItem> settingsMap = {
+  SettingsItemType.donate: SettingsItem(
     icon: Icons.card_giftcard,
     text: 'Fes una donació',
   ),
-  SettingsItem.rate: SettingsItemInfo(
+  SettingsItemType.rate: SettingsItem(
     icon: Icons.star,
     text: "Qualifica l'applicació",
   ),
-  SettingsItem.credits: SettingsItemInfo(
+  SettingsItemType.credits: SettingsItem(
     icon: Icons.info,
     text: "Credits",
   ),
-  SettingsItem.privacy: SettingsItemInfo(
+  SettingsItemType.privacy: SettingsItem(
     icon: Icons.privacy_tip,
     text: "Privacitat",
   ),
-  SettingsItem.terms: SettingsItemInfo(
+  SettingsItemType.terms: SettingsItem(
     icon: Icons.my_library_books,
     text: "Termes d'us i legals",
   ),
-  SettingsItem.disclaimer: SettingsItemInfo(
+  SettingsItemType.disclaimer: SettingsItem(
     icon: Icons.warning,
     text: "Renuncia de responsabilitat",
   ),
-  SettingsItem.version: SettingsItemInfo(
+  SettingsItemType.version: SettingsItem(
     icon: Icons.phone_android,
     text: "v0.0.0 (Beta)",
   ),

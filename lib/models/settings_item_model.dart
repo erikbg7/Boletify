@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-enum SettingsItem { donate, rate, credits, privacy, terms, disclaimer, version }
+enum SettingsItemType { donate, rate, credits, privacy, terms, disclaimer, version }
 
-class SettingsItemInfo {
+class SettingsItem {
   final IconData icon;
   final String text;
   final Function onTap;
 
-  SettingsItemInfo({this.icon, this.text, this.onTap});
+  SettingsItem({this.icon, this.text, this.onTap});
 }
