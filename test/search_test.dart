@@ -1,10 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:futter_project_tfg/screens/search/search_screen.dart';
 
-Widget buildTestableWidget(Widget widget) {
-  return MediaQuery(data: MediaQueryData(), child: MaterialApp(home: widget));
-}
+import 'utils/index.dart';
 
 void main() {
   testWidgets(

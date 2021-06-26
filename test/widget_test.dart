@@ -5,13 +5,10 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_methods.dart';
+import 'utils/index.dart';
 
-Widget buildTestableWidget(Widget widget) {
-  return MediaQuery(data: MediaQueryData(), child: MaterialApp(home: widget));
-}
 
 void main() {
   testWidgets('Displays Gallery and Camera buttons',
