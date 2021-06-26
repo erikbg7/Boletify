@@ -2,11 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/mushrooms/mushrooms_bloc.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 import 'package:futter_project_tfg/screens/home/components/home_card.dart';
 import 'package:futter_project_tfg/screens/icons/icons_screen.dart';
-import 'package:futter_project_tfg/screens/search/search_screen.dart';
 import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -60,26 +58,6 @@ class HomeScreen extends StatelessWidget {
                           child: Text('GetAllMuhsrooms'),
                         ),
                       ],
-                    ),
-                    FlatButton(
-                      color: Colors.blue,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute<void>(
-                            builder: (BuildContext context) {
-                              return Scaffold(
-                                appBar: AppBar(title: Text('Búsqueda')),
-                                body: SearchScreen(
-                                  filter: [SearchLabels.winter],
-                                  mushroomsList: getMushroomsListMock(),
-                                ),
-                              );
-                            },
-                          ),
-                        );
-                      },
-                      child: Text('Go to search'),
                     ),
                     FlatButton(
                         color: Colors.blue,

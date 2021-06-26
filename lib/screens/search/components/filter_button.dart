@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/filter/filters_bloc.dart';
+import 'package:futter_project_tfg/config/mushroom_labels_config.dart';
 import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/widgets/custom_icon.dart';
 
 class FilterButton extends StatelessWidget {
   final SearchLabels id;
@@ -27,12 +29,17 @@ class FilterButton extends StatelessWidget {
 //    );
 
     return FlatButton(
-      color: isActive ? Colors.blueAccent : Colors.blueGrey,
+      color: isActive ? mushroomLabels[id].colors[0].withOpacity(0.3) : Colors.black,
       onPressed: () {
         final event = isActive ? RemoveFromFilter(id) : AddToFilter(id);
         BlocProvider.of<SearchFilterBloc>(context).add(event);
       },
-      child: Text(text),
+      child: Column(
+        children: [
+          CustomIcon(image: mushroomLabels[id].imageUrl, tooltip: mushroomLabels[id].tooltip, size: 25,),
+          Text(text),
+        ],
+      ),
     );
   }
 }

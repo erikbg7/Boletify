@@ -25,7 +25,7 @@ class SearchScreen extends StatelessWidget {
             return Column(
               children: [
                 Container(
-                  height: 50,
+                  height: 60,
                   width: double.infinity,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
@@ -66,7 +66,7 @@ class SearchScreen extends StatelessWidget {
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    color: Colors.deepPurple,
+                    color: Colors.black45,
                     child: mushroomsList.length > 0
                         ? ListView.builder(
                             itemCount: mushroomsList.length,
