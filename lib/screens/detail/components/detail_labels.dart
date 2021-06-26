@@ -34,7 +34,7 @@ class DetailLabels extends StatelessWidget {
         labelsList.add(CustomIcon(
           image: labelInfo.imageUrl,
           tooltip: labelInfo.tooltip,
-          size: small ? 25 : 50,
+          size: small ? 15 : 50,
         ));
       }
     });
