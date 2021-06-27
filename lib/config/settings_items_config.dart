@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/settings_item_model.dart';
+import 'package:futter_project_tfg/screens/icons/icons_screen.dart';
 import 'package:futter_project_tfg/screens/settings/credits/credits_screen.dart';
 import 'package:futter_project_tfg/screens/settings/privacy/privacy_screen.dart';
 
@@ -35,5 +36,6 @@ Map<SettingsItemType, SettingsItem> settingsMap = {
   SettingsItemType.version: SettingsItem(
     icon: Icons.phone_android,
     text: "v0.0.0 (Beta)",
+    screen: IconsScreen()
   ),
 };
