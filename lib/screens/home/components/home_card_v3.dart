@@ -5,6 +5,8 @@ import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 import 'package:futter_project_tfg/screens/search/search_screen.dart';
 import 'package:futter_project_tfg/widgets/custom_icon.dart';
 
+
+
 class HomeCard extends StatelessWidget {
   final SearchLabels label;
 
@@ -31,34 +33,25 @@ class HomeCard extends StatelessWidget {
         );
       },
       child: Container(
-        width: size.width * 0.46,
+        width: size.width * 0.4,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                stops: [0.2, 1],
+                colors: mushroom.colors)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(10),
-                      topLeft: Radius.circular(10),
-                  ),
-                  gradient: LinearGradient(
-                      begin: Alignment.bottomLeft,
-                      end: Alignment.topRight,
-                      stops: [0.2, 1],
-                      colors: mushroom.colors)),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: CustomIcon(
-                  image: mushroom.imageUrl,
-                  tooltip: mushroom.tooltip,
-                  size: 20,
-                ),
-              ),
+            CustomIcon(
+              image: mushroom.imageUrl,
+              tooltip: mushroom.tooltip,
+              size: 25,
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.3),
+                  color: Colors.black87,
                   borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(10),
                       bottomLeft: Radius.circular(10))),

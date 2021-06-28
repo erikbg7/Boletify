@@ -42,7 +42,11 @@ class _LoadedAppState extends State<LoadedApp> {
       floatingActionButton: FloatingActionButton(
         onPressed: onPressed,
         backgroundColor: Colors.grey[800],
-        child: const Icon(Icons.photo_camera, color: Colors.white, size: 37,),
+        child: const Icon(
+          Icons.photo_camera,
+          color: Colors.white,
+          size: 37,
+        ),
       ),
     );
   }
