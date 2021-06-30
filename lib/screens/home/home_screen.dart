@@ -10,9 +10,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Boletus AI"),
+        centerTitle: true,
       ),
       body: Container(
-        color: Colors.black,
         height: double.infinity,
         width: double.infinity,
         child: Column(

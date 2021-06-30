@@ -22,7 +22,7 @@ class SettingItem extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(width: 20),
-            Icon(item.icon),
+            Icon(item.icon, color: Colors.greenAccent),
             SizedBox(width: 20),
             Text(item.text),
           ],
@@ -50,7 +50,6 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(title: Text("Opcions")),
       body: Container(
         padding: EdgeInsets.all(10),
-        color: Colors.black38,
         height: double.infinity,
         width: double.infinity,
         child: Center(

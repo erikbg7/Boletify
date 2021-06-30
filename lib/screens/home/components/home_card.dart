@@ -58,7 +58,7 @@ class HomeCard extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.3),
+                  color: Colors.grey.withOpacity(0.15),
                   borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(10),
                       bottomLeft: Radius.circular(10))),
