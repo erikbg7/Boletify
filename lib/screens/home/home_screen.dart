@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 import 'package:futter_project_tfg/screens/home/components/home_card.dart';
+import 'package:futter_project_tfg/screens/home/components/scrollable_icons.dart';
 import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,16 +19,17 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             SecurityDisclaimer(),
+            HomeScrollableIcons(),
             Wrap(
               spacing: 10.0,
               runSpacing: 10.0,
               children: [
-                HomeCard(label: SearchLabels.edible),
-                HomeCard(label: SearchLabels.toxic),
-                HomeCard(label: SearchLabels.spring),
-                HomeCard(label: SearchLabels.summer),
-                HomeCard(label: SearchLabels.autumn),
-                HomeCard(label: SearchLabels.winter),
+//                HomeCard(label: SearchLabels.edible),
+//                HomeCard(label: SearchLabels.toxic),
+//                HomeCard(label: SearchLabels.spring),
+//                HomeCard(label: SearchLabels.summer),
+//                HomeCard(label: SearchLabels.autumn),
+//                HomeCard(label: SearchLabels.winter),
               ],
             ),
           ],
