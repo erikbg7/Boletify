@@ -5,7 +5,7 @@ Map<SearchLabels, MushroomLabel> mushroomLabels = {
   SearchLabels.spring: MushroomLabel(
     imageUrl: 'assets/season/spring.png',
     tooltip: 'Temporada de primavera',
-    label: 'Prmavera',
+    label: 'Primavera',
     colors: [Colors.pink, Colors.purple],
   ),
   SearchLabels.summer: MushroomLabel(
