@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/screens/home/components/home_icons_list.dart';
 import 'package:futter_project_tfg/screens/home/components/home_search_button.dart';
 import 'package:futter_project_tfg/screens/home/components/home_title.dart';
-import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
-
+import 'package:futter_project_tfg/widgets/home_security_disclaimer.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -20,7 +19,7 @@ class HomeScreen extends StatelessWidget {
               HomeTitle(),
               HomeSearchButton(),
               HomeIconsList(),
-              SecurityDisclaimer(),
+              HomeSecurityDisclaimer(),
             ],
           ),
         ),
@@ -31,9 +30,9 @@ class HomeScreen extends StatelessWidget {
 
 LinearGradient buildHomeGradient() {
   return LinearGradient(
-    begin: Alignment.bottomRight,
+    begin: Alignment.centerRight,
     end: Alignment.topLeft,
-    colors: [Colors.greenAccent.withOpacity(0.05), Colors.transparent],
-    stops: [0.3, 0.8],
+    colors: [Colors.greenAccent.withOpacity(0.1), Colors.transparent],
+    stops: [0.2, 0.8],
   );
 }

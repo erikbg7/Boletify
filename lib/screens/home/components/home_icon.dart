@@ -38,11 +38,11 @@ class HomeIcon extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.15)),
             margin: EdgeInsets.all(5),
             padding: EdgeInsets.all(10),
-            height: 90,
-            width: 90,
+            height: MediaQuery.of(context).size.height*0.15,
+            width: MediaQuery.of(context).size.height*0.15,
             child: CustomIcon(image: image, tooltip: tooltip, size: 10),
           ),
-          Text(mushroomLabels[label].label)
+          Text(mushroomLabels[label].label, style: TextStyle(height: 1.5),)
         ],
       ),
     );

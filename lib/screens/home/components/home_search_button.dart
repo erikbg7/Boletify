@@ -6,7 +6,8 @@ class HomeSearchButton extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: size.width * 0.1),
+      width: size.width * 0.85,
+      height: size.height*0.07,
       child: OutlinedButton(
         onPressed: () {},
         style: ButtonStyle(

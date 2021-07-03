@@ -7,7 +7,7 @@ class HomeIconsList extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.26,
+      height: size.height * 0.265,
       padding: EdgeInsets.symmetric(vertical: size.height * 0.03),
       child: ListView(
         physics: BouncingScrollPhysics(),
