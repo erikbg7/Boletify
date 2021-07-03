@@ -1,40 +1,39 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/models/mushroom_label_model.dart';
-import 'package:futter_project_tfg/screens/home/components/home_card.dart';
-import 'package:futter_project_tfg/screens/home/components/scrollable_icons.dart';
+import 'package:futter_project_tfg/screens/home/components/home_icons_list.dart';
+import 'package:futter_project_tfg/screens/home/components/home_search_button.dart';
+import 'package:futter_project_tfg/screens/home/components/home_title.dart';
 import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
+
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Boletus AI"),
-        centerTitle: true,
-      ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        child: Column(
-          children: [
-            SecurityDisclaimer(),
-            HomeScrollableIcons(),
-            Wrap(
-              spacing: 10.0,
-              runSpacing: 10.0,
-              children: [
-//                HomeCard(label: SearchLabels.edible),
-//                HomeCard(label: SearchLabels.toxic),
-//                HomeCard(label: SearchLabels.spring),
-//                HomeCard(label: SearchLabels.summer),
-//                HomeCard(label: SearchLabels.autumn),
-//                HomeCard(label: SearchLabels.winter),
-              ],
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(gradient: buildHomeGradient()),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              HomeTitle(),
+              HomeSearchButton(),
+              HomeIconsList(),
+              SecurityDisclaimer(),
+            ],
+          ),
         ),
       ),
     );
   }
+}
+
+LinearGradient buildHomeGradient() {
+  return LinearGradient(
+    begin: Alignment.bottomRight,
+    end: Alignment.topLeft,
+    colors: [Colors.greenAccent.withOpacity(0.05), Colors.transparent],
+    stops: [0.3, 0.8],
+  );
 }
