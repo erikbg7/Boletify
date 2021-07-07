@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/filter/filters_bloc.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/models/mushroom_label_model.dart';
-import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 import 'package:futter_project_tfg/screens/search/components/filter_button.dart';
+import 'package:futter_project_tfg/screens/search/components/search_tile.dart';
 
 class SearchScreen extends StatelessWidget {
   final List<MushroomInfo> mushroomsList;
@@ -74,29 +74,7 @@ class SearchScreen extends StatelessWidget {
                               final MushroomInfo item = mushroomsList[index];
                               if (state.filter.every(
                                   (label) => item.labels.contains(label))) {
-                                return Container(
-                                  margin: EdgeInsets.only(top: 10),
-                                  padding: EdgeInsets.only(top: 5, left: 10),
-                                  width: double.infinity,
-                                  color: Colors.black26,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        item.name,
-                                        style: TextStyle(fontSize: 25),
-                                      ),
-                                      Text(item.nameScientific),
-                                      DetailLabels(
-                                        labels: item.labels,
-                                        small: true,
-                                        alignment: MainAxisAlignment.start,
-                                      ),
-                                      SizedBox(height: 5)
-                                    ],
-                                  ),
-                                );
+                                return SearchTile(item: item);
                               }
                               return SizedBox();
                             },
