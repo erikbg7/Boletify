@@ -7,7 +7,7 @@ class HomeSearchButton extends StatelessWidget {
 
     return Container(
       width: size.width * 0.85,
-      height: size.height*0.07,
+      height: size.height * 0.07,
       child: OutlinedButton(
         onPressed: () {},
         style: ButtonStyle(
