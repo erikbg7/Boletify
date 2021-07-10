@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             // if has connection, fetch mushrooms list
             fetchAllMushrooms();
             return MaterialApp(
-              title: 'Boletus AI',
+              title: 'Boletify',
               theme: buildThemeData(),
               home: LoadedApp(),
             );

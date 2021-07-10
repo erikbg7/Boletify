@@ -15,7 +15,7 @@ class SecurityDisclaimer extends StatelessWidget {
           SizedBox(width: 10),
           Flexible(
             child: Text(
-              "BoletusAI es una aplicació experimental. Utilitza les teves fonts d'informació habituals per saber si el bolet es comestible o tòxic.",
+              "Boletify es una aplicació experimental. Utilitza les teves fonts d'informació habituals per saber si el bolet es comestible o tòxic.",
               softWrap: true,
               style: TextStyle(height: 1.5),
             ),
