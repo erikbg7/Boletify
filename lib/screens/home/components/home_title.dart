@@ -6,10 +6,7 @@ class HomeTitle extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(
           vertical: MediaQuery.of(context).size.height * 0.03),
-      child: Text(
-        "Boletus AI",
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-      ),
+      child: Image.asset('assets/brand/boletify_title.png', height: 25)
     );
   }
 }

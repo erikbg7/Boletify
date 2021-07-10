@@ -27,7 +27,7 @@ class HomeSecurityDisclaimer extends StatelessWidget {
             SizedBox(width: 10),
             Center(
               child: Text(
-                "BoletusAI es una aplicació experimental. Utilitza les teves fonts d'informació habituals per saber si el bolet es comestible o tòxic,  recorda que alguns bolets poden ser mortals i és facil confondre'ls.",
+                "Boletify es una aplicació experimental. Utilitza les teves fonts d'informació habituals per saber si el bolet es comestible o tòxic,  recorda que alguns bolets poden ser mortals i és facil confondre'ls.",
                 softWrap: true,
                 style: TextStyle(
                     height: 1.5,

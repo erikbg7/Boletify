@@ -1,0 +1,141 @@
+/////////////////// IDENTIFY RESULTS
+
+- (In identify results) When confidence is lower than 98%, instead of showing the Search labels
+and the name of the mushroom, we will show the following:
+
+- User updated image
+- Text: I'm not sure about the results, I'have doubts beween this ones:
+- First mushroom by confidence (button with name and confidence that redirects to detail)
+- Second mushroom by confidence
+
+We need 3 type of IdentifyResults. HighConfidence, MediumConfidence, LowConfidence
+
+- High confidence: Image with labels and name
+- Medium confidence: Image with several possible options
+- Low confidence: "I could not find any result, are you sure this is a mushroom?"
+
+
+/////////////////// OFFLINE MODE
+
+https://flutter.dev/docs/cookbook/persistence/reading-writing-files
+
+The behaviour will be the following. First of all we make an API call to get all of the mushroom information.
+This information will be written in the AppData directory of the Android app.
+From that moment on, each time we start the application we will try to request again the mushroom list, but if we
+do not have network connection we will proceed to read from the storage the previous stored list.
+This way will be able to completely support offline mode, because both information and TF model will be part of
+the application. At some point, we should also consider to implement the same system for the classifier, so we are able to
+update things without further application updates.
+
+
+
+
+
+- Information of each mushroom
+- Images of mushrooms
+- ML mushroom
+- CD pipeline
+
+
+- Remove tooltip?
+
+
+Create BlurredContainer widget
+
+
+
+https://gitmoji.dev/
+
+
+// ovverlay mobile styles
+
+https://github.com/erikbg7/Vall-de-Boi-FlutterApp/blob/master/lib/screens/routes/routes_screen.dart
+
+
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: Color(0XFF191919)),
+    );
+
+
+
+////////////////////////////////////////
+
+
+When filters are not active they will be slightly faded.
+
+
+Validate Feature: we should let the user validate mushrooms.
+This means that they will be able to add an image and classify the mushroom manually.
+So we are able to reinforce our learning.
+
+
+-Mushroom card
+Image with icon labels in botttom left like in PlantNet
+
+
+////////////////////////////////////////
+
+IN HOME SCREEN
+If is offline we show a text: "Seeems that you are offline. However, you can still enjoy
+our classification feature". (with a drawn-styled arrow pointing to the Camera bottom navigation item).
+Settings should work as well in this case.
+
+If is online, we will fetch mushrooms list from firebase in the background.
+
+
+IN SEARCH SCREEN
+
+Makes sense to move all the classifier logic to a BLOC. Once we have an image to classify,
+we send an event to classify the image, if confidence is higher than 99% we search the mushroom
+in our mushroomsList and get the information from there. Otherwise we return a fake unknown
+mushroom skeleton.
+
+ClassifierBloc.ClassifyImageEvent(image: image);
+
+MushroomsBloc.FindMushroomEvent(mushroom: mushroomName);
+
+
+Can we call another bloc event from a different bloc? (e.g. call mushroom find after mushroom classifier)
+
+How do we use the mushroom list from the state that we already have without fetching again
+using the event? Is the call cached?
+
+
+IN SEARCH SCREEN
+
+Any item should be responsive using the height or width of the screen. So we avoid screen overflows.
+Use Size.of(context).width
+
+MULTIPLE RESULTS
+
+If confidence is lower than 80% show multiple results.
+
+
+
+
+
+//////////////////
+
+
+
+- Search image
+
+
+        Container(
+          width: 150.0,
+          height: 150.0,
+          decoration: BoxDecoration(
+            color: Color(0xff7c94b6),
+            image: DecorationImage(
+              image: image == null
+                  ? Image.asset('assets/grey.jpg')
+                  : FileImage(image),
+              fit: BoxFit.cover,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(300.0)),
+            border: Border.all(
+              color: Colors.white,
+              width: 3.0,
+            ),
+          ),
+        ),

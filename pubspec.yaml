@@ -60,6 +60,7 @@ flutter:
     - assets/search_background/
     - assets/edibility/
     - assets/season/
+    - assets/brand/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
