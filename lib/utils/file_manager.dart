@@ -16,31 +16,19 @@ class FileManager {
     _backupFile = new File('$path/$fileName');
   }
 
-  void setMushroomsBackupList2(List<MushroomDescription> list) {
-    var jsonMushroom = list[1].toJson();
-    var jsonString = jsonEncode(jsonMushroom);
+  void setMushroomsBackupList(List<MushroomDescription> list) {
+    var jsonMushrooms = [];
+    list.forEach((element) => jsonMushrooms.add(element.toJson()));
+    var jsonString = jsonEncode(jsonMushrooms);
     _backupFile.writeAsString(jsonString);
   }
 
-  Future<List<MushroomDescription>> getMushroomsBackupList2() async {
+  Future<List<MushroomDescription>> getMushroomsBackupList() async {
     List<MushroomDescription> list = [];
-    if(await _backupFile.exists()) {
+    if (await _backupFile.exists()) {
       var _jsonString = _backupFile.readAsStringSync();
-      var _jsonMap = jsonDecode(_jsonString);
-      print('RESULT:::: $_jsonString');
-      print('RESULT2:::: $_jsonMap');
-      var m = MushroomDescription.fromJson(_jsonMap);
-      print(m.name);
-      print(m.scientificName);
-      print(m.commonNames);
-      print(m.tags);
-      print(m.cap);
-      print(m.gills);
-      print(m.stalk);
-      print(m.flesh);
-      print(m.habitat);
-      print(m.observations);
-      list.add(m);
+      var _jsonMap = jsonDecode(_jsonString) as List;
+      _jsonMap.forEach((element) => list.add(MushroomDescription.fromJson(element)));
     }
     return list;
   }
