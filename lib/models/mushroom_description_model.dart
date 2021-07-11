@@ -4,7 +4,7 @@ import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 
 class MushroomDescription {
   final String name;
-  final String sientificName;
+  final String scientificName;
   final String commonNames;
   final List<SearchLabels> tags;
   final String cap; //sombrero
@@ -16,7 +16,7 @@ class MushroomDescription {
 
   MushroomDescription(
       {this.name,
-      this.sientificName,
+      this.scientificName,
       this.commonNames,
       this.tags,
       this.cap,
@@ -25,14 +25,46 @@ class MushroomDescription {
       this.flesh,
       this.habitat,
       this.observations});
+
+  factory MushroomDescription.fromJson(Map<String, dynamic> json) {
+    return MushroomDescription(
+        name: json['name'],
+        scientificName: json['scientificName'],
+        commonNames: json['commonNames'],
+        tags: [],
+        cap: json['cap'],
+        gills: json['gills'],
+        stalk: json['stalk'],
+        flesh: json['flesh'],
+        habitat: json['habitat'],
+        observations: json['observations']);
+  }
+
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'scientificName': scientificName,
+        'commonNames': commonNames,
+        'tags': [
+          SearchLabels.spring.toString(),
+          SearchLabels.summer.toString(),
+          SearchLabels.autumn.toString()
+        ],
+        'cap': cap,
+        'gills': gills,
+        'stalk': stalk,
+        'flesh': flesh,
+        'habitat': habitat,
+        'observations': observations
+      };
 }
 
-List<MushroomDescription> getMushroomsListMock() {
+List<MushroomDescription> getMushroomsListMock2() {
   final List<MushroomDescription> mushroomsList = [];
   mushroomsList.add(
     MushroomDescription(
       name: 'Ou de reig',
-      sientificName: 'Amanita Caesarea',
+      scientificName: 'Amanita Caesarea',
       commonNames: '',
       tags: [SearchLabels.spring, SearchLabels.summer, SearchLabels.autumn],
       cap:
@@ -52,18 +84,18 @@ List<MushroomDescription> getMushroomsListMock() {
   mushroomsList.add(
     MushroomDescription(
       name: 'Trompeta de la mort',
-      sientificName: 'Craterellus Cornucopioides',
+      scientificName: 'Craterellus Cornucopioides',
       commonNames: 'Rossinyol negre',
       tags: [SearchLabels.summer, SearchLabels.autumn],
       cap:
           'De 3 a 8cm, con forma de trometa, hueco en la base, color negro o mate, fibrilloso y con pequeñas escamas tambien oscuras, margen enrollado, ondulado irregular.',
-      gills:
-          "Està format per plecs de color gris cendra a gris blavós.",
+      gills: "Està format per plecs de color gris cendra a gris blavós.",
       stalk:
           "Es cilindric i buit, una continuació del sombrero, atenuat a la base.",
       flesh:
           "Es prima, fràgil, trencadissa, de color gris fosc a negre, de olor agradable i gust dolç.",
-      habitat: "Preferentment es troba a fagedes, tot i que es pot trobar a altres tipus de boscos.",
+      habitat:
+          "Preferentment es troba a fagedes, tot i que es pot trobar a altres tipus de boscos.",
       observations:
           "Es una especie molt abundant, si en trobem un quants es probable que n'hi hagi molts més pels voltants. Es una seta comestible excelent. El seu aspecte negre pot fer-nos sentir respecte a l'hora de probar-la, peró es un bolet deliciòs, el millor del seu génere.",
     ),
@@ -72,164 +104,129 @@ List<MushroomDescription> getMushroomsListMock() {
   mushroomsList.add(
     MushroomDescription(
       name: "Camagroc",
-      sientificName: "Craterellus Lutescens",
+      scientificName: "Craterellus Lutescens",
       commonNames: "Rossinyolic, trompea groga",
       tags: [SearchLabels.summer, SearchLabels.autumn, SearchLabels.winter],
       cap:
-      "De 2 a 6cm, en forma d'embut, lobulat, marró-negrós sobre un fons groc ataronjat, fibrillós i amb petites escates, marge ondulat.",
+          "De 2 a 6cm, en forma d'embut, lobulat, marró-negrós sobre un fons groc ataronjat, fibrillós i amb petites escates, marge ondulat.",
       gills:
-      "Format per rugositats, plcs ben marcats, de color groc ataronjat fins a rosat.",
+          "Format per rugositats, plcs ben marcats, de color groc ataronjat fins a rosat.",
       stalk:
-      "Cílindric, com una continuacío del sombrero, buit ffins a la base, atenuat, del mateix color que l'himeni.",
+          "Cílindric, com una continuacío del sombrero, buit ffins a la base, atenuat, del mateix color que l'himeni.",
       flesh:
-      "Es prima i frágil, trencadissa, de color crema grogenc, d'olor agradable y sabor dolç.",
+          "Es prima i frágil, trencadissa, de color crema grogenc, d'olor agradable y sabor dolç.",
       habitat: "Apareix a zones humides, musgoses de pinars de muntanya.",
       observations:
-      "En temps humits es molt abundant. La recoleció es laboriosa, ja que cal recollir-los amb molta cura i procurar posar-les netes a la cistella. Es un bolet comestible excelent, amb un aroma inconfundible i molt agradable.",
+          "En temps humits es molt abundant. La recoleció es laboriosa, ja que cal recollir-los amb molta cura i procurar posar-les netes a la cistella. Es un bolet comestible excelent, amb un aroma inconfundible i molt agradable.",
     ),
   );
 
   mushroomsList.add(
     MushroomDescription(
       name: "Pinatell",
-      sientificName: "Lacttarius Deliciosus",
+      scientificName: "Lacttarius Deliciosus",
       commonNames: "Rovelló",
       tags: [SearchLabels.autumn, SearchLabels.winter],
       cap:
-      "D'entre 6 i 12 cm, es convex i després extens i deprimir. De color roig-ataronjat, la cutícula es aterciopelada.",
+          "D'entre 6 i 12 cm, es convex i després extens i deprimir. De color roig-ataronjat, la cutícula es aterciopelada.",
       gills:
-      "Les lámines son apretades, poc decurrents i d'un color taronja amb taques verdoses.",
-      stalk:
-      "És curt, escrobiculado.",
+          "Les lámines son apretades, poc decurrents i d'un color taronja amb taques verdoses.",
+      stalk: "És curt, escrobiculado.",
       flesh:
-      "Es banquinosa, peró pot variar una mica a color pastanaga al tallar-lo. D'una olor agradable i sabor dolç.",
+          "Es banquinosa, peró pot variar una mica a color pastanaga al tallar-lo. D'una olor agradable i sabor dolç.",
       habitat: "Es troba als pinars.",
       observations:
-      "Comestible. Molt comú i apreciat. Ens desfarem de tots els que segreguin latex blanc o d'un altre color.",
+          "Comestible. Molt comú i apreciat. Ens desfarem de tots els que segreguin latex blanc o d'un altre color.",
     ),
   );
 
   mushroomsList.add(
     MushroomDescription(
       name: "",
-      sientificName: "",
+      scientificName: "",
       commonNames: "",
       tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap:
-      "",
-      gills:
-      "",
-      stalk:
-      "",
-      flesh:
-      "",
+      cap: "",
+      gills: "",
+      stalk: "",
+      flesh: "",
       habitat: "",
-      observations:
-      "",
+      observations: "",
     ),
   );
 
   mushroomsList.add(
     MushroomDescription(
       name: "",
-      sientificName: "",
+      scientificName: "",
       commonNames: "",
       tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap:
-      "",
-      gills:
-      "",
-      stalk:
-      "",
-      flesh:
-      "",
+      cap: "",
+      gills: "",
+      stalk: "",
+      flesh: "",
       habitat: "",
-      observations:
-      "",
+      observations: "",
     ),
   );
 
   mushroomsList.add(
     MushroomDescription(
       name: "",
-      sientificName: "",
+      scientificName: "",
       commonNames: "",
       tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap:
-      "",
-      gills:
-      "",
-      stalk:
-      "",
-      flesh:
-      "",
+      cap: "",
+      gills: "",
+      stalk: "",
+      flesh: "",
       habitat: "",
-      observations:
-      "",
+      observations: "",
     ),
   );
 
   mushroomsList.add(
     MushroomDescription(
       name: "",
-      sientificName: "",
+      scientificName: "",
       commonNames: "",
       tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap:
-      "",
-      gills:
-      "",
-      stalk:
-      "",
-      flesh:
-      "",
+      cap: "",
+      gills: "",
+      stalk: "",
+      flesh: "",
       habitat: "",
-      observations:
-      "",
+      observations: "",
     ),
   );
-
-
 
   mushroomsList.add(
     MushroomDescription(
       name: "",
-      sientificName: "",
+      scientificName: "",
       commonNames: "",
       tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap:
-      "",
-      gills:
-      "",
-      stalk:
-      "",
-      flesh:
-      "",
+      cap: "",
+      gills: "",
+      stalk: "",
+      flesh: "",
       habitat: "",
-      observations:
-      "",
+      observations: "",
     ),
   );
-
-
 
   mushroomsList.add(
     MushroomDescription(
       name: "",
-      sientificName: "",
+      scientificName: "",
       commonNames: "",
       tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap:
-      "",
-      gills:
-      "",
-      stalk:
-      "",
-      flesh:
-      "",
+      cap: "",
+      gills: "",
+      stalk: "",
+      flesh: "",
       habitat: "",
-      observations:
-      "",
+      observations: "",
     ),
   );
 
@@ -241,7 +238,6 @@ List<MushroomDescription> getMushroomsListMock() {
 
   // HIMENI  (color negre)
   // descripció extensa del sombrero
-
 
   return mushroomsList;
 }
