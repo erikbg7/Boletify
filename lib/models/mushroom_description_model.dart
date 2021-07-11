@@ -1,7 +1,5 @@
 import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 
-//enum Habitat {}
-
 class MushroomDescription {
   final String name;
   final String scientificName;
@@ -31,7 +29,7 @@ class MushroomDescription {
         name: json['name'],
         scientificName: json['scientificName'],
         commonNames: json['commonNames'],
-        tags: [],
+        tags: tagsFromJson(json['tags']),
         cap: json['cap'],
         gills: json['gills'],
         stalk: json['stalk'],
@@ -41,15 +39,13 @@ class MushroomDescription {
   }
 
 
+
+
   Map<String, dynamic> toJson() => {
         'name': name,
         'scientificName': scientificName,
         'commonNames': commonNames,
-        'tags': [
-          SearchLabels.spring.toString(),
-          SearchLabels.summer.toString(),
-          SearchLabels.autumn.toString()
-        ],
+        'tags': tagsToJson(tags),
         'cap': cap,
         'gills': gills,
         'stalk': stalk,
