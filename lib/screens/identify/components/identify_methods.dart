@@ -18,25 +18,27 @@ class IdentifyMethods extends StatelessWidget {
         SizedBox(height: 80),
         Container(
           padding: EdgeInsets.only(bottom: 40),
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-            IdentifyButton(
-              text: 'Camara',
-              icon: Icons.photo_camera_outlined,
-              onPressed: () {
-                BlocProvider.of<MushroomsBloc>(context)
-                    .add(ClassifyMushroom(ImageSource.camera));
-              },
-            ),
-            IdentifyButton(
-              text: 'Galeria',
-              icon: Icons.broken_image_outlined,
-              onPressed: () {
-                BlocProvider.of<MushroomsBloc>(context)
-                    .add(ClassifyMushroom(ImageSource.gallery));
-              },
-            ),
-          ]),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IdentifyButton(
+                text: 'Camara',
+                icon: Icons.photo_camera_outlined,
+                onPressed: () {
+                  BlocProvider.of<MushroomsBloc>(context)
+                      .add(ClassifyMushroom(ImageSource.camera));
+                },
+              ),
+              IdentifyButton(
+                text: 'Galeria',
+                icon: Icons.broken_image_outlined,
+                onPressed: () {
+                  BlocProvider.of<MushroomsBloc>(context)
+                      .add(ClassifyMushroom(ImageSource.gallery));
+                },
+              ),
+            ],
+          ),
         ),
       ],
     );

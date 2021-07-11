@@ -136,95 +136,22 @@ List<MushroomDescription> getMushroomsListMock2() {
     ),
   );
 
-  mushroomsList.add(
-    MushroomDescription(
-      name: "",
-      scientificName: "",
-      commonNames: "",
-      tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap: "",
-      gills: "",
-      stalk: "",
-      flesh: "",
-      habitat: "",
-      observations: "",
-    ),
-  );
+//  mushroomsList.add(
+//    MushroomDescription(
+//      name: "",
+//      scientificName: "",
+//      commonNames: "",
+//      tags: [SearchLabels.summer, SearchLabels.autumn],
+//      cap: "",
+//      gills: "",
+//      stalk: "",
+//      flesh: "",
+//      habitat: "",
+//      observations: "",
+//    ),
+//  );
 
-  mushroomsList.add(
-    MushroomDescription(
-      name: "",
-      scientificName: "",
-      commonNames: "",
-      tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap: "",
-      gills: "",
-      stalk: "",
-      flesh: "",
-      habitat: "",
-      observations: "",
-    ),
-  );
 
-  mushroomsList.add(
-    MushroomDescription(
-      name: "",
-      scientificName: "",
-      commonNames: "",
-      tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap: "",
-      gills: "",
-      stalk: "",
-      flesh: "",
-      habitat: "",
-      observations: "",
-    ),
-  );
-
-  mushroomsList.add(
-    MushroomDescription(
-      name: "",
-      scientificName: "",
-      commonNames: "",
-      tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap: "",
-      gills: "",
-      stalk: "",
-      flesh: "",
-      habitat: "",
-      observations: "",
-    ),
-  );
-
-  mushroomsList.add(
-    MushroomDescription(
-      name: "",
-      scientificName: "",
-      commonNames: "",
-      tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap: "",
-      gills: "",
-      stalk: "",
-      flesh: "",
-      habitat: "",
-      observations: "",
-    ),
-  );
-
-  mushroomsList.add(
-    MushroomDescription(
-      name: "",
-      scientificName: "",
-      commonNames: "",
-      tags: [SearchLabels.summer, SearchLabels.autumn],
-      cap: "",
-      gills: "",
-      stalk: "",
-      flesh: "",
-      habitat: "",
-      observations: "",
-    ),
-  );
 
   // (image with labels)
   // (single child scrollable view)
