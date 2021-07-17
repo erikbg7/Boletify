@@ -2,8 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/mushrooms/mushrooms_bloc.dart';
-import 'package:futter_project_tfg/screens/identify/components/identify_methods.dart';
-import 'package:futter_project_tfg/screens/identify/components/identify_results.dart';
+import 'package:futter_project_tfg/screens/identify/components/identify_view.dart';
 import 'package:tflite/tflite.dart';
 
 class IdentifyScreen extends StatefulWidget {
@@ -47,28 +46,7 @@ class _IdentifyScreenState extends State<IdentifyScreen> {
       padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
       child: BlocProvider(
         create: (BuildContext context) => MushroomsBloc(),
-        child: BlocBuilder<MushroomsBloc, MushroomsState>(
-            builder: (context, state) {
-          print('---------- STATE $state');
-          if (state is MushroomsInitial) {
-            return IdentifyMethods();
-          }
-          if (state is MushroomClassified) {
-            return IdentifyResults(result: state.output);
-          }
-          if (state is MushroomsLoading) {
-            return Container(
-              color: Colors.black12,
-              alignment: Alignment.center,
-              child: CircularProgressIndicator(),
-            );
-          }
-          return Container(
-            color: Colors.red,
-            width: double.infinity,
-            height: double.infinity,
-          );
-        }),
+        child: IdentifyView(),
       ),
     );
   }
