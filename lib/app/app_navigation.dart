@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/screens/home/home_screen.dart';
 import 'package:futter_project_tfg/screens/settings/settings_screen.dart';
 
-Container buildBottomNavBar(Function onTap, int currentIndex) {
+Container buildBottomNavBar(Function(int) onTap, int currentIndex) {
   return Container(
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.grey[400],
+            color: Colors.grey[400]!,
           ),
         ],
       ),

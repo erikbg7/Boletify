@@ -11,7 +11,7 @@ void handleSettingsItemTap(BuildContext context, SettingsItem item) {
 
 class SettingItem extends StatelessWidget {
   final SettingsItem item;
-  const SettingItem({Key key, this.item}) : super(key: key);
+  const SettingItem({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,17 +57,17 @@ class SettingsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Dona'ns Support"),
-              SettingItem(item: settingsMap[SettingsItemType.donate]),
-              SettingItem(item: settingsMap[SettingsItemType.rate]),
+              SettingItem(item: settingsMap[SettingsItemType.donate]!),
+              SettingItem(item: settingsMap[SettingsItemType.rate]!),
               SettingsSplitter(),
               Text("Informació"),
-              SettingItem(item: settingsMap[SettingsItemType.credits]),
-              SettingItem(item: settingsMap[SettingsItemType.privacy]),
-              SettingItem(item: settingsMap[SettingsItemType.terms]),
-              SettingItem(item: settingsMap[SettingsItemType.disclaimer]),
+              SettingItem(item: settingsMap[SettingsItemType.credits]!),
+              SettingItem(item: settingsMap[SettingsItemType.privacy]!),
+              SettingItem(item: settingsMap[SettingsItemType.terms]!),
+              SettingItem(item: settingsMap[SettingsItemType.disclaimer]!),
               SettingsSplitter(),
               Text('Versió Actual'),
-              SettingItem(item: settingsMap[SettingsItemType.version]),
+              SettingItem(item: settingsMap[SettingsItemType.version]!),
             ],
           ),
         ),

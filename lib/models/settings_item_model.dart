@@ -13,11 +13,11 @@ enum SettingsItemType {
 class SettingsItem {
   final IconData icon;
   final String text;
-  final Widget screen;
+  final Widget? screen;
 
   SettingsItem({
-    @required this.icon,
-    @required this.text,
+    required this.icon,
+    required this.text,
     this.screen,
   });
 }

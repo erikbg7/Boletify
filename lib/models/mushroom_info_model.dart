@@ -30,7 +30,7 @@ class MushroomInfo {
   }
 
   factory MushroomInfo.fromFirestore(DocumentSnapshot doc) {
-    Map<String, dynamic> data = doc.data();
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     return MushroomInfo(
         data['name'] ?? 'unknown', data['scientificName'] ?? '', []);
   }

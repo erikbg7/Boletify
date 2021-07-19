@@ -13,7 +13,7 @@ class DetailScreen extends StatelessWidget {
   final String notFoundMessage =
       'No hi ha informació disponible per aquest bolet actualment';
 
-  const DetailScreen({Key key, this.image, this.mushroom}) : super(key: key);
+  const DetailScreen({Key? key, required this.image, required this.mushroom}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

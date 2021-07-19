@@ -20,16 +20,20 @@ class IconsScreen extends StatelessWidget {
                 builder: (context, state) {
               return Column(
                 children: [
-                  FlatButton(
-                    color: Colors.blue,
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      primary: Colors.blue,
+                    ),
                     onPressed: () {
                       BlocProvider.of<MushroomsBloc>(context)
                           .add(FindMushroomById('Amanita'));
                     },
                     child: Text('FindByName'),
                   ),
-                  FlatButton(
-                    color: Colors.blue,
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      primary: Colors.blue,
+                    ),
                     onPressed: () {
                       BlocProvider.of<MushroomsBloc>(context)
                           .add(GetAllMushrooms());

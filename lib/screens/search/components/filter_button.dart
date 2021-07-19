@@ -9,21 +9,23 @@ class FilterButton extends StatelessWidget {
   final String text;
   final bool isActive;
 
-  const FilterButton({Key key, this.id, this.isActive, this.text})
+  const FilterButton(
+      {Key? key, required this.id, required this.isActive, required this.text})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     final textColor = isActive ? Colors.white : Colors.white.withOpacity(0.5);
-    return FlatButton(
+    return TextButton(
       onPressed: () {
         final event = isActive ? RemoveFromFilter(id) : AddToFilter(id);
         BlocProvider.of<SearchFilterBloc>(context).add(event);
       },
       child: Column(
         children: [
-          Text(text, style: TextStyle(color: textColor, decoration: TextDecoration.underline)),
+          Text(text,
+              style: TextStyle(
+                  color: textColor, decoration: TextDecoration.underline)),
         ],
       ),
     );

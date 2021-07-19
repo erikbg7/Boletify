@@ -8,12 +8,12 @@ import 'package:futter_project_tfg/widgets/custom_icon.dart';
 class HomeIcon extends StatelessWidget {
   final SearchLabels label;
 
-  const HomeIcon({Key key, this.label}) : super(key: key);
+  const HomeIcon({Key? key, required this.label}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final String image = mushroomLabels[label].imageUrl;
-    final String tooltip = mushroomLabels[label].tooltip;
+    final String image = mushroomLabels[label]!.imageUrl;
+    final String tooltip = mushroomLabels[label]!.tooltip;
 
     return InkWell(
       onTap: () {
@@ -38,11 +38,14 @@ class HomeIcon extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.15)),
             margin: EdgeInsets.all(5),
             padding: EdgeInsets.all(10),
-            height: MediaQuery.of(context).size.height*0.15,
-            width: MediaQuery.of(context).size.height*0.15,
+            height: MediaQuery.of(context).size.height * 0.15,
+            width: MediaQuery.of(context).size.height * 0.15,
             child: CustomIcon(image: image, tooltip: tooltip, size: 10),
           ),
-          Text(mushroomLabels[label].label, style: TextStyle(height: 1.5),)
+          Text(
+            mushroomLabels[label]!.label,
+            style: TextStyle(height: 1.5),
+          )
         ],
       ),
     );

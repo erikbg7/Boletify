@@ -20,7 +20,7 @@ Future testHomeScreen(WidgetTester tester) async {
 
   SearchLabels.values.forEach((label) {
     if (label != SearchLabels.unknown) {
-      expect(find.text(mushroomLabels[label].label), findsOneWidget);
+      expect(find.text(mushroomLabels[label]!.label), findsOneWidget);
     }
   });
 }

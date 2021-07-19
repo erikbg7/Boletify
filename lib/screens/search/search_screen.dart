@@ -10,7 +10,7 @@ class SearchScreen extends StatelessWidget {
   final List<SearchLabels> filter;
 
   const SearchScreen(
-      {Key key, @required this.filter, @required this.mushroomsList})
+      {Key? key, required this.filter, required this.mushroomsList})
       : super(key: key);
 
   @override

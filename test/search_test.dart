@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -14,14 +14,28 @@ import 'package:futter_project_tfg/screens/search/search_screen.dart';
 
 import 'utils/index.dart';
 
-class MockFilterBloc extends MockBloc<FilterState> implements SearchFilterBloc {
-}
+class MockFilterBloc extends MockBloc<FilterEvent, FilterState>
+    implements SearchFilterBloc {}
+
+
+class FallbackState extends Fake implements FilterState {}
+class FallbackEvent extends Fake implements FilterEvent {}
+
 
 void main() {
-  SearchFilterBloc mockFilterBloc;
+  late SearchFilterBloc mockFilterBloc;
+
+  setUpAll(() {
+    registerFallbackValue<FilterState>(FallbackState());
+    registerFallbackValue<FilterEvent>(FallbackEvent());
+  });
 
   setUp(() {
     mockFilterBloc = MockFilterBloc();
+  });
+
+  tearDown(() {
+    mockFilterBloc.close();
   });
 
   testWidgets(
@@ -42,7 +56,7 @@ void main() {
       );
       await tester.pumpWidget(buildTestableWidget(screen));
       expect(find.text('some text'), findsOneWidget);
-      expect(find.byType(FlatButton), findsOneWidget);
+      expect(find.byType(TextButton), findsOneWidget);
     },
   );
 
@@ -65,14 +79,11 @@ void main() {
       final Widget child = SearchView(filter: [], mushroomsList: []);
       final widget = BlocProvider.value(value: mockFilterBloc, child: child);
 
-      when(mockFilterBloc.state).thenReturn(FilterResultState(tags));
+      when(() => mockFilterBloc.state).thenReturn(FilterResultState(tags));
       await tester.pumpWidget(buildTestableWidget(widget));
 
       expect(find.byType(FilterButton), findsWidgets);
     },
   );
 
-  tearDown(() {
-    mockFilterBloc?.close();
-  });
 }

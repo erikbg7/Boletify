@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,29 +15,45 @@ import 'package:futter_project_tfg/screens/identify/components/identify_view.dar
 
 import 'utils/index.dart';
 
-
-
-class MockMushroomsBloc extends MockBloc<MushroomsState>
+class MockMushroomsBloc extends MockBloc<MushroomsEvent, MushroomsState>
     implements MushroomsBloc {}
 
+class FallbackState extends Fake implements MushroomsState {}
+
+class FallbackEvent extends Fake implements MushroomsEvent {}
+
 void main() {
-  MushroomsBloc mockMushroomsBloc;
+  late MockMushroomsBloc mockMushroomsBloc;
+
+  setUpAll(() {
+    registerFallbackValue<MushroomsState>(FallbackState());
+    registerFallbackValue<MushroomsEvent>(FallbackEvent());
+  });
 
   setUp(() {
     mockMushroomsBloc = MockMushroomsBloc();
   });
+
   tearDown(() {
-    mockMushroomsBloc?.close();
+    mockMushroomsBloc.close();
   });
+
+  Widget buildMushroomBlocWidget() {
+    return buildTestableWidget(
+      Scaffold(
+        body: BlocProvider<MushroomsBloc>.value(
+          value: mockMushroomsBloc,
+          child: IdentifyView(),
+        ),
+      ),
+    );
+  }
 
   testWidgets(
     'Displays identification methods screen as initial state',
     (WidgetTester tester) async {
-      final child = IdentifyView();
-      final widget = BlocProvider.value(value: mockMushroomsBloc, child: child);
-
-      when(mockMushroomsBloc.state).thenReturn(MushroomsInitial());
-      await tester.pumpWidget(buildTestableWidget(Scaffold(body: widget)));
+      when(() => mockMushroomsBloc.state).thenReturn(MushroomsInitial());
+      await tester.pumpWidget(buildMushroomBlocWidget());
       expect(find.byType(IdentifyMethods), findsWidgets);
     },
   );
@@ -45,12 +61,9 @@ void main() {
   testWidgets(
     'Displays identification methods screen as result state',
     (WidgetTester tester) async {
-      final output = ClassifierOutput(99.00, 'amanita', File('test'));
-      final child = IdentifyView();
-      final widget = BlocProvider.value(value: mockMushroomsBloc, child: child);
-
-      when(mockMushroomsBloc.state).thenReturn(MushroomClassified(output));
-      await tester.pumpWidget(buildTestableWidget(Scaffold(body: widget)));
+      final out = ClassifierOutput(99.00, 'amanita', File('test'));
+      when(() => mockMushroomsBloc.state).thenReturn(MushroomClassified(out));
+      await tester.pumpWidget(buildMushroomBlocWidget());
       expect(find.byType(IdentifyResults), findsWidgets);
     },
   );
@@ -58,11 +71,8 @@ void main() {
   testWidgets(
     'Displays loading screen as loading state',
     (WidgetTester tester) async {
-      final child = IdentifyView();
-      final widget = BlocProvider.value(value: mockMushroomsBloc, child: child);
-
-      when(mockMushroomsBloc.state).thenReturn(MushroomsLoading());
-      await tester.pumpWidget(buildTestableWidget(Scaffold(body: widget)));
+      when(() => mockMushroomsBloc.state).thenReturn(MushroomsLoading());
+      await tester.pumpWidget(buildMushroomBlocWidget());
       expect(find.byType(CircularProgressIndicator), findsWidgets);
     },
   );

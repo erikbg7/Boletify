@@ -11,7 +11,7 @@ class SearchView extends StatelessWidget {
   final List<SearchLabels> filter;
 
   const SearchView(
-      {Key key, @required this.filter, @required this.mushroomsList})
+      {Key? key, required this.filter, required this.mushroomsList})
       : super(key: key);
 
   @override
