@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart';
 const String fileName = 'mushroomsBackup.json';
 
 class FileManager {
-  File _backupFile;
+  late File _backupFile;
 
   Future<void> initializeFileManager() async {
     final Directory directory = await getApplicationDocumentsDirectory();
