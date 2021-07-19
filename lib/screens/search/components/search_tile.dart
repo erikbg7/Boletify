@@ -5,7 +5,7 @@ import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart'
 class SearchTile extends StatelessWidget {
   final MushroomInfo item;
 
-  const SearchTile({Key key, this.item}) : super(key: key);
+  const SearchTile({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
