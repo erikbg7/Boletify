@@ -4,7 +4,7 @@ import 'package:futter_project_tfg/app/app_navigation.dart';
 import 'package:futter_project_tfg/screens/identify/identify_screen.dart';
 
 class LoadedApp extends StatefulWidget {
-  const LoadedApp({Key key}) : super(key: key);
+  const LoadedApp({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _LoadedAppState();
