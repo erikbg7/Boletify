@@ -9,8 +9,8 @@ class DetailLabels extends StatelessWidget {
   final bool small;
 
   const DetailLabels(
-      {Key key,
-      this.labels,
+      {Key? key,
+      required this.labels,
       this.small = false,
       this.alignment = MainAxisAlignment.center})
       : super(key: key);
@@ -18,7 +18,7 @@ class DetailLabels extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (labels.isEmpty) {
-      final unknownLabel = mushroomLabels['unknown'];
+      final unknownLabel = mushroomLabels[SearchLabels.unknown]!;
       return CustomIcon(
         image: unknownLabel.imageUrl,
         tooltip: unknownLabel.tooltip,
@@ -30,7 +30,7 @@ class DetailLabels extends StatelessWidget {
 
     labels.forEach((label) {
       if (mushroomLabels.containsKey(label)) {
-        MushroomLabel labelInfo = mushroomLabels[label];
+        MushroomLabel labelInfo = mushroomLabels[label]!;
         labelsList.add(CustomIcon(
           image: labelInfo.imageUrl,
           tooltip: labelInfo.tooltip,
@@ -44,4 +44,14 @@ class DetailLabels extends StatelessWidget {
       mainAxisAlignment: alignment,
     );
   }
+}
+
+MushroomLabel getInfoByTag(SearchLabels label) {
+  return mushroomLabels.entries
+      .firstWhere((element) => element.key == label)
+      .value;
+//  if (mushroomLabels.containsKey(label)) {
+//    return mushroomLabels.entries.firstWhere((element) => element.key == label).value;
+//  }
+//  return mushroomLabels.entries.firstWhere((element) => element.key == SearchLabels.unknown).value;
 }
