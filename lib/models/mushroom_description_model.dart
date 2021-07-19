@@ -3,7 +3,7 @@ import 'package:futter_project_tfg/models/mushroom_label_model.dart';
 class MushroomDescription {
   final String name;
   final String scientificName;
-  final String commonNames;
+  final String? commonNames;
   final List<SearchLabels> tags;
   final String cap; //sombrero
   final String gills; //himenio
@@ -13,16 +13,16 @@ class MushroomDescription {
   final String observations;
 
   MushroomDescription(
-      {this.name,
-      this.scientificName,
+      {required this.name,
+      required this.scientificName,
       this.commonNames,
-      this.tags,
-      this.cap,
-      this.gills,
-      this.stalk,
-      this.flesh,
-      this.habitat,
-      this.observations});
+      required this.tags,
+      required this.cap,
+      required this.gills,
+      required this.stalk,
+      required this.flesh,
+      required this.habitat,
+      required this.observations});
 
   factory MushroomDescription.fromJson(Map<String, dynamic> json) {
     return MushroomDescription(
