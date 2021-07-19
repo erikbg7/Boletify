@@ -5,9 +5,13 @@ import 'package:flutter/material.dart';
 class IdentifyButton extends StatelessWidget {
   final IconData icon;
   final String text;
-  final Function onPressed;
+  final Function()? onPressed;
 
-  const IdentifyButton({Key key, this.icon, this.text, this.onPressed})
+  const IdentifyButton(
+      {Key? key,
+      required this.icon,
+      required this.text,
+      required this.onPressed})
       : super(key: key);
 
   @override
@@ -46,7 +50,7 @@ class IdentifyButton extends StatelessWidget {
 //  final String text;
 //  final Function onPressed;
 //
-//  const IdentifyButton({Key key, this.icon, this.text, this.onPressed})
+//  const IdentifyButton({Key? key, this.icon, this.text, this.onPressed})
 //      : super(key: key);
 //
 //  @override

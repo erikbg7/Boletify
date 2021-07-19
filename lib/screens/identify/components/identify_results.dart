@@ -9,7 +9,7 @@ import 'package:futter_project_tfg/screens/identify/components/identify_image.da
 class IdentifyResults extends StatelessWidget {
   final ClassifierOutput result;
 
-  const IdentifyResults({Key key, this.result}) : super(key: key);
+  const IdentifyResults({Key? key, required this.result}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

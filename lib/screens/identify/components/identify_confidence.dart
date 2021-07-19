@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 class IdentifyConfidence extends StatelessWidget {
   final num confidence;
 
-  const IdentifyConfidence({Key key, this.confidence}) : super(key: key);
+  const IdentifyConfidence({Key? key, required this.confidence}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final confidencePercentage = (confidence*100).toStringAsFixed(2);
-    return FlatButton(
+    return TextButton(
         onPressed: () {}, child: Text("N'estic $confidencePercentage% segur!"));
   }
 }

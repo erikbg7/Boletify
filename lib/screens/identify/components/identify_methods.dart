@@ -6,7 +6,7 @@ import 'package:futter_project_tfg/screens/identify/components/identify_title.da
 import 'package:image_picker/image_picker.dart';
 
 class IdentifyMethods extends StatelessWidget {
-  const IdentifyMethods({Key key}) : super(key: key);
+  const IdentifyMethods({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

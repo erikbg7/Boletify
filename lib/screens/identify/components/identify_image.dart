@@ -6,7 +6,7 @@ import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 class IdentifyImage extends StatelessWidget {
   final File image;
 
-  const IdentifyImage({Key key, this.image}) : super(key: key);
+  const IdentifyImage({Key? key, required this.image}) : super(key: key);
 
 //  Hero tag for this item?
 //  Would have a nice transition to details screen, would look cool

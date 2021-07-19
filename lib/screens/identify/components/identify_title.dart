@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class IdentifyTitle extends StatelessWidget {
   final String text;
 
-  const IdentifyTitle({Key key, this.text}) : super(key: key);
+  const IdentifyTitle({Key? key, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class IdentifyTitle extends StatelessWidget {
 //class IdentifyTitle extends StatelessWidget {
 //  final String text;
 //
-//  const IdentifyTitle({Key key, this.text}) : super(key: key);
+//  const IdentifyTitle({Key? key, this.text}) : super(key: key);
 //
 //  @override
 //  Widget build(BuildContext context) {
