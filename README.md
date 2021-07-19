@@ -10,7 +10,7 @@ The main objective behind the project is to learn Flutter by building a fully fu
 ## Technologies
 
 ### Frontend Framework
-[Flutter](https://flutter.dev/) using [BLoC pattern](https://pub.dev/packages/bloc), without null-safety. Only aiming Android platform.
+[Flutter](https://flutter.dev/) using [BLoC pattern](https://pub.dev/packages/bloc), with null-safety. Only aiming Android platform.
 
 ### Backend Framework
 I decided to go BaaS with `Firebase` to build the whole stack using Google products.
