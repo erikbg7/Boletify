@@ -8,12 +8,13 @@ class MushroomLabel {
   final String tooltip;
   final List<Color> colors;
 
-  MushroomLabel({this.imageUrl, this.label, this.tooltip, this.colors});
+  MushroomLabel({required this.imageUrl, required this.label, required this.tooltip, required this.colors});
 }
+
 
 tagsFromJson(List<dynamic> tagsJson) {
   List<SearchLabels> tags = [];
-  tagsJson.forEach((tag) => tags.add(searchLabelFromString[tag]));
+  tagsJson.forEach((tag) => tags.add(searchLabelFromString[tag]!));
   return tags;
 }
 
@@ -22,8 +23,6 @@ tagsToJson(List<SearchLabels> tags) {
   tags.forEach((tag) => tagsJson.add(tag.toString()));
   return tagsJson;
 }
-
-
 
 Map<String, SearchLabels> searchLabelFromString = {
   'SearchLabels.edible': SearchLabels.edible,

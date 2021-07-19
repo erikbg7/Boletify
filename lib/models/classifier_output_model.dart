@@ -16,7 +16,7 @@ class ClassifierOutput {
     print(data);
     final output = data.first;
     print(output);
-    final confidence = double.parse('${output["confidence"]}') ?? 0;
+    final confidence = double.parse('${output["confidence"]}');
     final label = labelsMap[output["label"]] ?? 'Unknown';
     return ClassifierOutput(confidence, label, image);
   }

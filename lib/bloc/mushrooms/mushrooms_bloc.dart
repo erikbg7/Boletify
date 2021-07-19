@@ -85,7 +85,7 @@ class MushroomFound extends MushroomsState {
 class MushroomsBloc extends Bloc<MushroomsEvent, MushroomsState> {
   final MushroomsRepository _mushroomsRepository;
 
-  MushroomsBloc({MushroomsRepository mushroomsRepository})
+  MushroomsBloc({MushroomsRepository? mushroomsRepository})
       : _mushroomsRepository = mushroomsRepository ?? MushroomsRepository(),
         super(MushroomsInitial());
 
@@ -99,9 +99,9 @@ class MushroomsBloc extends Bloc<MushroomsEvent, MushroomsState> {
     // Branching the executed logic by checking the event type
     if (event is ClassifyMushroom) {
       try {
-        final PickedFile pickedImage =
-            await ImagePicker().getImage(source: event.source);
-        final File image = File(pickedImage.path);
+        final XFile? pickedImage =
+            await ImagePicker().pickImage(source: event.source);
+        final File image = File(pickedImage!.path);
         yield MushroomsLoading();
         final tfResult = await Tflite.runModelOnImage(
           path: image.path,
@@ -110,7 +110,7 @@ class MushroomsBloc extends Bloc<MushroomsEvent, MushroomsState> {
           imageMean: 127.5,
           imageStd: 127.5,
         );
-        final output = new ClassifierOutput.fromTFLite(tfResult, image);
+        final output = new ClassifierOutput.fromTFLite(tfResult!, image);
         // We delay the response a few seconds to improve UX
         await Future.delayed(Duration(seconds: 1));
         yield MushroomClassified(output);
