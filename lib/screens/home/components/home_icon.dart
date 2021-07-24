@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/config/mushroom_labels_config.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
-import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/models/tag_model.dart';
 import 'package:futter_project_tfg/screens/search/search_screen.dart';
 import 'package:futter_project_tfg/widgets/custom_icon.dart';
 
 class HomeIcon extends StatelessWidget {
-  final SearchLabels label;
+  final Tag tag;
 
-  const HomeIcon({Key? key, required this.label}) : super(key: key);
+  const HomeIcon({Key? key, required this.tag}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final String image = mushroomLabels[label]!.imageUrl;
-    final String tooltip = mushroomLabels[label]!.tooltip;
+    final TagInfo tagInfo = infoFromTag(tag);
+    final List<MushroomInfo> mushroomList = getMushroomsListMock();
+
+    final String image = tagInfo.imageUrl;
+    final String tooltip = tagInfo.tooltip;
+    final String text = tagInfo.label;
 
     return InkWell(
       onTap: () {
@@ -22,10 +26,7 @@ class HomeIcon extends StatelessWidget {
           MaterialPageRoute<void>(builder: (BuildContext context) {
             return Scaffold(
               appBar: AppBar(title: Text('Búsqueda')),
-              body: SearchScreen(
-                filter: [label],
-                mushroomsList: getMushroomsListMock(),
-              ),
+              body: SearchScreen(filter: [tag], mushroomsList: mushroomList),
             );
           }),
         );
@@ -42,10 +43,7 @@ class HomeIcon extends StatelessWidget {
             width: MediaQuery.of(context).size.height * 0.15,
             child: CustomIcon(image: image, tooltip: tooltip, size: 10),
           ),
-          Text(
-            mushroomLabels[label]!.label,
-            style: TextStyle(height: 1.5),
-          )
+          Text(text, style: TextStyle(height: 1.5))
         ],
       ),
     );
