@@ -11,7 +11,7 @@ class IdentifyScreen extends StatefulWidget {
 }
 
 class _IdentifyScreenState extends State<IdentifyScreen> {
-  final int bgImage = Random().nextInt(5);
+  final int bgImage = Random().nextInt(4);
 
   @override
   void initState() {
