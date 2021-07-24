@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:futter_project_tfg/models/mushroom_description_model.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
-import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/models/tag_model.dart';
 
 testTagsFromAndToJSON() {
-  final List<SearchLabels> tags = [SearchLabels.winter, SearchLabels.edible];
-  final List<SearchLabels> deserializedTags = tagsFromJson(tagsToJson(tags));
+  final List<Tag> tags = [Tag.winter, Tag.edible];
+  final List<Tag> deserializedTags = tagsFromJson(tagsToJson(tags));
   tags.forEach((tag) => expect(deserializedTags.contains(tag), true));
 }
 
@@ -15,7 +15,7 @@ testMockedMushroomList() {
 }
 
 testMushroomtoString() {
-  var mushroom = MushroomInfo('name', 'name2', [SearchLabels.summer]);
+  var mushroom = MushroomInfo('name', 'name2', [Tag.summer]);
   String result = mushroom.toConcatString();
   expect(result.contains('summer'), true);
 }
