@@ -13,11 +13,9 @@ class IdentifyMethods extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: 80),
         IdentifyTitle(text: "TRIA UN MÉTODE"),
-        SizedBox(height: 80),
+        SizedBox(height: 40),
         Container(
-          padding: EdgeInsets.only(bottom: 40),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

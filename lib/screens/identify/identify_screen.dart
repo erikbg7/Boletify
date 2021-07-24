@@ -43,7 +43,7 @@ class _IdentifyScreenState extends State<IdentifyScreen> {
           fit: BoxFit.cover,
         ),
       ),
-      padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
+      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
       child: BlocProvider(
         create: (BuildContext context) => MushroomsBloc(),
         child: IdentifyView(),
