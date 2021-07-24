@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
-import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/models/tag_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_image.dart';
 
 import 'components/detail_labels.dart';
@@ -36,10 +36,7 @@ class DetailScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              DetailLabels(labels: [
-                                SearchLabels.toxic,
-                                SearchLabels.autumn
-                              ]),
+                              DetailLabels(tags: [Tag.toxic, Tag.autumn]),
                               SizedBox(width: double.infinity, height: 15),
                               Text(
                                 'Amanita'.toUpperCase(),
