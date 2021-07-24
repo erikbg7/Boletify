@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/filter/filters_bloc.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
-import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/models/tag_model.dart';
 import 'package:futter_project_tfg/screens/search/components/filter_button.dart';
 import 'package:futter_project_tfg/screens/search/components/search_tile.dart';
 
 class SearchView extends StatelessWidget {
   final List<MushroomInfo> mushroomsList;
-  final List<SearchLabels> filter;
+  final List<Tag> filter;
 
   const SearchView(
       {Key? key, required this.filter, required this.mushroomsList})
@@ -29,33 +29,33 @@ class SearchView extends StatelessWidget {
                   children: [
                     FilterButton(
                       text: 'Comestible',
-                      id: SearchLabels.edible,
-                      isActive: state.filter.contains(SearchLabels.edible),
+                      id: Tag.edible,
+                      isActive: state.filter.contains(Tag.edible),
                     ),
                     FilterButton(
                       text: 'Tóxic',
-                      id: SearchLabels.toxic,
-                      isActive: state.filter.contains(SearchLabels.toxic),
+                      id: Tag.toxic,
+                      isActive: state.filter.contains(Tag.toxic),
                     ),
                     FilterButton(
                       text: 'Primavera',
-                      id: SearchLabels.spring,
-                      isActive: state.filter.contains(SearchLabels.spring),
+                      id: Tag.spring,
+                      isActive: state.filter.contains(Tag.spring),
                     ),
                     FilterButton(
                       text: 'Estiu',
-                      id: SearchLabels.summer,
-                      isActive: state.filter.contains(SearchLabels.summer),
+                      id: Tag.summer,
+                      isActive: state.filter.contains(Tag.summer),
                     ),
                     FilterButton(
                       text: 'Tardor',
-                      id: SearchLabels.autumn,
-                      isActive: state.filter.contains(SearchLabels.autumn),
+                      id: Tag.autumn,
+                      isActive: state.filter.contains(Tag.autumn),
                     ),
                     FilterButton(
                       text: 'Hivern',
-                      id: SearchLabels.winter,
-                      isActive: state.filter.contains(SearchLabels.winter),
+                      id: Tag.winter,
+                      isActive: state.filter.contains(Tag.winter),
                     ),
                   ],
                 ),
@@ -69,8 +69,8 @@ class SearchView extends StatelessWidget {
                           itemCount: mushroomsList.length,
                           itemBuilder: (BuildContext context, int index) {
                             final MushroomInfo item = mushroomsList[index];
-                            if (state.filter.every(
-                                (label) => item.labels.contains(label))) {
+                            if (state.filter
+                                .every((label) => item.tags.contains(label))) {
                               return SearchTile(item: item);
                             }
                             return SizedBox();
