@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum SettingsItemType {
-  donate,
-  rate,
-  credits,
-  privacy,
-  terms,
-  disclaimer,
-  version
-}
+enum Settings { donate, rate, credits, privacy, terms, disclaimer, version }
 
 class SettingsItem {
   final IconData icon;

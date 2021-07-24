@@ -1,10 +1,10 @@
-import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/models/tag_model.dart';
 
 class MushroomDescription {
   final String name;
   final String scientificName;
   final String? commonNames;
-  final List<SearchLabels> tags;
+  final List<Tag> tags;
   final String cap; //sombrero
   final String gills; //himenio
   final String stalk; //pie
@@ -62,7 +62,7 @@ List<MushroomDescription> getMushroomsListMock2() {
       name: 'Ou de reig',
       scientificName: 'Amanita Caesarea',
       commonNames: '',
-      tags: [SearchLabels.spring, SearchLabels.summer, SearchLabels.autumn],
+      tags: [Tag.spring, Tag.summer, Tag.autumn],
       cap:
           'Puede alcanzar los 20cm, al principio es hemisférico, y luego se despliega; borde estirado y cutícula naranja. Puede presentar restos de la volva membranosa, como escamas o amplias placas.',
       gills:
@@ -82,7 +82,7 @@ List<MushroomDescription> getMushroomsListMock2() {
       name: 'Trompeta de la mort',
       scientificName: 'Craterellus Cornucopioides',
       commonNames: 'Rossinyol negre',
-      tags: [SearchLabels.summer, SearchLabels.autumn],
+      tags: [Tag.summer, Tag.autumn],
       cap:
           'De 3 a 8cm, con forma de trometa, hueco en la base, color negro o mate, fibrilloso y con pequeñas escamas tambien oscuras, margen enrollado, ondulado irregular.',
       gills: "Està format per plecs de color gris cendra a gris blavós.",
@@ -102,7 +102,7 @@ List<MushroomDescription> getMushroomsListMock2() {
       name: "Camagroc",
       scientificName: "Craterellus Lutescens",
       commonNames: "Rossinyolic, trompea groga",
-      tags: [SearchLabels.summer, SearchLabels.autumn, SearchLabels.winter],
+      tags: [Tag.summer, Tag.autumn, Tag.winter],
       cap:
           "De 2 a 6cm, en forma d'embut, lobulat, marró-negrós sobre un fons groc ataronjat, fibrillós i amb petites escates, marge ondulat.",
       gills:
@@ -122,7 +122,7 @@ List<MushroomDescription> getMushroomsListMock2() {
       name: "Pinatell",
       scientificName: "Lacttarius Deliciosus",
       commonNames: "Rovelló",
-      tags: [SearchLabels.autumn, SearchLabels.winter],
+      tags: [Tag.autumn, Tag.winter],
       cap:
           "D'entre 6 i 12 cm, es convex i després extens i deprimir. De color roig-ataronjat, la cutícula es aterciopelada.",
       gills:
@@ -141,7 +141,7 @@ List<MushroomDescription> getMushroomsListMock2() {
 //      name: "",
 //      scientificName: "",
 //      commonNames: "",
-//      tags: [SearchLabels.summer, SearchLabels.autumn],
+//      tags: [Tag.summer, Tag.autumn],
 //      cap: "",
 //      gills: "",
 //      stalk: "",

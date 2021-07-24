@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/models/tag_model.dart';
 import 'package:futter_project_tfg/screens/home/components/home_icon.dart';
 
 class HomeIconsList extends StatelessWidget {
@@ -13,12 +13,12 @@ class HomeIconsList extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         children: [
-          HomeIcon(label: SearchLabels.edible),
-          HomeIcon(label: SearchLabels.toxic),
-          HomeIcon(label: SearchLabels.spring),
-          HomeIcon(label: SearchLabels.summer),
-          HomeIcon(label: SearchLabels.autumn),
-          HomeIcon(label: SearchLabels.winter),
+          HomeIcon(tag: Tag.edible),
+          HomeIcon(tag: Tag.toxic),
+          HomeIcon(tag: Tag.spring),
+          HomeIcon(tag: Tag.summer),
+          HomeIcon(tag: Tag.autumn),
+          HomeIcon(tag: Tag.winter),
         ],
       ),
     );

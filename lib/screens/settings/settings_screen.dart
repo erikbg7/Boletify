@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/config/settings_items_config.dart';
-import 'package:futter_project_tfg/models/settings_item_model.dart';
+import 'package:futter_project_tfg/config/settings_config.dart';
 import 'package:futter_project_tfg/utils/utils.dart';
+import 'package:futter_project_tfg/models/settings_model.dart';
 
 void handleSettingsItemTap(BuildContext context, SettingsItem item) {
   if (item.screen is Widget) {
@@ -57,17 +57,17 @@ class SettingsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Dona'ns Support"),
-              SettingItem(item: settingsMap[SettingsItemType.donate]!),
-              SettingItem(item: settingsMap[SettingsItemType.rate]!),
+              SettingItem(item: itemFromSettings(Settings.donate)),
+              SettingItem(item: itemFromSettings(Settings.rate)),
               SettingsSplitter(),
               Text("Informació"),
-              SettingItem(item: settingsMap[SettingsItemType.credits]!),
-              SettingItem(item: settingsMap[SettingsItemType.privacy]!),
-              SettingItem(item: settingsMap[SettingsItemType.terms]!),
-              SettingItem(item: settingsMap[SettingsItemType.disclaimer]!),
+              SettingItem(item: itemFromSettings(Settings.credits)),
+              SettingItem(item: itemFromSettings(Settings.privacy)),
+              SettingItem(item: itemFromSettings(Settings.terms)),
+              SettingItem(item: itemFromSettings(Settings.disclaimer)),
               SettingsSplitter(),
               Text('Versió Actual'),
-              SettingItem(item: settingsMap[SettingsItemType.version]!),
+              SettingItem(item: itemFromSettings(Settings.version)),
             ],
           ),
         ),

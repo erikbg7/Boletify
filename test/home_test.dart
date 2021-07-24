@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:futter_project_tfg/config/mushroom_labels_config.dart';
-import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/config/tags_config.dart';
+import 'package:futter_project_tfg/models/tag_model.dart';
 import 'package:futter_project_tfg/screens/home/components/home_icons_list.dart';
 import 'package:futter_project_tfg/screens/home/components/home_search_button.dart';
 import 'package:futter_project_tfg/screens/home/components/home_title.dart';
@@ -18,9 +18,9 @@ Future testHomeScreen(WidgetTester tester) async {
   expect(find.byType(HomeIconsList), findsOneWidget);
   expect(find.byType(HomeSecurityDisclaimer), findsOneWidget);
 
-  SearchLabels.values.forEach((label) {
-    if (label != SearchLabels.unknown) {
-      expect(find.text(mushroomLabels[label]!.label), findsOneWidget);
+  Tag.values.forEach((tag) {
+    if (tag != Tag.unknown) {
+      expect(find.text(infoFromTag(tag).label), findsOneWidget);
     }
   });
 }

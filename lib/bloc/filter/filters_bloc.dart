@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/models/tag_model.dart';
 
 // EVENTS
 abstract class FilterEvent extends Equatable {
@@ -9,24 +9,24 @@ abstract class FilterEvent extends Equatable {
 
 
 class AddNewFilter extends FilterEvent {
-  final List<SearchLabels> labels;
-  const AddNewFilter(this.labels);
+  final List<Tag> filter;
+  const AddNewFilter(this.filter);
   @override
-  List<Object> get props => [labels];
+  List<Object> get props => [filter];
 }
 
 class AddToFilter extends FilterEvent {
-  final SearchLabels label;
-  const AddToFilter(this.label);
+  final Tag tag;
+  const AddToFilter(this.tag);
   @override
-  List<Object> get props => [label];
+  List<Object> get props => [tag];
 }
 
 class RemoveFromFilter extends FilterEvent {
-  final SearchLabels label;
-  const RemoveFromFilter(this.label);
+  final Tag tag;
+  const RemoveFromFilter(this.tag);
   @override
-  List<Object> get props => [label];
+  List<Object> get props => [tag];
 }
 
 
@@ -36,13 +36,13 @@ abstract class FilterState{
 }
 
 class FilterResultState extends FilterState {
-  final List<SearchLabels> filter;
+  final List<Tag> filter;
   const FilterResultState(this.filter);
 }
 
 // BLOC
 class SearchFilterBloc extends Bloc<FilterEvent, FilterState> {
-  final List<SearchLabels> filter;
+  final List<Tag> filter;
 
   SearchFilterBloc(this.filter)
       : super(FilterResultState(filter));
@@ -51,14 +51,14 @@ class SearchFilterBloc extends Bloc<FilterEvent, FilterState> {
   Stream<FilterState> mapEventToState(FilterEvent event) async* {
     if (event is AddToFilter) {
       try {
-        filter.add(event.label);
+        filter.add(event.tag);
         yield FilterResultState(filter);
       } catch (error) {}
     }
 
     if (event is RemoveFromFilter) {
       try {
-        filter.removeWhere((label) => label == event.label);
+        filter.removeWhere((label) => label == event.tag);
         yield FilterResultState(filter);
       } catch (error) {}
     }

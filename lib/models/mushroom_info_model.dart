@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'mushroom_label_model.dart';
+import 'package:futter_project_tfg/models/tag_model.dart';
 
 class MushroomInfo {
   final String name;
   final String nameScientific;
-  final List<SearchLabels> labels;
+  final List<Tag> tags;
   String nameAKA;
   String description;
   String location;
@@ -13,7 +13,7 @@ class MushroomInfo {
   String observations;
   num edibility;
 
-  MushroomInfo(this.name, this.nameScientific, this.labels,
+  MushroomInfo(this.name, this.nameScientific, this.tags,
       {this.nameAKA = '',
       this.description = '',
       this.location = '',
@@ -23,7 +23,7 @@ class MushroomInfo {
 
   toConcatString() {
     var labelsString = '';
-    labels.forEach((element) {
+    tags.forEach((element) {
       labelsString = '$labelsString $element -';
     });
     return '$name, $nameScientific, $labelsString';
@@ -54,14 +54,14 @@ getMushrooms() {
 
 List<MushroomInfo> getMushroomsListMock() {
   final List<MushroomInfo> mushroomsList = [];
-  mushroomsList.add(MushroomInfo("Cep", "Boletus Edulis", [SearchLabels.edible, SearchLabels.summer,SearchLabels.autumn]));
-  mushroomsList.add(MushroomInfo("Rovelló", "Lactarius Sanguifluus", [SearchLabels.edible, SearchLabels.autumn]));
-  mushroomsList.add(MushroomInfo("Ou de Reig", "Amanita Caesarea", [SearchLabels.edible, SearchLabels.summer,SearchLabels.autumn]));
-  mushroomsList.add(MushroomInfo("Múrgola", "Morchella Rotunda", [SearchLabels.edible, SearchLabels.spring ]));
-  mushroomsList.add(MushroomInfo("Llanega Negra", "Hygrophorus Latitabundus", [SearchLabels.edible, SearchLabels.autumn,SearchLabels.winter]));
-  mushroomsList.add(MushroomInfo("Rossinyol", "Cantharellus Cibarius", [SearchLabels.edible, SearchLabels.spring,SearchLabels.summer, SearchLabels.autumn,SearchLabels.winter]));
-  mushroomsList.add(MushroomInfo("Camagroc", "Cantharellus Lutescens", [SearchLabels.edible, SearchLabels.autumn,SearchLabels.winter]));
-  mushroomsList.add(MushroomInfo("Amanita", "Amanita Muscaria", [SearchLabels.toxic, SearchLabels.autumn, SearchLabels.summer]));
+  mushroomsList.add(MushroomInfo("Cep", "Boletus Edulis", [Tag.edible, Tag.summer,Tag.autumn]));
+  mushroomsList.add(MushroomInfo("Rovelló", "Lactarius Sanguifluus", [Tag.edible, Tag.autumn]));
+  mushroomsList.add(MushroomInfo("Ou de Reig", "Amanita Caesarea", [Tag.edible, Tag.summer,Tag.autumn]));
+  mushroomsList.add(MushroomInfo("Múrgola", "Morchella Rotunda", [Tag.edible, Tag.spring ]));
+  mushroomsList.add(MushroomInfo("Llanega Negra", "Hygrophorus Latitabundus", [Tag.edible, Tag.autumn,Tag.winter]));
+  mushroomsList.add(MushroomInfo("Rossinyol", "Cantharellus Cibarius", [Tag.edible, Tag.spring,Tag.summer, Tag.autumn,Tag.winter]));
+  mushroomsList.add(MushroomInfo("Camagroc", "Cantharellus Lutescens", [Tag.edible, Tag.autumn,Tag.winter]));
+  mushroomsList.add(MushroomInfo("Amanita", "Amanita Muscaria", [Tag.toxic, Tag.autumn, Tag.summer]));
 
   return mushroomsList;
 

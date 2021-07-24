@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/classifier_output_model.dart';
-import 'package:futter_project_tfg/models/mushroom_label_model.dart';
+import 'package:futter_project_tfg/models/tag_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_confidence.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_title.dart';
@@ -19,7 +19,7 @@ class IdentifyResults extends StatelessWidget {
         IdentifyTitle(text: 'RESULTATS'),
         IdentifyImage(image: result.image),
         SizedBox(height: 20),
-        DetailLabels(labels: [SearchLabels.toxic, SearchLabels.autumn]),
+        DetailLabels(tags: [Tag.toxic, Tag.autumn]),
         SizedBox(width: double.infinity, height: 15),
         Text('Amanita'.toUpperCase(),
             style: TextStyle(fontFamily: 'Milliard', fontSize: 20)),

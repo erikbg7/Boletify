@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:futter_project_tfg/config/settings_items_config.dart';
+import 'package:futter_project_tfg/config/settings_config.dart';
+import 'package:futter_project_tfg/models/settings_model.dart';
 import 'package:futter_project_tfg/screens/settings/credits/credits_screen.dart';
 import 'package:futter_project_tfg/screens/settings/privacy/privacy_screen.dart';
 import 'package:futter_project_tfg/screens/settings/settings_screen.dart';
@@ -10,8 +11,8 @@ import 'utils/index.dart';
 Future testSettingsScreen(WidgetTester tester) async {
   final screen = Scaffold(body: SettingsScreen());
   await tester.pumpWidget(buildTestableWidget(screen));
-  settingsMap.values.forEach((item) {
-    expect(find.text(item.text), findsOneWidget);
+  Settings.values.forEach((setting) {
+    expect(find.text(itemFromSettings(setting).text), findsOneWidget);
   });
 }
 
