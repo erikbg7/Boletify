@@ -35,14 +35,7 @@ class _IdentifyScreenState extends State<IdentifyScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          colorFilter:
-              ColorFilter.mode(Colors.blue.withOpacity(0.7), BlendMode.dstATop),
-          image: AssetImage("assets/search_background/$bgImage.jpg"),
-          fit: BoxFit.cover,
-        ),
-      ),
+      decoration: buildIdentifyBackground(bgImage),
       padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
       child: BlocProvider(
         create: (BuildContext context) => MushroomsBloc(),
@@ -50,4 +43,17 @@ class _IdentifyScreenState extends State<IdentifyScreen> {
       ),
     );
   }
+}
+
+BoxDecoration buildIdentifyBackground(int bgImage) {
+  return BoxDecoration(
+    image: DecorationImage(
+      fit: BoxFit.cover,
+      image: AssetImage("assets/search_background/$bgImage.jpg"),
+      colorFilter: ColorFilter.mode(
+        Colors.blue.withOpacity(0.7),
+        BlendMode.dstATop,
+      ),
+    ),
+  );
 }
