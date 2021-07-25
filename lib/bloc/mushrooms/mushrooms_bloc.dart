@@ -112,7 +112,7 @@ class MushroomsBloc extends Bloc<MushroomsEvent, MushroomsState> {
         );
         final output = new ClassifierOutput.fromTFLite(tfResult!, image);
         // We delay the response a few seconds to improve UX
-        await Future.delayed(Duration(seconds: 1));
+        await Future.delayed(Duration(milliseconds: 500));
         yield MushroomClassified(output);
       } catch (error) {
         //TODO: handle error correctly
