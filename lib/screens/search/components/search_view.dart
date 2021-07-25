@@ -22,7 +22,7 @@ class SearchView extends StatelessWidget {
           return Column(
             children: [
               Container(
-                height: 60,
+                height: 40,
                 width: double.infinity,
                 child: ListView(
                   scrollDirection: Axis.horizontal,

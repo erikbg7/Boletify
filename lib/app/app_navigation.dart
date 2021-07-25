@@ -22,8 +22,8 @@ Container buildBottomNavBar(Function(int) onTap, int currentIndex) {
 }
 
 final _navBarItems = <BottomNavigationBarItem>[
-  BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-  BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+  BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inici'),
+  BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Opcions'),
 ];
 
 final appPages = <Widget>[
