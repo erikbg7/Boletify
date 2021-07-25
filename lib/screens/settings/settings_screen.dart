@@ -22,7 +22,7 @@ class SettingItem extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(width: 20),
-            Icon(item.icon, color: Colors.greenAccent),
+            Icon(item.icon),
             SizedBox(width: 20),
             Text(item.text),
           ],
@@ -38,7 +38,7 @@ class SettingsSplitter extends StatelessWidget {
     return Container(
         width: double.infinity,
         height: 2,
-        color: Colors.white30,
+        color: Colors.greenAccent.withOpacity(0.5),
         margin: EdgeInsets.symmetric(vertical: 10));
   }
 }
@@ -47,16 +47,17 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Opcions")),
+      appBar: AppBar(title: Center(child: Text("Opcions"))),
       body: Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.symmetric(horizontal: 10),
         height: double.infinity,
         width: double.infinity,
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Dona'ns Support"),
+              SettingsSplitter(),
+              Text("Dona'ns Support", style: TextStyle(fontWeight: FontWeight.bold),),
               SettingItem(item: itemFromSettings(Settings.donate)),
               SettingItem(item: itemFromSettings(Settings.rate)),
               SettingsSplitter(),
