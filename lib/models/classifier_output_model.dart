@@ -13,9 +13,7 @@ class ClassifierOutput {
   ClassifierOutput(this.confidence, this.label, this.image);
 
   factory ClassifierOutput.fromTFLite(List<dynamic> data, File image) {
-    print(data);
     final output = data.first;
-    print(output);
     final confidence = double.parse('${output["confidence"]}');
     final label = labelsMap[output["label"]] ?? 'Unknown';
     return ClassifierOutput(confidence, label, image);
