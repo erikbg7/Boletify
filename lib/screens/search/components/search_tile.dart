@@ -11,16 +11,18 @@ class SearchTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 5),
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       width: double.infinity,
       color: Colors.black26,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            width: 30,
-            height: 30,
+            width: 40,
+            height: 40,
             decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/search_background/2.jpg'), fit: BoxFit.fill),
               color: Colors.grey,
               borderRadius: BorderRadius.circular(100),
             ),
