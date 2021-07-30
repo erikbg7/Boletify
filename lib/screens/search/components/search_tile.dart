@@ -15,11 +15,11 @@ class SearchTile extends StatelessWidget {
       width: double.infinity,
       color: Colors.black26,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            width: 40,
-            height: 40,
+            width: 50,
+            height: 50,
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/search_background/2.jpg'), fit: BoxFit.fill),
@@ -32,10 +32,9 @@ class SearchTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(item.name, style: TextStyle(fontSize: 20)),
-              Text(item.nameScientific, style: TextStyle(fontSize: 15)),
+              Text(item.nameScientific, style: TextStyle(fontSize: 15, color: Colors.white70)),
             ],
           ),
-          Expanded(child: Container()),
 //          DetailLabels(
 //            tags: item.tags,
 //            small: true,
