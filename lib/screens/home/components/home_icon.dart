@@ -25,7 +25,20 @@ class HomeIcon extends StatelessWidget {
           context,
           MaterialPageRoute<void>(builder: (BuildContext context) {
             return Scaffold(
-              appBar: AppBar(title: Text('Búsqueda')),
+              appBar: AppBar(
+                title: Text('Búsqueda'),
+//                actions: [
+//                  Padding(
+//                      padding: EdgeInsets.only(right: 20.0),
+//                      child: GestureDetector(
+//                        onTap: () {},
+//                        child: Icon(
+//                          Icons.filter_list,
+//                          size: 26.0,
+//                        ),
+//                      )),
+//                ],
+              ),
               body: SearchScreen(filter: [tag], mushroomsList: mushroomList),
             );
           }),
