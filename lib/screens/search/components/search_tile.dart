@@ -34,11 +34,11 @@ class SearchTile extends StatelessWidget {
             ],
           ),
           Expanded(child: Container()),
-          DetailLabels(
-            tags: item.tags,
-            small: true,
-            alignment: MainAxisAlignment.start,
-          ),
+//          DetailLabels(
+//            tags: item.tags,
+//            small: true,
+//            alignment: MainAxisAlignment.start,
+//          ),
         ],
       ),
     );
