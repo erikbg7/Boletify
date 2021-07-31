@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 enum Tag { spring, summer, autumn, winter, edible, toxic, unknown }
 
