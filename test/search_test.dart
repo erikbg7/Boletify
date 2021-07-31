@@ -68,7 +68,6 @@ void main() {
       await tester.pumpWidget(buildTestableWidget(screen));
       expect(find.text(item.name), findsOneWidget);
       expect(find.text(item.nameScientific), findsOneWidget);
-      expect(find.byType(DetailLabels), findsOneWidget);
     },
   );
 

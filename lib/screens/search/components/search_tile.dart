@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
-import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 
 class SearchTile extends StatelessWidget {
   final MushroomInfo item;
@@ -35,11 +34,6 @@ class SearchTile extends StatelessWidget {
               Text(item.nameScientific, style: TextStyle(fontSize: 15, color: Colors.white70)),
             ],
           ),
-//          DetailLabels(
-//            tags: item.tags,
-//            small: true,
-//            alignment: MainAxisAlignment.start,
-//          ),
         ],
       ),
     );
