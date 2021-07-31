@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:futter_project_tfg/models/mushroom_info_model.dart';
-//import 'package:futter_project_tfg/screens/search/search_mushroom.dart';
 
 class HomeSearchButton extends StatelessWidget {
   @override

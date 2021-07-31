@@ -16,8 +16,8 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => SearchFilterBloc(filter),
-      child: SearchView(filter: filter, mushroomsList: mushroomsList),
+      create: (BuildContext context) => SearchFilterBloc(filter, mushroomsList),
+      child: SearchView(),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 enum Tag { spring, summer, autumn, winter, edible, toxic, unknown }
 
@@ -6,13 +5,13 @@ class TagInfo {
   final String imageUrl;
   final String label;
   final String tooltip;
-  final List<Color> colors;
+  final Tag tag;
 
   TagInfo({
     required this.imageUrl,
     required this.label,
     required this.tooltip,
-    required this.colors,
+    required this.tag,
   });
 }
 

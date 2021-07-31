@@ -1,70 +1,66 @@
-import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
 
 final TagInfo springMushroomInfo = TagInfo(
   imageUrl: 'assets/season/spring.png',
   tooltip: 'Temporada de primavera',
   label: 'Primavera',
-  colors: [Colors.pink, Colors.purple],
+  tag: Tag.spring,
 );
 
 final TagInfo summerMushroomInfo = TagInfo(
   imageUrl: 'assets/season/summer.png',
   tooltip: "Temporada d'estiu",
   label: 'Estiu',
-  colors: [Colors.yellow, Colors.orange],
+  tag: Tag.summer,
 );
 
 final TagInfo autumnMushroomInfo = TagInfo(
   imageUrl: 'assets/season/autum.png',
   tooltip: "Temporada de tardor",
   label: 'Tardor',
-  colors: [Colors.orange, Colors.red],
+  tag: Tag.autumn,
 );
 
 final TagInfo winterMushroomInfo = TagInfo(
   imageUrl: 'assets/season/winter.png',
   tooltip: "Temporada d'hivern",
   label: 'Hivern',
-  colors: [Colors.blue, Colors.green],
+  tag: Tag.winter,
 );
 
 final TagInfo edibleMushroomInfo = TagInfo(
   imageUrl: 'assets/edibility/edible.png',
   tooltip: 'Bon comestible',
   label: 'Comestible',
-  colors: [Colors.green, Colors.greenAccent],
+  tag: Tag.edible,
 );
 
 final TagInfo toxicMushroomInfo = TagInfo(
   imageUrl: 'assets/edibility/toxic.png',
   tooltip: 'Toxic, aluciogen o mortal',
   label: 'Tóxic',
-  colors: [Colors.yellow, Colors.grey],
+  tag: Tag.toxic,
 );
 
 final TagInfo unknownMushroomInfo = TagInfo(
   imageUrl: 'assets/edibility/unknown.png',
   tooltip: 'Desconegut o sense informació',
   label: 'Desconegut',
-  colors: [Colors.grey, Colors.black],
+  tag: Tag.unknown,
 );
 
+final List<TagInfo> allTagsInfo = [
+  springMushroomInfo,
+  summerMushroomInfo,
+  autumnMushroomInfo,
+  winterMushroomInfo,
+  edibleMushroomInfo,
+  toxicMushroomInfo,
+  unknownMushroomInfo
+];
+
 TagInfo infoFromTag(Tag tag) {
-  switch (tag) {
-    case Tag.spring:
-      return springMushroomInfo;
-    case Tag.summer:
-      return summerMushroomInfo;
-    case Tag.autumn:
-      return autumnMushroomInfo;
-    case Tag.winter:
-      return winterMushroomInfo;
-    case Tag.edible:
-      return edibleMushroomInfo;
-    case Tag.toxic:
-      return toxicMushroomInfo;
-    default:
-      return unknownMushroomInfo;
-  }
+  return allTagsInfo.firstWhere((item) {
+    return item.tag == tag;
+  }, orElse: () => unknownMushroomInfo);
 }

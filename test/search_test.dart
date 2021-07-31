@@ -6,7 +6,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:futter_project_tfg/bloc/filter/filters_bloc.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
-import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 import 'package:futter_project_tfg/screens/search/components/filter_button.dart';
 import 'package:futter_project_tfg/screens/search/components/search_tile.dart';
 import 'package:futter_project_tfg/screens/search/components/search_view.dart';
@@ -17,10 +16,9 @@ import 'utils/index.dart';
 class MockFilterBloc extends MockBloc<FilterEvent, FilterState>
     implements SearchFilterBloc {}
 
-
 class FallbackState extends Fake implements FilterState {}
-class FallbackEvent extends Fake implements FilterEvent {}
 
+class FallbackEvent extends Fake implements FilterEvent {}
 
 void main() {
   late SearchFilterBloc mockFilterBloc;
@@ -68,7 +66,6 @@ void main() {
       await tester.pumpWidget(buildTestableWidget(screen));
       expect(find.text(item.name), findsOneWidget);
       expect(find.text(item.nameScientific), findsOneWidget);
-      expect(find.byType(DetailLabels), findsOneWidget);
     },
   );
 
@@ -76,14 +73,17 @@ void main() {
     'renders filters list',
     (WidgetTester tester) async {
       final List<Tag> tags = [Tag.winter];
-      final Widget child = SearchView(filter: [], mushroomsList: []);
+      final List<MushroomInfo> list = [
+        MushroomInfo("M", "m", [Tag.winter])
+      ];
+      final Widget child = SearchView();
       final widget = BlocProvider.value(value: mockFilterBloc, child: child);
 
-      when(() => mockFilterBloc.state).thenReturn(FilterResultState(tags));
+      when(() => mockFilterBloc.state)
+          .thenReturn(FilterResultState(tags, list));
       await tester.pumpWidget(buildTestableWidget(widget));
 
       expect(find.byType(FilterButton), findsWidgets);
     },
   );
-
 }
