@@ -15,18 +15,14 @@ class FilterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textColor = isActive ? Colors.white : Colors.white.withOpacity(0.5);
+    final color = isActive ? Colors.white : Colors.white.withOpacity(0.5);
+    final event = isActive ? RemoveFromFilter(id) : AddToFilter(id);
+
     return TextButton(
-      onPressed: () {
-        final event = isActive ? RemoveFromFilter(id) : AddToFilter(id);
-        BlocProvider.of<SearchFilterBloc>(context).add(event);
-      },
-      child: Column(
-        children: [
-          Text(text,
-              style: TextStyle(
-                  color: textColor, decoration: TextDecoration.underline)),
-        ],
+      onPressed: () => BlocProvider.of<SearchFilterBloc>(context).add(event),
+      child: Text(
+        text,
+        style: TextStyle(color: color, decoration: TextDecoration.underline),
       ),
     );
   }

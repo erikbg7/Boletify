@@ -29,6 +29,7 @@ class SearchTile extends StatelessWidget {
           SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(item.name, style: TextStyle(fontSize: 20)),
               Text(item.nameScientific, style: TextStyle(fontSize: 15, color: Colors.white70)),
