@@ -1,21 +1,20 @@
-//import 'package:flutter/material.dart';
-//import 'package:futter_project_tfg/models/mushroom_info_model.dart';
-//import 'package:futter_project_tfg/screens/search/search_screen.dart';
-//
-//class NameSearch extends SearchDelegate<MushroomInfo> {
-//  final List<MushroomInfo> mushrooms;
-//  MushroomInfo result;
-//
-//  NameSearch(this.mushrooms);
-//
-//
-//  @override
-//  ThemeData appBarTheme(BuildContext context) {
-//    assert(context != null);
-//    final ThemeData theme = Theme.of(context);
-//    assert(theme != null);
-//    return theme;
-//  }
+import 'package:flutter/material.dart';
+
+import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/screens/search/search_results.dart';
+
+class NameSearch extends SearchDelegate<MushroomInfo> {
+  final List<MushroomInfo> mushrooms;
+  late MushroomInfo result = MushroomInfo('none', 'none', []);
+
+  NameSearch({required this.mushrooms});
+
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return theme;
+  }
 //
 //  @override
 //  List<Widget> buildActions(BuildContext context) {
