@@ -27,16 +27,14 @@ class NameSearch extends SearchDelegate<MushroomInfo> {
 //      )
 //    ];
 //  }
-//
-//  @override
-//  Widget buildLeading(BuildContext context) {
-//    return IconButton(
-//      icon: Icon(Icons.arrow_back),
-//      onPressed: () {
-//        close(context, result);
-//      },
-//    );
-//  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () => close(context, result)
+    );
+  }
 //
 //  @override
 //  Widget buildResults(BuildContext context) {
