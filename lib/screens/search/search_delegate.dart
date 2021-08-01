@@ -32,51 +32,20 @@ class NameSearch extends SearchDelegate<MushroomInfo> {
       onPressed: () => close(context, result),
     );
   }
-//
-//  @override
-//  Widget buildResults(BuildContext context) {
-//    final suggestions = mushrooms.where((mushroom) {
-//      return mushroom.name.toLowerCase().contains(query.toLowerCase());
-//    });
-//
-//    return ListView.builder(
-//      itemCount: suggestions.length,
-//      itemBuilder: (BuildContext context, int index) {
-//        final item = suggestions.elementAt(index);
-//        return SearchResult(item: item);
-////        return ListTile(
-////          title: Text(
-////            suggestions.elementAt(index).name,
-////          ),
-////          onTap: () {
-////            result = suggestions.elementAt(index);
-////            close(context, result);
-////          },
-////        );
-//      },
-//    );
-//  }
-//
-//  @override
-//  Widget buildSuggestions(BuildContext context) {
-//    final suggestions = mushrooms.where((mushroom) {
-//      return mushroom.name.toLowerCase().contains(query.toLowerCase());
-//    });
-//
-//    return ListView.builder(
-//      itemCount: suggestions.length,
-//      itemBuilder: (BuildContext context, int index) {
-//        final item = suggestions.elementAt(index);
-//        return SearchResult(item: item);
-////        return ListTile(
-////          title: Text(
-////            suggestions.elementAt(index).name,
-////          ),
-////          onTap: () {
-////            query = suggestions.elementAt(index).name;
-////          },
-////        );
-//      },
-//    );
-//  }
-//}
+
+  @override
+  Widget buildResults(BuildContext context) {
+    final suggestions = mushrooms.where((mushroom) {
+      return mushroom.name.toLowerCase().contains(query.toLowerCase());
+    });
+    return SearchResults(list: suggestions.toList());
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final suggestions = mushrooms.where((mushroom) {
+      return mushroom.name.toLowerCase().contains(query.toLowerCase());
+    });
+    return SearchResults(list: suggestions.toList());
+  }
+}
