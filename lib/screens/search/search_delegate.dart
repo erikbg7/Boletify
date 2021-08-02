@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/screens/search/search_results.dart';
 
-class NameSearch extends SearchDelegate<MushroomInfo> {
+class MushroomSearchDelegate extends SearchDelegate<MushroomInfo> {
   final List<MushroomInfo> mushrooms;
   late MushroomInfo result = MushroomInfo('none', 'none', []);
 
-  NameSearch({required this.mushrooms});
+  MushroomSearchDelegate({required this.mushrooms});
 
   @override
   ThemeData appBarTheme(BuildContext context) {
