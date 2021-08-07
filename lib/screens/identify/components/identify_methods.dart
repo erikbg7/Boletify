@@ -10,35 +10,37 @@ class IdentifyMethods extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IdentifyTitle(text: "TRIA UN MÉTODE"),
-        SizedBox(height: 40),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IdentifyButton(
-                text: 'Camara',
-                icon: Icons.photo_camera_outlined,
-                onPressed: () {
-                  BlocProvider.of<MushroomsBloc>(context)
-                      .add(ClassifyMushroom(ImageSource.camera));
-                },
-              ),
-              IdentifyButton(
-                text: 'Galeria',
-                icon: Icons.broken_image_outlined,
-                onPressed: () {
-                  BlocProvider.of<MushroomsBloc>(context)
-                      .add(ClassifyMushroom(ImageSource.gallery));
-                },
-              ),
-            ],
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 60, horizontal: 0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IdentifyTitle(text: "TRIA UN MÉTODE"),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IdentifyButton(
+                  text: 'Camara',
+                  icon: Icons.photo_camera_outlined,
+                  onPressed: () {
+                    BlocProvider.of<MushroomsBloc>(context)
+                        .add(ClassifyMushroom(ImageSource.camera));
+                  },
+                ),
+                IdentifyButton(
+                  text: 'Galeria',
+                  icon: Icons.broken_image_outlined,
+                  onPressed: () {
+                    BlocProvider.of<MushroomsBloc>(context)
+                        .add(ClassifyMushroom(ImageSource.gallery));
+                  },
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
