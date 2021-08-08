@@ -61,11 +61,12 @@ void main() {
   testWidgets(
     'Displays a search tile',
     (WidgetTester tester) async {
-      final item = MushroomInfo('name', 'scientific', [Tag.winter]);
+      final item = MushroomInfo.buildEmpty(
+          name: 'name', scientificName: 'scientific', tags: [Tag.winter]);
       final screen = Scaffold(body: SearchTile(item: item));
       await tester.pumpWidget(buildTestableWidget(screen));
       expect(find.text(item.name), findsOneWidget);
-      expect(find.text(item.nameScientific), findsOneWidget);
+      expect(find.text(item.scientificName), findsOneWidget);
     },
   );
 
@@ -74,7 +75,8 @@ void main() {
     (WidgetTester tester) async {
       final List<Tag> tags = [Tag.winter];
       final List<MushroomInfo> list = [
-        MushroomInfo("M", "m", [Tag.winter])
+        MushroomInfo.buildEmpty(
+            name: 'name', scientificName: 'scientific', tags: [Tag.winter])
       ];
       final Widget child = SearchView();
       final widget = BlocProvider.value(value: mockFilterBloc, child: child);

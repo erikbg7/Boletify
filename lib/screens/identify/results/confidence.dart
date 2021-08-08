@@ -12,12 +12,13 @@ class HighConfidence extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String confidence = (result.confidence * 100).toStringAsFixed(2);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IdentifyTitle(text: 'RESULTATS'),
         SizedBox(height: 10),
-        Text("N'estic ${(result.confidence * 100).toStringAsFixed(2)}% segur!"),
+        Text("N'estic $confidence segur!"),
         SizedBox(height: 10),
         IdentifyImage(image: result.image),
         SizedBox(height: 5),

@@ -5,7 +5,7 @@ import 'package:futter_project_tfg/screens/search/search_results.dart';
 
 class MushroomSearchDelegate extends SearchDelegate<MushroomInfo> {
   final List<MushroomInfo> mushrooms;
-  late MushroomInfo result = MushroomInfo('none', 'none', []);
+  late MushroomInfo result = MushroomInfo.buildEmpty();
 
   MushroomSearchDelegate({required this.mushrooms});
 

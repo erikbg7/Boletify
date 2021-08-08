@@ -6,12 +6,14 @@ import 'package:futter_project_tfg/widgets/custom_icon.dart';
 class DetailLabels extends StatelessWidget {
   final List<Tag> tags;
   final MainAxisAlignment alignment;
+  final double size;
   final bool small;
 
   const DetailLabels(
       {Key? key,
       required this.tags,
       this.small = false,
+      this.size = 50,
       this.alignment = MainAxisAlignment.center})
       : super(key: key);
 
@@ -22,19 +24,19 @@ class DetailLabels extends StatelessWidget {
       return CustomIcon(
         image: unknownLabel.imageUrl,
         tooltip: unknownLabel.tooltip,
-        size: 50,
+        size: size,
       );
     }
 
     List<Widget> tagsList = [];
 
     tags.forEach((tag) {
-        TagInfo tagInfo = infoFromTag(tag);
-        tagsList.add(CustomIcon(
-          image: tagInfo.imageUrl,
-          tooltip: tagInfo.tooltip,
-          size: small ? 15 : 50,
-        ));
+      TagInfo tagInfo = infoFromTag(tag);
+      tagsList.add(CustomIcon(
+        image: tagInfo.imageUrl,
+        tooltip: tagInfo.tooltip,
+        size: small ? 15 : size,
+      ));
     });
 
     return Row(

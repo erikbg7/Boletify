@@ -14,7 +14,7 @@ void main() {
 Future<void> fetchAllMushrooms() async {
   final List<MushroomInfo> mushroomsList =
       await MushroomsRepository().getMushroomsList();
-  mushroomsList.forEach((element) => print(element.toConcatString()));
+  mushroomsList.forEach((element) => print(element.name));
 }
 
 class MyApp extends StatelessWidget {

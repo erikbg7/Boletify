@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:futter_project_tfg/models/mushroom_description_model.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/utils/file_manager.dart';
 
@@ -10,9 +9,8 @@ class MushroomsRepository {
   Future<List<MushroomInfo>> _fetchLists() async {
     final FileManager fileManager = FileManager();
     await fileManager.initializeFileManager();
-    fileManager.setMushroomsBackupList(getMushroomsListMock2());
-    final List<MushroomDescription> list =
-        await fileManager.getMushroomsBackupList();
+    fileManager.setMushroomsBackupList(getMushroomsListMock());
+    final List<MushroomInfo> list = await fileManager.getMushroomsBackupList();
 
     print('Mushroom List:  $list');
 
