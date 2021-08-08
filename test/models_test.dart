@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:futter_project_tfg/models/mushroom_description_model.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
 
@@ -11,17 +10,11 @@ testTagsFromAndToJSON() {
 
 testMockedMushroomList() {
   var list = getMushroomsListMock();
-  expect(list.length, 8);
-}
-
-testMushroomtoString() {
-  var mushroom = MushroomInfo('name', 'name2', [Tag.summer]);
-  String result = mushroom.toConcatString();
-  expect(result.contains('summer'), true);
+  expect(list.length, 15);
 }
 
 testMushroomDescriptionFromToJSON() {
-  final MushroomDescription mushroom = MushroomDescription(
+  final MushroomInfo mushroom = MushroomInfo(
       name: 'name',
       scientificName: 'scientificName',
       commonNames: 'commonNames',
@@ -33,8 +26,8 @@ testMushroomDescriptionFromToJSON() {
       habitat: 'habitat',
       observations: 'observations');
 
-  final MushroomDescription deserializedMushroom =
-      MushroomDescription.fromJson(mushroom.toJson());
+  final MushroomInfo deserializedMushroom =
+  MushroomInfo.fromJson(mushroom.toJson());
 
   expect(deserializedMushroom.name == mushroom.name, true);
   expect(deserializedMushroom.scientificName == mushroom.scientificName, true);
@@ -50,7 +43,6 @@ testMushroomDescriptionFromToJSON() {
 
 void main() {
   test('MushroomInfo model has mocked list', testMockedMushroomList);
-  test('MushroomInfo model concat labels to string', testMushroomtoString);
   test('Tags to JSON and from JSON', testTagsFromAndToJSON);
   test('MushroomDescription from/to JSON', testMushroomDescriptionFromToJSON);
 }
