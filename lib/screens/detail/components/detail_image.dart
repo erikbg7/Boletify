@@ -17,7 +17,7 @@ class DetailImage extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.black,
             image: DecorationImage(
-              image: FileImage(image),
+              image: AssetImage('assets/search_background/0.jpg'),
               fit: BoxFit.fitWidth,
             ),
           ),

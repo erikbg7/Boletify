@@ -32,7 +32,7 @@ class SearchTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(item.name, style: TextStyle(fontSize: 20)),
-              Text(item.nameScientific, style: TextStyle(fontSize: 15, color: Colors.white70)),
+              Text(item.scientificName, style: TextStyle(fontSize: 15, color: Colors.white70)),
             ],
           ),
         ],

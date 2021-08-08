@@ -36,13 +36,10 @@ class IdentifyImage extends StatelessWidget {
   }
 
   void _navigateTo(BuildContext context) {
-    final List<MushroomInfo> list = getMushrooms();
+    final List<MushroomInfo> list = getMushroomsListMock();
     final MushroomInfo selected = list.firstWhere(
         (element) => element.name == 'Amanita',
-        orElse: () => MushroomInfo('', '', []));
-
-    print('---------selected');
-    print(selected.description);
+        orElse: () => MushroomInfo.buildEmpty());
 
     Navigator.of(context).push(MaterialPageRoute(
       builder: (ctx) => DetailScreen(image: image, mushroom: selected),

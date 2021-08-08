@@ -13,7 +13,8 @@ class DetailScreen extends StatelessWidget {
   final String notFoundMessage =
       'No hi ha informació disponible per aquest bolet actualment';
 
-  const DetailScreen({Key? key, required this.image, required this.mushroom}) : super(key: key);
+  const DetailScreen({Key? key, required this.image, required this.mushroom})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,47 +40,42 @@ class DetailScreen extends StatelessWidget {
                               DetailLabels(tags: [Tag.toxic, Tag.autumn]),
                               SizedBox(width: double.infinity, height: 15),
                               Text(
-                                'Amanita'.toUpperCase(),
+                                mushroom.name.toUpperCase(),
                                 style: TextStyle(
                                     fontFamily: 'Milliard', fontSize: 20),
                               ),
                               Text(
-                                'Amanita Muscaria',
+                                mushroom.scientificName,
                                 style: TextStyle(
                                     fontFamily: 'Milliard',
                                     fontSize: 20,
                                     color: Colors.white70),
                               ),
-//                              SizedBox(width: double.infinity, height: 25),
-//                              DetailLabels(
-//                                  labels: ['edible', 'spring', 'summer']),
-//                              SizedBox(width: double.infinity, height: 15),
-//                              Text(
-//                                'Ou de Reig'.toUpperCase(),
-//                                style: TextStyle(
-//                                    fontFamily: 'Milliard', fontSize: 20),
-//                              ),
-//                              Text(
-//                                'Amanita Caesaria',
-//                                style: TextStyle(
-//                                    fontFamily: 'Milliard',
-//                                    fontSize: 20,
-//                                    color: Colors.white70),
-//                              ),
                             ],
                           ),
                         ),
-//                        Text(mushroom.nameScientific),
-//                        if (mushroom.nameAKA.isEmpty) Text('Second Widget'),
-//                        Text(mushroom.season),
-//                        Text(mushroom.edibility.toString()),
                         Text(
-                          mushroom.description,
+                          mushroom.cap,
                           textAlign: TextAlign.justify,
                           style: Theme.of(context).textTheme.headline3,
                         ),
                         Text(
-                          mushroom.location,
+                          mushroom.gills,
+                          textAlign: TextAlign.justify,
+                          style: Theme.of(context).textTheme.headline3,
+                        ),
+                        Text(
+                          mushroom.stalk,
+                          textAlign: TextAlign.justify,
+                          style: Theme.of(context).textTheme.headline3,
+                        ),
+                        Text(
+                          mushroom.flesh,
+                          textAlign: TextAlign.justify,
+                          style: Theme.of(context).textTheme.headline3,
+                        ),
+                        Text(
+                          mushroom.habitat,
                           textAlign: TextAlign.justify,
                           style: Theme.of(context).textTheme.headline3,
                         ),
