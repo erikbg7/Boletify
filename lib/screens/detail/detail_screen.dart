@@ -2,10 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
-import 'package:futter_project_tfg/models/tag_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_image.dart';
-
-import 'components/detail_labels.dart';
 
 class DetailScreen extends StatelessWidget {
   final File image;
@@ -18,72 +15,47 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-//    mushroom.nameAKA.isNotEmpty
     return Scaffold(
       body: Column(
         children: [
-          DetailImage(image: image),
+          DetailImage(image: image, tags: mushroom.tags),
+          Container(
+            padding: EdgeInsets.all(10),
+            color: Colors.black,
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  mushroom.name.toUpperCase(),
+                  style: TextStyle(fontFamily: 'Milliard', fontSize: 20),
+                ),
+                Text(
+                  mushroom.scientificName,
+                  style: TextStyle(
+                      fontFamily: 'Milliard',
+                      fontSize: 20,
+                      color: Colors.white70),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             flex: 1,
             child: new SingleChildScrollView(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.only(bottom: 20, left: 20, right: 20),
               scrollDirection: Axis.vertical, //.horizontal
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: mushroom.name.isEmpty
-                    ? [Text(notFoundMessage)]
+                    ? [Center(child: Text(notFoundMessage))]
                     : [
-                        Container(
-                          width: double.infinity,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              DetailLabels(tags: [Tag.toxic, Tag.autumn]),
-                              SizedBox(width: double.infinity, height: 15),
-                              Text(
-                                mushroom.name.toUpperCase(),
-                                style: TextStyle(
-                                    fontFamily: 'Milliard', fontSize: 20),
-                              ),
-                              Text(
-                                mushroom.scientificName,
-                                style: TextStyle(
-                                    fontFamily: 'Milliard',
-                                    fontSize: 20,
-                                    color: Colors.white70),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Text(
-                          mushroom.cap,
-                          textAlign: TextAlign.justify,
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                        Text(
-                          mushroom.gills,
-                          textAlign: TextAlign.justify,
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                        Text(
-                          mushroom.stalk,
-                          textAlign: TextAlign.justify,
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                        Text(
-                          mushroom.flesh,
-                          textAlign: TextAlign.justify,
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                        Text(
-                          mushroom.habitat,
-                          textAlign: TextAlign.justify,
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                        Text(
-                          mushroom.observations,
-                          textAlign: TextAlign.justify,
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
+                        ...buildSection('Barret', mushroom.cap),
+                        ...buildSection('Himeni', mushroom.gills),
+                        ...buildSection('Peu', mushroom.stalk),
+                        ...buildSection('Carn', mushroom.flesh),
+                        ...buildSection('Habitat', mushroom.habitat),
+                        ...buildSection('Observations', mushroom.observations),
                       ],
               ),
             ),
@@ -93,9 +65,26 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  getInformationBlock(String text) {
+  List<Widget> buildSection(String title, String text) {
     if (text.isNotEmpty) {
-      return Text(text);
+      return [
+        SizedBox(height: 10),
+        Text(
+          title,
+          textAlign: TextAlign.justify,
+          style: TextStyle(
+              color: Colors.grey[200],
+              fontSize: 23,
+              fontWeight: FontWeight.bold),
+        ),
+        Text(
+          text,
+          textAlign: TextAlign.justify,
+          style: TextStyle(color: Colors.grey[200], fontSize: 20),
+        )
+      ];
+    } else {
+      return [];
     }
   }
 }
