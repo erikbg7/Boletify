@@ -13,6 +13,7 @@ class SearchView extends StatelessWidget {
           return Column(
             children: [
               SearchFilters(activeFilter: state.filter),
+              Container(height: 5,width: double.infinity, color: Colors.black45),
               Expanded(
                 child: Container(
                   width: double.infinity,

@@ -19,7 +19,6 @@ class SearchTile extends StatelessWidget {
             screen: DetailScreen(
                 image: File('assets/search_background/0.jpg'), mushroom: item)),
         child: Container(
-          margin: EdgeInsets.only(bottom: 5),
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           width: double.infinity,
           color: Colors.black26,
