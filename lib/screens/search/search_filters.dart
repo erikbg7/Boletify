@@ -8,7 +8,7 @@ class SearchFilters extends StatelessWidget {
   final List<Tag> activeFilter;
   static List<TagInfo> list = allTagsInfo.where(isNotUnknownTag).toList();
 
-  const SearchFilters({Key? key, required this.activeFilter}) : super(key: key);
+  SearchFilters({Key? key, required this.activeFilter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +16,7 @@ class SearchFilters extends StatelessWidget {
       height: 40,
       width: double.infinity,
       child: ListView.builder(
+        controller: ScrollController(initialScrollOffset: 40),
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
         itemBuilder: (BuildContext context, int index) =>
@@ -29,7 +30,8 @@ FilterButton buttonsBuilder(
     List<TagInfo> list, List<Tag> activeFilter, int index) {
   final TagInfo info = list[index];
   final isActive = activeFilter.contains(info.tag);
-  return FilterButton(id: info.tag, isActive: isActive, text: info.label);
+  return FilterButton(
+      id: info.tag, isActive: isActive, imageUrl: info.imageUrl);
 }
 
 bool isNotUnknownTag(TagInfo tagInfo) => tagInfo.tag != Tag.unknown;
