@@ -11,7 +11,9 @@ class MushroomSearchDelegate extends SearchDelegate<MushroomInfo> {
 
   @override
   ThemeData appBarTheme(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+    final ThemeData theme = Theme.of(context).copyWith(
+      scaffoldBackgroundColor: Colors.black45,
+    );
     return theme;
   }
 
@@ -31,6 +33,13 @@ class MushroomSearchDelegate extends SearchDelegate<MushroomInfo> {
       icon: Icon(Icons.arrow_back),
       onPressed: () => close(context, result),
     );
+  }
+
+  @override
+  PreferredSizeWidget buildBottom(BuildContext context) {
+    return PreferredSize(
+        child: SizedBox(),
+        preferredSize: Size.fromHeight(10));
   }
 
   @override

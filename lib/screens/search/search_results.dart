@@ -10,13 +10,17 @@ class SearchResults extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: list.length,
-      separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 5),
-      itemBuilder: (BuildContext context, int index) {
-        final MushroomInfo item = list.elementAt(index);
-        return SearchTile(item: item);
-      },
+    return Container(
+      margin: EdgeInsets.only(top: 5),
+      child: ListView.separated(
+        itemCount: list.length,
+        separatorBuilder: (BuildContext context, int index) =>
+            const SizedBox(height: 5),
+        itemBuilder: (BuildContext context, int index) {
+          final MushroomInfo item = list.elementAt(index);
+          return SearchTile(item: item);
+        },
+      ),
     );
   }
 }
