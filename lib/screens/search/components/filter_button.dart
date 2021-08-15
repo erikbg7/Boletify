@@ -21,11 +21,13 @@ class FilterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final event = isActive ? RemoveFromFilter(tag) : AddToFilter(tag);
 
-    return InkWell(
-        onTap: () => BlocProvider.of<SearchFilterBloc>(context).add(event),
-        child: BlackWhiteFilter(
-          isFilterActive: isActive,
-          child: Image.asset(imageUrl),
-        ));
+    return Material(
+      child: InkWell(
+          onTap: () => BlocProvider.of<SearchFilterBloc>(context).add(event),
+          child: BlackWhiteFilter(
+            isFilterActive: isActive,
+            child: Image.asset(imageUrl),
+          )),
+    );
   }
 }
