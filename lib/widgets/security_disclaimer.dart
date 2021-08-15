@@ -11,7 +11,7 @@ class SecurityDisclaimer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(Icons.warning_amber_rounded, size: 40, color: Colors.greenAccent),
+          Icon(Icons.warning_amber_rounded, size: 40, color: Colors.redAccent),
           SizedBox(width: 10),
           Flexible(
             child: Text(
