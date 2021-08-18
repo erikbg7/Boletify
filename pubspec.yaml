@@ -63,6 +63,7 @@ flutter:
   assets:
     - assets/
     - assets/search_background/
+    - assets/backgrounds/
     - assets/edibility/
     - assets/season/
     - assets/brand/

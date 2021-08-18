@@ -6,7 +6,7 @@ import 'package:futter_project_tfg/screens/home/components/home_icons_list.dart'
 import 'package:futter_project_tfg/screens/home/components/home_search_button.dart';
 import 'package:futter_project_tfg/screens/home/components/home_title.dart';
 import 'package:futter_project_tfg/screens/home/home_screen.dart';
-import 'package:futter_project_tfg/widgets/home_security_disclaimer.dart';
+import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
 
 import 'utils/index.dart';
 
@@ -16,7 +16,7 @@ Future testHomeScreen(WidgetTester tester) async {
   expect(find.byType(HomeTitle), findsOneWidget);
   expect(find.byType(HomeSearchButton), findsOneWidget);
   expect(find.byType(HomeIconsList), findsOneWidget);
-  expect(find.byType(HomeSecurityDisclaimer), findsOneWidget);
+  expect(find.byType(SecurityDisclaimer), findsOneWidget);
 
   Tag.values.forEach((tag) {
     if (tag != Tag.unknown) {

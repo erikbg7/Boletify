@@ -2,7 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
-import 'package:futter_project_tfg/screens/detail/components/detail_image.dart';
+import 'package:futter_project_tfg/screens/detail/components/detail_card.dart';
+import 'package:futter_project_tfg/screens/detail/components/detail_description.dart';
+import 'package:futter_project_tfg/screens/detail/components/detail_information.dart';
+import 'package:futter_project_tfg/screens/detail/components/detail_thumbnail.dart';
+import 'package:futter_project_tfg/screens/detail/components/detail_background.dart';
 
 class DetailScreen extends StatelessWidget {
   final File image;
@@ -16,75 +20,26 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          DetailImage(image: image, tags: mushroom.tags),
-          Container(
-            padding: EdgeInsets.all(10),
-            color: Colors.black,
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Stack(
+          children: [
+            DetailBackground(),
+            DetailInformation(
               children: [
-                Text(
-                  mushroom.name.toUpperCase(),
-                  style: TextStyle(fontFamily: 'Milliard', fontSize: 20),
-                ),
-                Text(
-                  mushroom.scientificName,
-                  style: TextStyle(
-                      fontFamily: 'Milliard',
-                      fontSize: 20,
-                      color: Colors.white70),
-                ),
+                DetailCard(mushroom: mushroom),
+                SizedBox(height: 20),
+                Expanded(child: DetailDescription(mushroom: mushroom)),
               ],
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: new SingleChildScrollView(
-              padding: EdgeInsets.only(bottom: 20, left: 20, right: 20),
-              scrollDirection: Axis.vertical, //.horizontal
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: mushroom.name.isEmpty
-                    ? [Center(child: Text(notFoundMessage))]
-                    : [
-                        ...buildSection('Barret', mushroom.cap),
-                        ...buildSection('Himeni', mushroom.gills),
-                        ...buildSection('Peu', mushroom.stalk),
-                        ...buildSection('Carn', mushroom.flesh),
-                        ...buildSection('Habitat', mushroom.habitat),
-                        ...buildSection('Observations', mushroom.observations),
-                      ],
-              ),
+            Align(
+              alignment: FractionalOffset(0.5, 0.31),
+              child: DetailThumbnail(),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
-  }
-
-  List<Widget> buildSection(String title, String text) {
-    if (text.isNotEmpty) {
-      return [
-        SizedBox(height: 10),
-        Text(
-          title,
-          textAlign: TextAlign.justify,
-          style: TextStyle(
-              color: Colors.grey[200],
-              fontSize: 23,
-              fontWeight: FontWeight.bold),
-        ),
-        Text(
-          text,
-          textAlign: TextAlign.justify,
-          style: TextStyle(color: Colors.grey[200], fontSize: 20),
-        )
-      ];
-    } else {
-      return [];
-    }
   }
 }
