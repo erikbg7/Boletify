@@ -4,6 +4,7 @@ import 'package:futter_project_tfg/models/tag_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_image.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_title.dart';
+import 'package:futter_project_tfg/theme.dart';
 
 class HighConfidence extends StatelessWidget {
   final ClassifierOutput result;
@@ -12,13 +13,12 @@ class HighConfidence extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String confidence = (result.confidence * 100).toStringAsFixed(2);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IdentifyTitle(text: 'RESULTATS'),
         SizedBox(height: 10),
-        Text("N'estic $confidence segur!"),
+        Text("N'estic ${result.confidencePercentage} segur!"),
         SizedBox(height: 10),
         IdentifyImage(image: result.image),
         SizedBox(height: 5),

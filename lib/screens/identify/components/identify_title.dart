@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/theme.dart';
 
 class IdentifyTitle extends StatelessWidget {
   final String text;
@@ -12,9 +13,7 @@ class IdentifyTitle extends StatelessWidget {
       child: Text(
         text,
         textAlign: TextAlign.center,
-        style: TextStyle(
-            fontSize: 37,
-            fontWeight: FontWeight.w900),
+        style: TextStyles.resultsNameTitle,
       ),
     );
   }
