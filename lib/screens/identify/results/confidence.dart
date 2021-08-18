@@ -24,12 +24,8 @@ class HighConfidence extends StatelessWidget {
         SizedBox(height: 5),
         DetailLabels(tags: [Tag.toxic, Tag.autumn]),
         SizedBox(width: double.infinity, height: 15),
-        Text('Amanita'.toUpperCase(),
-            style: TextStyle(fontFamily: 'Milliard', fontSize: 20)),
-        Text(
-          'Amanita Muscaria',
-          style: TextStyle(
-              fontFamily: 'Milliard', fontSize: 20, color: Colors.white70),
+        Text('Amanita'.toUpperCase(), style: TextStyles.resultsNameTitle),
+        Text('Amanita Muscaria', style: TextStyles.resultsNameSubtitle,
         ),
       ],
     );

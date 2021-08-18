@@ -22,4 +22,20 @@ class TextStyles {
     color: Color(0x9FFFFFFF),
     fontSize: 14,
   );
+
+  static const TextStyle resultsTitle = const TextStyle(
+    fontSize: 37,
+    fontWeight: FontWeight.w900,
+  );
+
+  static const TextStyle resultsNameTitle = const TextStyle(
+    fontFamily: 'Milliard',
+    fontSize: 20,
+  );
+
+  static const TextStyle resultsNameSubtitle = const TextStyle(
+    fontFamily: 'Milliard',
+    fontSize: 20,
+    color: Colors.white70,
+  );
 }
