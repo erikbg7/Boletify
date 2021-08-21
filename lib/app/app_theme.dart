@@ -8,9 +8,8 @@ ThemeData buildThemeData() {
       primarySwatch: Colors.grey,
       brightness: Brightness.dark,
       primaryColor: Colors.black,
-      scaffoldBackgroundColor: Color(0xFF202020),
-//      scaffoldBackgroundColor: Color(0xFF112523),
-      appBarTheme: AppBarTheme(color: Color(0xFF202020), shadowColor: Colors.transparent),
+      scaffoldBackgroundColor: Color(0xFF112523),
+      appBarTheme: AppBarTheme(color: Color(0xFF112523), shadowColor: Colors.transparent),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
           highlightElevation: 10.0,
           elevation: 10.0,

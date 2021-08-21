@@ -23,11 +23,15 @@ class FilterButton extends StatelessWidget {
 
     return Material(
       child: InkWell(
-          onTap: () => BlocProvider.of<SearchFilterBloc>(context).add(event),
+        onTap: () => BlocProvider.of<SearchFilterBloc>(context).add(event),
+        child: Container(
+          color: Color(0xFF112523),
           child: BlackWhiteFilter(
             isFilterActive: isActive,
             child: Image.asset(imageUrl),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
