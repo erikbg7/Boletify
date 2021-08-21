@@ -18,7 +18,6 @@ class DetailCard extends StatelessWidget {
       height: size.height * 0.25,
       decoration: BoxDecoration(
         color: Color(0xFF183A26),
-
         borderRadius: new BorderRadius.circular(8.0),
         boxShadow: <BoxShadow>[
           new BoxShadow(

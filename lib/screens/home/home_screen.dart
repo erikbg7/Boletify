@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/colors.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_background.dart';
 import 'package:futter_project_tfg/screens/home/components/home_icons_list.dart';
 import 'package:futter_project_tfg/screens/home/components/home_search_button.dart';
@@ -13,24 +14,24 @@ class HomeScreen extends StatelessWidget {
         body: Container(
           height: double.infinity,
           width: double.infinity,
-          color: Color(0xFF112523),
+          color: BoletifyColors.green900,
           child: Stack(
             children: [
               DetailBackground(),
               Align(
-                alignment: FractionalOffset(0.5, 0.1),
+                alignment: FractionalOffset(0.5, 0.07),
                 child: HomeTitle(),
               ),
               Align(
-                alignment: FractionalOffset(0.5, 0.36),
+                alignment: FractionalOffset(0.5, 0.29),
                 child: HomeSearchButton(),
               ),
               Align(
-                alignment: FractionalOffset(0.5, 0.6),
+                alignment: FractionalOffset(0.5, 0.49),
                 child: HomeIconsList(),
               ),
               Align(
-                alignment: FractionalOffset(0.5, 0.93),
+                alignment: FractionalOffset(0.5, 0.8),
                 child: SecurityDisclaimer(),
               ),
             ],

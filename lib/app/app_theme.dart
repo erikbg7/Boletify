@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-
-// Interesting colors to work with
-//  Green floating button Color(0xFF00B47B),
+import 'package:futter_project_tfg/colors.dart';
 
 ThemeData buildThemeData() {
   return ThemeData(
       primarySwatch: Colors.grey,
       brightness: Brightness.dark,
       primaryColor: Colors.black,
-      scaffoldBackgroundColor: Color(0xFF112523),
-      appBarTheme: AppBarTheme(color: Color(0xFF112523), shadowColor: Colors.transparent),
+      scaffoldBackgroundColor: BoletifyColors.green900,
+      appBarTheme: AppBarTheme(color: BoletifyColors.green900, shadowColor: Colors.transparent),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
           highlightElevation: 10.0,
           elevation: 10.0,

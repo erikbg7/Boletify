@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/colors.dart';
 import 'package:futter_project_tfg/config/settings_config.dart';
 import 'package:futter_project_tfg/utils/utils.dart';
 import 'package:futter_project_tfg/models/settings_model.dart';
@@ -38,7 +39,7 @@ class SettingsSplitter extends StatelessWidget {
     return Container(
         width: double.infinity,
         height: 2,
-        color: Colors.greenAccent.withOpacity(0.5),
+        color: BoletifyColors.sectionSplitter.withOpacity(0.5),
         margin: EdgeInsets.symmetric(vertical: 10));
   }
 }

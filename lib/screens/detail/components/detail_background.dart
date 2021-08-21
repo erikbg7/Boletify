@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 class DetailBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final Size size = MediaQuery.of(context).size;
+
     return Container(
-      width: double.infinity,
-      height: 250.0,
+      width: size.width,
+      height: size.height * 0.35,
       decoration: BoxDecoration(
         color: Colors.black,
         image: DecorationImage(

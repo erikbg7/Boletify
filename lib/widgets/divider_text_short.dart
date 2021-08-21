@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:futter_project_tfg/colors.dart';
 
 class DividerTextShort extends StatelessWidget {
   final double top;
@@ -12,7 +13,7 @@ class DividerTextShort extends StatelessWidget {
     return Container(
       width: 24.0,
       height: 2.0,
-      color: const Color(0xFF00C6FF),
+      color: BoletifyColors.textSplitter,
       margin: EdgeInsets.only(top: top, bottom: bottom),
     );
   }

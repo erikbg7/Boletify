@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 class SecurityDisclaimer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final Size size = MediaQuery.of(context).size;
+
     return Container(
+      width: size.width,
+      height: size.height*0.15,
       margin: EdgeInsets.symmetric(vertical: 20, horizontal: 0),
       padding: EdgeInsets.all(10),
       color: Colors.grey.withOpacity(0.15),
