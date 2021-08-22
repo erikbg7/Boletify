@@ -7,7 +7,6 @@ import 'package:futter_project_tfg/screens/identify/identify_screen.dart';
 import 'package:futter_project_tfg/widgets/bottom_navigation_bar_boletify.dart';
 import 'package:futter_project_tfg/widgets/scaffold_boletify.dart';
 
-
 class LoadedApp extends StatefulWidget {
   const LoadedApp({Key? key}) : super(key: key);
 
@@ -23,14 +22,10 @@ class _LoadedAppState extends State<LoadedApp> {
   }
 
   onPressed() {
-    final AppBar appBar = AppBar(title: Text('Nova identificació'));
-    final Widget body = IdentifyScreen();
     Navigator.push(
       context,
       MaterialPageRoute<void>(
-        builder: (BuildContext context) {
-          return Scaffold(appBar: appBar, body: body);
-        },
+        builder: (BuildContext context) => IdentifyScreen(),
       ),
     );
   }

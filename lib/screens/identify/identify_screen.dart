@@ -34,12 +34,15 @@ class _IdentifyScreenState extends State<IdentifyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: buildIdentifyBackground(bgImage),
-      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-      child: BlocProvider(
-        create: (BuildContext context) => MushroomsBloc(),
-        child: IdentifyView(),
+    return Scaffold(
+      appBar: AppBar(title: Text('Nova identificació')),
+      body: Container(
+        decoration: buildIdentifyBackground(bgImage),
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+        child: BlocProvider(
+          create: (BuildContext context) => MushroomsBloc(),
+          child: IdentifyView(),
+        ),
       ),
     );
   }
