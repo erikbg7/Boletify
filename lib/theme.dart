@@ -38,4 +38,11 @@ class TextStyles {
     fontSize: 20,
     color: Colors.white70,
   );
+
+
+  static const TextStyle settingsSectionTitle = const TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold
+  );
+
 }

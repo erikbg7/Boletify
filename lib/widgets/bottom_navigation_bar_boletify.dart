@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/colors.dart';
 
 class BottomNavigationBarBoletify extends StatelessWidget {
   final Function onTapBarItem;
@@ -61,7 +62,7 @@ class BNBCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = new Paint()
-      ..color = Colors.black
+      ..color = BoletifyColors.bottomNavBar
       ..style = PaintingStyle.fill;
 
     Path path = Path();
