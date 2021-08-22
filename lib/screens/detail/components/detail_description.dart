@@ -11,7 +11,7 @@ class DetailDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.only(bottom: 20, left: 20, right: 20),
+      padding: EdgeInsets.only(bottom: 100, left: 20, right: 20),
       scrollDirection: Axis.vertical, //.horizontal
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

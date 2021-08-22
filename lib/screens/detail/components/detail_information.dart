@@ -7,9 +7,11 @@ class DetailInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final Size size = MediaQuery.of(context).size;
+
     return Container(
-      color: Color(0xFF112523),
-      margin: EdgeInsets.only(top: 200),
+      margin: EdgeInsets.only(top: size.height*0.24),
       child: Column(children: children),
     );
   }
