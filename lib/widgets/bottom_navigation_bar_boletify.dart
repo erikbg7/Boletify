@@ -16,15 +16,18 @@ class BottomNavigationBarBoletify extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
 
     return Container(
-      height: 60,
+      height: size.height * 0.11,
       width: size.width,
       child: Stack(
         children: [
-          CustomPaint(size: Size(size.width, 80), painter: BNBCustomPainter()),
+          CustomPaint(
+            size: Size(size.width, size.height * 0.12),
+            painter: BNBCustomPainter(),
+          ),
           Center(heightFactor: 0.7, child: floatingActionButton),
           Container(
             width: size.width,
-            height: 60,
+            height: size.height * 0.11,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
