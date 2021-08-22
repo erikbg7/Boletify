@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:futter_project_tfg/app/app_navigation.dart';
+import 'package:futter_project_tfg/app/v2/app_navigation.dart';
 import 'package:futter_project_tfg/screens/identify/identify_screen.dart';
-import 'package:futter_project_tfg/widgets/bottom_navigation_bar_boletify.dart';
-import 'package:futter_project_tfg/widgets/scaffold_boletify.dart';
 
 class LoadedApp extends StatefulWidget {
   const LoadedApp({Key? key}) : super(key: key);
@@ -34,17 +32,25 @@ class _LoadedAppState extends State<LoadedApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldBoletify(
+    return Scaffold(
       body: appPages[_currentTabIndex],
-      bottomNavBar: BottomNavigationBarBoletify(
-        onTapBarItem: onTap,
-        currentIndex: _currentTabIndex,
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.orange,
-          child: Icon(Icons.photo_camera, size: 35),
-          elevation: 0.1,
-          onPressed: onPressed,
-        ),
+      bottomNavigationBar: buildBottomNavBar(onTap, _currentTabIndex),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+//        backgroundColor: Colors.white70,
+        backgroundColor: Colors.blueGrey,
+        onPressed: onPressed,
+        child:
+//        Container(
+//          margin: EdgeInsets.all(10),
+//          decoration: BoxDecoration(
+//            color: Colors.greenAccent,
+//            borderRadius: BorderRadius.all(Radius.circular(300.0)),
+//          ),
+//          child: Image.asset('assets/brand/boletify_identify_black copy.png'),
+//        ),
+//        child: Image.asset('assets/brand/boletify_identify.png')
+            const Icon(Icons.photo_camera, color: Colors.white, size: 37),
       ),
     );
   }
