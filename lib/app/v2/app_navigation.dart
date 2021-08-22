@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 import 'package:futter_project_tfg/screens/home/home_screen.dart';
-import 'package:futter_project_tfg/screens/settings/settings_screen.dart';
 
 Container buildBottomNavBar(Function(int) onTap, int currentIndex) {
   return Container(
