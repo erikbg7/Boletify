@@ -7,6 +7,9 @@ class BoletifyColors {
   static const Color textSplitter = Color(0xFF00C6FF);
   static const Color sectionSplitter = Colors.greenAccent;
 
+  static const Color skyBlue = Color(0xFF3cbbdb);
+
+  static const Color bottomNavBar = Colors.black;
 
 // Interesting colors to work with
 //  Green floating button Color(0xFF00B47B),

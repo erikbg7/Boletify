@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'package:futter_project_tfg/colors.dart';
 import 'package:futter_project_tfg/app/app_navigation.dart';
 import 'package:futter_project_tfg/screens/identify/identify_screen.dart';
 import 'package:futter_project_tfg/widgets/bottom_navigation_bar_boletify.dart';
 import 'package:futter_project_tfg/widgets/scaffold_boletify.dart';
+
 
 class LoadedApp extends StatefulWidget {
   const LoadedApp({Key? key}) : super(key: key);
@@ -34,6 +37,13 @@ class _LoadedAppState extends State<LoadedApp> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+//        statusBarColor: BoletifyColors.skyBlue,
+        systemNavigationBarColor: BoletifyColors.bottomNavBar,
+        systemNavigationBarIconBrightness: Brightness.light,
+      ),
+    );
     return ScaffoldBoletify(
       body: appPages[_currentTabIndex],
       bottomNavBar: BottomNavigationBarBoletify(
