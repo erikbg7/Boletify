@@ -9,34 +9,30 @@ import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          height: double.infinity,
-          width: double.infinity,
-          color: BoletifyColors.green900,
-          child: Stack(
-            children: [
-              DetailBackground(),
-              Align(
-                alignment: FractionalOffset(0.5, 0.07),
-                child: HomeTitle(),
-              ),
-              Align(
-                alignment: FractionalOffset(0.5, 0.29),
-                child: HomeSearchButton(),
-              ),
-              Align(
-                alignment: FractionalOffset(0.5, 0.49),
-                child: HomeIconsList(),
-              ),
-              Align(
-                alignment: FractionalOffset(0.5, 0.8),
-                child: SecurityDisclaimer(),
-              ),
-            ],
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      color: BoletifyColors.green900,
+      child: Stack(
+        children: [
+          DetailBackground(),
+          Align(
+            alignment: FractionalOffset(0.5, 0.07),
+            child: HomeTitle(),
           ),
-        ),
+          Align(
+            alignment: FractionalOffset(0.5, 0.29),
+            child: HomeSearchButton(),
+          ),
+          Align(
+            alignment: FractionalOffset(0.5, 0.49),
+            child: HomeIconsList(),
+          ),
+          Align(
+            alignment: FractionalOffset(0.5, 0.8),
+            child: SecurityDisclaimer(),
+          ),
+        ],
       ),
     );
   }
