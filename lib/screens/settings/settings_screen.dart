@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/colors.dart';
 import 'package:futter_project_tfg/config/settings_config.dart';
+import 'package:futter_project_tfg/theme.dart';
 import 'package:futter_project_tfg/utils/utils.dart';
 import 'package:futter_project_tfg/models/settings_model.dart';
+import 'package:futter_project_tfg/widgets/gradient_full_screen.dart';
 
 void handleSettingsItemTap(BuildContext context, SettingsItem item) {
   if (item.screen is Widget) {
@@ -38,7 +41,7 @@ class SettingsSplitter extends StatelessWidget {
     return Container(
         width: double.infinity,
         height: 2,
-        color: Colors.greenAccent.withOpacity(0.5),
+        color: BoletifyColors.sectionSplitter.withOpacity(0.5),
         margin: EdgeInsets.symmetric(vertical: 10));
   }
 }
@@ -47,9 +50,11 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text("Opcions"))),
+      appBar: AppBar(title: Center(child: Text("Opcions", style: TextStyle(fontSize: 22),))),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+            gradient: buildFullScreenBackground(Colors.greenAccent)),
         height: double.infinity,
         width: double.infinity,
         child: Center(
@@ -57,17 +62,17 @@ class SettingsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SettingsSplitter(),
-              Text("Dona'ns Support", style: TextStyle(fontWeight: FontWeight.bold),),
+              Text("Dona'ns Support", style: TextStyles.settingsSectionTitle),
               SettingItem(item: itemFromSettings(Settings.donate)),
               SettingItem(item: itemFromSettings(Settings.rate)),
               SettingsSplitter(),
-              Text("Informació"),
+              Text("Informació", style: TextStyles.settingsSectionTitle),
               SettingItem(item: itemFromSettings(Settings.credits)),
               SettingItem(item: itemFromSettings(Settings.privacy)),
               SettingItem(item: itemFromSettings(Settings.terms)),
               SettingItem(item: itemFromSettings(Settings.disclaimer)),
               SettingsSplitter(),
-              Text('Versió Actual'),
+              Text('Versió Actual', style: TextStyles.settingsSectionTitle),
               SettingItem(item: itemFromSettings(Settings.version)),
             ],
           ),

@@ -11,8 +11,6 @@ import 'package:futter_project_tfg/screens/detail/components/detail_background.d
 class DetailScreen extends StatelessWidget {
   final File image;
   final MushroomInfo mushroom;
-  final String notFoundMessage =
-      'No hi ha informació disponible per aquest bolet actualment';
 
   const DetailScreen({Key? key, required this.image, required this.mushroom})
       : super(key: key);
@@ -34,7 +32,7 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
             Align(
-              alignment: FractionalOffset(0.5, 0.31),
+              alignment: FractionalOffset(0.5, 0.21),
               child: DetailThumbnail(),
             ),
           ],

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/colors.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 import 'package:futter_project_tfg/utils/utils.dart';
@@ -21,7 +22,7 @@ class SearchTile extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           width: double.infinity,
-          color: Colors.black26,
+          color: BoletifyColors.green900.withOpacity(0.9),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
