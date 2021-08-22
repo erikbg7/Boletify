@@ -4,6 +4,7 @@ import 'package:futter_project_tfg/screens/detail/components/detail_background.d
 import 'package:futter_project_tfg/screens/home/components/home_icons_list.dart';
 import 'package:futter_project_tfg/screens/home/components/home_search_button.dart';
 import 'package:futter_project_tfg/screens/home/components/home_title.dart';
+import 'package:futter_project_tfg/widgets/gradient_full_screen.dart';
 import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
       child: Stack(
         children: [
           DetailBackground(),
+          GradientFullScreen(gradientColor: Colors.greenAccent),
           Align(
             alignment: FractionalOffset(0.5, 0.07),
             child: HomeTitle(),
@@ -37,40 +39,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-/////// HOME SCREEN V1
-//
-//class HomeScreen extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//    return SafeArea(
-//      child: Scaffold(
-//        body: Container(
-//          height: double.infinity,
-//          width: double.infinity,
-//          decoration: BoxDecoration(gradient: buildHomeGradient()),
-//          child: Column(
-//            mainAxisAlignment: MainAxisAlignment.center,
-//            children: [
-//              HomeTitle(),
-//              HomeSearchButton(),
-//              HomeIconsList(),
-//              HomeSecurityDisclaimer(),
-//            ],
-//          ),
-//        ),
-//      ),
-//    );
-//  }
-//}
-//
-//LinearGradient buildHomeGradient() {
-//  return LinearGradient(
-//    begin: Alignment.centerRight,
-//    end: Alignment.topLeft,
-//    colors: [Colors.greenAccent.withOpacity(0.1), Colors.transparent],
-//    stops: [0.2, 0.8],
-//  );
-//}
-

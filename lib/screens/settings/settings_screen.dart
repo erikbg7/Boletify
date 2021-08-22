@@ -51,6 +51,8 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(title: Center(child: Text("Opcions"))),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+            gradient: buildFullScreenBackground(Colors.greenAccent)),
         height: double.infinity,
         width: double.infinity,
         child: Center(
