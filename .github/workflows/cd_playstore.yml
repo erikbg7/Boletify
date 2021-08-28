@@ -13,8 +13,6 @@ jobs:
         uses: subosito/flutter-action@v1
       - name: Get packages
         run: flutter pub get
-      - name: Build runner
-        run: flutter pub run build_runner build
       - name: Generate keystore
         run: echo ${{env.KEYSTORE_JKS_B64}} | base64 -d > android/app/key.jks
       - name: Release compilation
