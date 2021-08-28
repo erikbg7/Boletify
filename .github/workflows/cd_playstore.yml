@@ -14,7 +14,9 @@ jobs:
       - name: Get packages
         run: flutter pub get
       - name: Generate keystore
-        run: echo ${{secrets.KEYSTORE_JKS_B64}} | base64 -d > android/app/key.jks
+        run: echo $KEY_JKS | base64 -d > android/app/key.jks
+        env:
+          KEY_JKS: ${{ secrets.KEYSTORE_JKS_B64 }}
       - name: Release compilation
         run: flutter build appbundle --release --build-name v1.0.2 --build-number 1
         env:
