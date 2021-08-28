@@ -18,20 +18,20 @@ jobs:
         env:
           KEY_JKS: ${{ secrets.KEYSTORE_JKS_B64 }}
       - name: Release compilation
-        run: flutter build appbundle --release --build-name v1.0.5 --build-number 5
+        run: flutter build appbundle --release --build-name v1.0.6 --build-number 6
         env:
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PATH: key.jks
-      - name: Publish Google Play (Internal)
+      - name: Publish Google Play (Closed Alpha)
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
           packageName: com.ebgapps.boletify
-          track: internal
+          track: alpha
           releaseFile: build/app/outputs/bundle/release/app-release.aab
       - name: Create new git version tag
-        run: echo "::set-env name=NEXT_GIT_TAG::'v1.0.5+5'"
+        run: echo "::set-env name=NEXT_GIT_TAG::'v1.0.6+6'"
       - name: Update git version tag
         run: git tag $NEXT_GIT_TAG
       - name: Push git tag
