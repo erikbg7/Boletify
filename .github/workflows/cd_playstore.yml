@@ -36,6 +36,6 @@ jobs:
 #      - name: Create new git version tag
 #        run: echo "::set-env name=NEXT_GIT_TAG::'v1.0.6+6'"
       - name: Update git version tag
-        run: git tag ${{ NEXT_GIT_TAG }}
+        run: git tag $NEXT_GIT_TAG
       - name: Push git tag
-        run: git push origin ${{ NEXT_GIT_TAG }}
+        run: git push origin $NEXT_GIT_TAG
