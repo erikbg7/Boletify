@@ -10,37 +10,41 @@ jobs:
       - name: Checkout the branch
         uses: actions/checkout@v2
 
-      - name: Generate new version tag
+      - name: Read last version tag
         run: |
-          # Read last version tag
           git fetch --prune --unshallow
           echo "VERSION=$(git describe --tag `git rev-list --tags --max-count=1`)" >> $GITHUB_ENV
-          echo "${{ env.VERSION }}"
 
+      - name: Set current build version
+        run: |
+          echo "BUILD_VERSION=$(echo $VERSION | cut -d'v' -f 2 | cut -d'+' -f 1)" >> $GITHUB_ENV
 
-          # Set current build version
-          echo "BUILD_VERSION=$(echo ${{ env.VERSION }} | cut -d'v' -f 2 | cut -d'+' -f 1)" >> $GITHUB_ENV
-          echo "${{ env.BUILD_VERSION }}"
-
-          # Set current major and minor version
+      - name: Set current major and minor version
+        run: |
           echo "BUILD_VERSION_MAJOR_MINOR=$(echo $BUILD_VERSION | cut -d'.' -f 1,2)" >> $GITHUB_ENV
 
-          # Set current patch version
+      - name: Set current patch version
+        run: |
           echo "BUILD_VERSION_PATCH=$(echo $BUILD_VERSION | cut -d'.' -f 3)" >> $GITHUB_ENV
 
-          # Set next patch version
+      - name: Set next patch version
+        run: |
           echo "NEXT_BUILD_VERSION_PATCH=$(echo $(($BUILD_VERSION_PATCH+1)))" >> $GITHUB_ENV
 
-          # Set next build version
+      - name: Set next build version
+        run: |
           echo "NEXT_BUILD_VERSION=$(echo $BUILD_VERSION_MAJOR_MINOR.$NEXT_BUILD_VERSION_PATCH)" >> $GITHUB_ENV
 
-          # Set current build number
+      - name: Set current build number
+        run: |
           echo "BUILD_NUMBER=$(echo $VERSION | cut -d'v' -f 2 | cut -d'+' -f 2)" >> $GITHUB_ENV
 
-          # Set next build number
+      - name: Set next build number
+        run: |
           echo "NEXT_BUILD_NUMBER=$(echo $(($BUILD_NUMBER+1)))" >> $GITHUB_ENV
 
-          # Print next build version tag
+      - name: Print next build version tag
+        run: |
           echo v$NEXT_BUILD_VERSION+$NEXT_BUILD_NUMBER
 
 #      - name: Install flutter
