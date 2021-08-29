@@ -9,32 +9,68 @@ jobs:
     steps:
       - name: Checkout the branch
         uses: actions/checkout@v2
-      - name: Install flutter
-        uses: subosito/flutter-action@v1
-      - name: Get packages
-        run: flutter pub get
-      - name: Generate keystore
-        run: echo $KEY_JKS | base64 -d > android/app/key.jks
-        env:
-          KEY_JKS: ${{ secrets.KEYSTORE_JKS_B64 }}
-      - name: Release compilation
-        run: flutter build appbundle --release --build-name v1.0.6 --build-number 6
-        env:
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PATH: key.jks
-      - name: Publish Google Play (Closed Alpha)
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-          packageName: com.ebgapps.boletify
-          track: alpha
-          releaseFile: build/app/outputs/bundle/release/app-release.aab
-      - name: Generate and update new release tag
+
+      - name: Generate new version tag
         run: |
-#         Create new git version tag
-          echo "NEXT_GIT_TAG='v1.0.6+6'" >> $GITHUB_ENV
-#         Update git version tag
-          git tag $NEXT_GIT_TAG
-#         Push git tag
-          git push origin $NEXT_GIT_TAG
+#         Read last version tag
+          git fetch --prune --unshallow
+          echo "VERSION=$(git describe --tag `git rev-list --tags --max-count=1`)" >> $GITHUB_ENV
+
+#         Set current build version
+          echo "BUILD_VERSION=$(echo $VERSION | cut -d'v' -f 2 | cut -d'+' -f 1)" >> $GITHUB_ENV
+
+#         Set current major and minor version
+          echo "BUILD_VERSION_MAJOR_MINOR=$(echo $BUILD_VERSION | cut -d'.' -f 1,2)" >> $GITHUB_ENV
+
+#         Set current patch version
+          echo "BUILD_VERSION_PATCH=$(echo $BUILD_VERSION | cut -d'.' -f 3)" >> $GITHUB_ENV
+
+#         Set next patch version
+          echo "NEXT_BUILD_VERSION_PATCH=$(echo $(($BUILD_VERSION_PATCH+1)))" >> $GITHUB_ENV
+
+#         Set next build version
+          echo "NEXT_BUILD_VERSION=$(echo $BUILD_VERSION_MAJOR_MINOR.$NEXT_BUILD_VERSION_PATCH)" >> $GITHUB_ENV
+
+#         Set current build number
+          echo "BUILD_NUMBER=$(echo $VERSION | cut -d'v' -f 2 | cut -d'+' -f 2)" >> $GITHUB_ENV
+
+#         Set next build number
+          echo "NEXT_BUILD_NUMBER=$(echo $(($BUILD_NUMBER+1)))" >> $GITHUB_ENV
+
+#         Print next build version tag
+          echo v${{ env.NEXT_BUILD_VERSION }}+${{ env.NEXT_BUILD_NUMBER }}
+
+#      - name: Install flutter
+#        uses: subosito/flutter-action@v1
+#
+#      - name: Get packages
+#        run: flutter pub get
+#
+#      - name: Generate keystore
+#        run: echo $KEY_JKS | base64 -d > android/app/key.jks
+#        env:
+#          KEY_JKS: ${{ secrets.KEYSTORE_JKS_B64 }}
+#
+#      - name: Release compilation
+#        run: flutter build appbundle --release --build-name v1.0.6 --build-number 6
+#        env:
+#          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+#          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+#          KEY_PATH: key.jks
+#
+#      - name: Publish Google Play (Closed Alpha)
+#        uses: r0adkll/upload-google-play@v1
+#        with:
+#          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+#          packageName: com.ebgapps.boletify
+#          track: alpha
+#          releaseFile: build/app/outputs/bundle/release/app-release.aab
+#
+#      - name: Generate and update new release tag
+#        run: |
+##         Create new git version tag
+#          echo "NEXT_GIT_TAG='v1.0.6+6'" >> $GITHUB_ENV
+##         Update git version tag
+#          git tag $NEXT_GIT_TAG
+##         Push git tag
+#          git push origin $NEXT_GIT_TAG
