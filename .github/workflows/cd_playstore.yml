@@ -37,7 +37,7 @@ jobs:
 
       - name: Set current build number
         run: |
-          echo "BUILD_NUMBER=$(echo $VERSION | cut -d'v' -f 2 | cut -d'+' -f 2)" >> $GITHUB_ENV
+          echo "BUILD_NUMBER=$(echo $VERSION | cut -d'v' -f 2 | cut -d'+' -f 2 | cut -d\' -f 1)" >> $GITHUB_ENV
 
       - name: Set next build number
         run: |
