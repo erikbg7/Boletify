@@ -38,7 +38,7 @@ jobs:
           echo "NEXT_BUILD_NUMBER=$(echo $(($BUILD_NUMBER+1)))" >> $GITHUB_ENV
 
           # Print next build version tag
-          echo v${{ env.NEXT_BUILD_VERSION }}+${{ env.NEXT_BUILD_NUMBER }}
+          echo v$NEXT_BUILD_VERSION+$NEXT_BUILD_NUMBER
 
 #      - name: Install flutter
 #        uses: subosito/flutter-action@v1
