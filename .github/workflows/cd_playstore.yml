@@ -15,9 +15,12 @@ jobs:
           # Read last version tag
           git fetch --prune --unshallow
           echo "VERSION=$(git describe --tag `git rev-list --tags --max-count=1`)" >> $GITHUB_ENV
+          echo "${{ env.VERSION }}"
+
 
           # Set current build version
-          echo "BUILD_VERSION=$(echo $VERSION | cut -d'v' -f 2 | cut -d'+' -f 1)" >> $GITHUB_ENV
+          echo "BUILD_VERSION=$(echo ${{ env.VERSION }} | cut -d'v' -f 2 | cut -d'+' -f 1)" >> $GITHUB_ENV
+          echo "${{ env.BUILD_VERSION }}"
 
           # Set current major and minor version
           echo "BUILD_VERSION_MAJOR_MINOR=$(echo $BUILD_VERSION | cut -d'.' -f 1,2)" >> $GITHUB_ENV
