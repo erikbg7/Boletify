@@ -1,5 +1,5 @@
 
-![Dart CI](https://github.com/erikbg7/Flutter-Project/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/erikbg7/Flutter-Project/branch/master/graph/badge.svg?token=4CSEISOEW0)](https://codecov.io/gh/erikbg7/Flutter-Project)
+[![Boletify CD - Publish Android](https://github.com/erikbg7/Flutter-Project/actions/workflows/cd_playstore.yml/badge.svg?branch=master)](https://github.com/erikbg7/Flutter-Project/actions/workflows/cd_playstore.yml) [![Boletify CI - Build](https://github.com/erikbg7/Flutter-Project/actions/workflows/ci_build.yml/badge.svg?branch=master)](https://github.com/erikbg7/Flutter-Project/actions/workflows/ci_build.yml) [![Boletify CI - Unit Tests](https://github.com/erikbg7/Flutter-Project/actions/workflows/ci_unit_tests.yml/badge.svg?branch=master)](https://github.com/erikbg7/Flutter-Project/actions/workflows/ci_unit_tests.yml) [![codecov](https://codecov.io/gh/erikbg7/Flutter-Project/branch/master/graph/badge.svg?token=4CSEISOEW0)](https://codecov.io/gh/erikbg7/Flutter-Project)
 
 
 # Boletify :evergreen_tree: :mushroom: :camera: :deciduous_tree:
