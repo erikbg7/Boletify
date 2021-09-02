@@ -59,7 +59,7 @@ jobs:
 #          KEY_JKS: ${{ secrets.KEYSTORE_JKS_B64 }}
 #
 #      - name: Release compilation
-#        run: flutter build appbundle --release --build-name v1.0.6 --build-number 6
+#        run: flutter build appbundle --release --build-name $NEXT_BUILD_VERSION --build-number $NEXT_BUILD_NUMBER
 #        env:
 #          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 #          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
@@ -73,11 +73,12 @@ jobs:
 #          track: alpha
 #          releaseFile: build/app/outputs/bundle/release/app-release.aab
 #
-#      - name: Generate and update new release tag
-#        run: |
-##         Create new git version tag
-#          echo "NEXT_GIT_TAG='v1.0.6+6'" >> $GITHUB_ENV
-##         Update git version tag
+      - name: Create new git version tag
+        run: |
+          echo "NEXT_GIT_TAG=$(echo v$NEXT_BUILD_VERSION+$NEXT_BUILD_NUMBER)" >> $GITHUB_ENV
+
+      - name: Update and push tag
+        run: |
+          echo $NEXT_GIT_TAG
 #          git tag $NEXT_GIT_TAG
-##         Push git tag
 #          git push origin $NEXT_GIT_TAG
