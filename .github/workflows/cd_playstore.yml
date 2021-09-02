@@ -1,70 +1,72 @@
 name: Boletify CD - Publish Android
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   publish-android:
-    name: Publish Android
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the branch
         uses: actions/checkout@v2
 
-      - name: Read last version tag
-        run: |
-          git fetch --prune --unshallow
-          echo "VERSION=$(git describe --tag `git rev-list --tags --max-count=1`)" >> $GITHUB_ENV
-
-      - name: Set current build version
-        run: |
-          echo "BUILD_VERSION=$(echo $VERSION | cut -d'v' -f 2 | cut -d'+' -f 1)" >> $GITHUB_ENV
-
-      - name: Set current major and minor version
-        run: |
-          echo "BUILD_VERSION_MAJOR_MINOR=$(echo $BUILD_VERSION | cut -d'.' -f 1,2)" >> $GITHUB_ENV
-
-      - name: Set current patch version
-        run: |
-          echo "BUILD_VERSION_PATCH=$(echo $BUILD_VERSION | cut -d'.' -f 3)" >> $GITHUB_ENV
-
-      - name: Set next patch version
-        run: |
-          echo "NEXT_BUILD_VERSION_PATCH=$(echo $(($BUILD_VERSION_PATCH+1)))" >> $GITHUB_ENV
-
-      - name: Set next build version
-        run: |
-          echo "NEXT_BUILD_VERSION=$(echo $BUILD_VERSION_MAJOR_MINOR.$NEXT_BUILD_VERSION_PATCH)" >> $GITHUB_ENV
-
-      - name: Set current build number
-        run: |
-          echo "BUILD_NUMBER=$(echo $VERSION | cut -d'v' -f 2 | cut -d'+' -f 2 | cut -d\' -f 1)" >> $GITHUB_ENV
-
-      - name: Set next build number
-        run: |
-          echo "NEXT_BUILD_NUMBER=$(echo $(($BUILD_NUMBER+1)))" >> $GITHUB_ENV
-
-      - name: Print next build version tag
-        run: |
-          echo v$NEXT_BUILD_VERSION+$NEXT_BUILD_NUMBER
-
-#      - name: Install flutter
-#        uses: subosito/flutter-action@v1
+#      - name: Read last version tag
+#        run: |
+#          git fetch --prune --unshallow
+#          echo "VERSION=$(git describe --tag `git rev-list --tags --max-count=1`)" >> $GITHUB_ENV
 #
-#      - name: Get packages
-#        run: flutter pub get
+#      - name: Set current build version
+#        run: |
+#          echo "BUILD_VERSION=$(echo $VERSION | cut -d'v' -f 2 | cut -d'+' -f 1)" >> $GITHUB_ENV
 #
-#      - name: Generate keystore
-#        run: echo $KEY_JKS | base64 -d > android/app/key.jks
-#        env:
-#          KEY_JKS: ${{ secrets.KEYSTORE_JKS_B64 }}
+#      - name: Set current major and minor version
+#        run: |
+#          echo "BUILD_VERSION_MAJOR_MINOR=$(echo $BUILD_VERSION | cut -d'.' -f 1,2)" >> $GITHUB_ENV
 #
-#      - name: Release compilation
-#        run: flutter build appbundle --release --build-name $NEXT_BUILD_VERSION --build-number $NEXT_BUILD_NUMBER
-#        env:
-#          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-#          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-#          KEY_PATH: key.jks
+#      - name: Set current patch version
+#        run: |
+#          echo "BUILD_VERSION_PATCH=$(echo $BUILD_VERSION | cut -d'.' -f 3)" >> $GITHUB_ENV
 #
+#      - name: Set next patch version
+#        run: |
+#          echo "NEXT_BUILD_VERSION_PATCH=$(echo $(($BUILD_VERSION_PATCH+1)))" >> $GITHUB_ENV
+#
+#      - name: Set next build version
+#        run: |
+#          echo "NEXT_BUILD_VERSION=$(echo $BUILD_VERSION_MAJOR_MINOR.$NEXT_BUILD_VERSION_PATCH)" >> $GITHUB_ENV
+#
+#      - name: Set current build number
+#        run: |
+#          echo "BUILD_NUMBER=$(echo $VERSION | cut -d'v' -f 2 | cut -d'+' -f 2 | cut -d\' -f 1)" >> $GITHUB_ENV
+#
+#      - name: Set next build number
+#        run: |
+#          echo "NEXT_BUILD_NUMBER=$(echo $(($BUILD_NUMBER+1)))" >> $GITHUB_ENV
+#
+#      - name: Print next build version tag
+#        run: |
+#          echo v$NEXT_BUILD_VERSION+$NEXT_BUILD_NUMBER
+
+      - name: Install flutter
+        uses: subosito/flutter-action@v1
+
+      - name: Get packages
+        run: flutter pub get
+
+      - name: Generate keystore
+        run: echo $KEY_JKS | base64 -d > android/app/key.jks
+        env:
+          KEY_JKS: ${{ secrets.KEYSTORE_JKS_B64 }}
+
+      - name: Release compilation
+        run: flutter build appbundle --release --build-name $NEXT_BUILD_VERSION --build-number $NEXT_BUILD_NUMBER
+        env:
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PATH: key.jks
+
 #      - name: Publish Google Play (Closed Alpha)
 #        uses: r0adkll/upload-google-play@v1
 #        with:
@@ -72,13 +74,12 @@ jobs:
 #          packageName: com.ebgapps.boletify
 #          track: alpha
 #          releaseFile: build/app/outputs/bundle/release/app-release.aab
-#
-      - name: Create new git version tag
-        run: |
-          echo "NEXT_GIT_TAG=$(echo v$NEXT_BUILD_VERSION+$NEXT_BUILD_NUMBER)" >> $GITHUB_ENV
 
-      - name: Update and push tag
-        run: |
-          echo $NEXT_GIT_TAG
+#      - name: Create new git version tag
+#        run: |
+#          echo "NEXT_GIT_TAG=$(echo v$NEXT_BUILD_VERSION+$NEXT_BUILD_NUMBER)" >> $GITHUB_ENV
+#
+#      - name: Update and push tag
+#        run: |
 #          git tag $NEXT_GIT_TAG
 #          git push origin $NEXT_GIT_TAG
