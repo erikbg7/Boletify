@@ -21,10 +21,16 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def isRelease = project.gradle.startParameter.taskNames.any { it.toLowerCase().contains('release') }
 def keystoreProperties = new Properties()
 def keystorePropertiesFile = rootProject.file('key.properties')
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+} else if (isRelease) {
+    keystoreProperties.setProperty('storePassword', System.getenv('KEY_PASSWORD'))
+    keystoreProperties.setProperty('keyPassword', System.getenv('KEY_PASSWORD'))
+    keystoreProperties.setProperty('keyAlias', System.getenv('KEY_ALIAS'))
+    keystoreProperties.setProperty('storeFile', System.getenv('KEY_PATH'))
 }
 
 keystoreProperties.setProperty('storePassword', System.getenv('KEY_PASSWORD'))
