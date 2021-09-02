@@ -33,11 +33,6 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.setProperty('storeFile', System.getenv('KEY_PATH'))
 }
 
-keystoreProperties.setProperty('storePassword', System.getenv('KEY_PASSWORD'))
-keystoreProperties.setProperty('keyPassword', System.getenv('KEY_PASSWORD'))
-keystoreProperties.setProperty('keyAlias', System.getenv('KEY_ALIAS'))
-keystoreProperties.setProperty('storeFile', System.getenv('KEY_PATH'))
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"

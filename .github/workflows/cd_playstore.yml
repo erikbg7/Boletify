@@ -1,9 +1,6 @@
 name: Boletify CD - Publish Android
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   publish-android:
