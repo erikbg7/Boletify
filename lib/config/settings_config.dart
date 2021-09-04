@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/settings_model.dart';
-import 'package:futter_project_tfg/screens/icons/icons_screen.dart';
+import 'package:futter_project_tfg/screens/buttons/fetch_buttons_screen.dart';
 import 'package:futter_project_tfg/screens/settings/credits/credits_screen.dart';
 import 'package:futter_project_tfg/screens/settings/privacy/privacy_screen.dart';
 
@@ -41,7 +41,7 @@ final SettingsItem disclaimerSetting = SettingsItem(
 final SettingsItem versionSetting = SettingsItem(
   icon: Icons.phone_android,
   text: "v0.0.0 (Beta)",
-  screen: IconsScreen(),
+  screen: FetchButtonsScreen(),
 );
 
 SettingsItem itemFromSettings(Settings setting) {
