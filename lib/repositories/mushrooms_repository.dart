@@ -15,10 +15,10 @@ class MushroomsRepository {
     print('Mushroom List:  $list');
 
     //TODO: if we cannot get list from Firebase, we will use the backup one
-    var ref = _db.collection("boletus");
-    final QuerySnapshot activities = await ref.get();
+    CollectionReference<Map<String, dynamic>> ref = _db.collection("boletus");
+    final QuerySnapshot<Map<String, dynamic>> activities = await ref.get();
     return activities.docs
-        .map((doc) => MushroomInfo.fromFirestore(doc))
+        .map((doc) => MushroomInfo.fromFirestore(doc.data()))
         .toList();
   }
 

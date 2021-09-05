@@ -13,22 +13,24 @@ testMockedMushroomList() {
   expect(list.length, 15);
 }
 
+testMushroomsFromFirestore() {
+  final MushroomInfo mushroom = getMushroomsListMock()[0];
+  final firestoreMushroom = MushroomInfo.fromFirestore(mushroom.toJson());
+  expect(firestoreMushroom.name == mushroom.name, true);
+  expect(firestoreMushroom.scientificName == mushroom.scientificName, true);
+  expect(firestoreMushroom.commonNames == mushroom.commonNames, true);
+  expect(firestoreMushroom.cap == mushroom.cap, true);
+  expect(firestoreMushroom.gills == mushroom.gills, true);
+  expect(firestoreMushroom.stalk == mushroom.stalk, true);
+  expect(firestoreMushroom.flesh == mushroom.flesh, true);
+  expect(firestoreMushroom.habitat == mushroom.habitat, true);
+  expect(firestoreMushroom.observations == mushroom.observations, true);
+}
+
 testMushroomDescriptionFromToJSON() {
-  final MushroomInfo mushroom = MushroomInfo(
-      name: 'name',
-      scientificName: 'scientificName',
-      commonNames: 'commonNames',
-      tags: [],
-      cap: 'cap',
-      gills: 'gills',
-      stalk: 'stalk',
-      flesh: 'flesh',
-      habitat: 'habitat',
-      observations: 'observations');
-
+  final MushroomInfo mushroom = getMushroomsListMock()[0];
   final MushroomInfo deserializedMushroom =
-  MushroomInfo.fromJson(mushroom.toJson());
-
+      MushroomInfo.fromJson(mushroom.toJson());
   expect(deserializedMushroom.name == mushroom.name, true);
   expect(deserializedMushroom.scientificName == mushroom.scientificName, true);
   expect(deserializedMushroom.commonNames == mushroom.commonNames, true);
@@ -38,11 +40,11 @@ testMushroomDescriptionFromToJSON() {
   expect(deserializedMushroom.flesh == mushroom.flesh, true);
   expect(deserializedMushroom.habitat == mushroom.habitat, true);
   expect(deserializedMushroom.observations == mushroom.observations, true);
-
 }
 
 void main() {
   test('MushroomInfo model has mocked list', testMockedMushroomList);
   test('Tags to JSON and from JSON', testTagsFromAndToJSON);
   test('MushroomDescription from/to JSON', testMushroomDescriptionFromToJSON);
+  test('Mushroom info from Firestore', testMushroomsFromFirestore);
 }

@@ -13,19 +13,37 @@ class MushroomInfo {
   final String habitat;
   final String observations;
 
-  MushroomInfo(
-      {required this.name,
-      required this.scientificName,
-      this.commonNames,
-      required this.tags,
-      required this.cap,
-      required this.gills,
-      required this.stalk,
-      required this.flesh,
-      required this.habitat,
-      required this.observations});
+  MushroomInfo({
+    required this.name,
+    required this.scientificName,
+    this.commonNames,
+    required this.tags,
+    required this.cap,
+    required this.gills,
+    required this.stalk,
+    required this.flesh,
+    required this.habitat,
+    required this.observations,
+  });
 
-  factory MushroomInfo.fromFirestore(DocumentSnapshot doc) {
+  MushroomInfo copyWith({
+    String? name,
+    String? scientificName,
+    List<Tag>? tags,
+  }) {
+    return MushroomInfo(
+        name: name ?? this.name,
+        scientificName: scientificName ?? this.scientificName,
+        tags: tags ?? this.tags,
+        cap: this.cap,
+        gills: this.gills,
+        stalk: this.stalk,
+        flesh: this.flesh,
+        habitat: this.habitat,
+        observations: this.observations);
+  }
+
+  factory MushroomInfo.fromFirestore(Map<String, dynamic> doc) {
     return MushroomInfo(
         name: doc['name'],
         scientificName: doc['scientificName'],
