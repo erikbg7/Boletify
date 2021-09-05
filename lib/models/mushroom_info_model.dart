@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
 
 class MushroomInfo {
