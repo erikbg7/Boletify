@@ -6,7 +6,7 @@ class FetchButtonsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Icons")),
+      appBar: AppBar(title: Text("Fetch Buttons")),
       body: BlocProvider(
         create: (BuildContext context) => MushroomsBloc(),
         child: FetchButtons(),
