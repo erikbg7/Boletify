@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
 
-class MushroomInfo {
+class MushroomInfo extends Equatable {
   final String name;
   final String scientificName;
   final String? commonNames;
@@ -24,6 +25,19 @@ class MushroomInfo {
     required this.habitat,
     required this.observations,
   });
+
+  @override
+  List<Object> get props => [
+        name,
+        scientificName,
+        tags,
+        cap,
+        gills,
+        stalk,
+        flesh,
+        habitat,
+        observations
+      ];
 
   MushroomInfo copyWith({
     String? name,
