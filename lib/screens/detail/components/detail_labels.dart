@@ -23,7 +23,6 @@ class DetailLabels extends StatelessWidget {
       final unknownLabel = infoFromTag(Tag.unknown);
       return CustomIcon(
         image: unknownLabel.imageUrl,
-        tooltip: unknownLabel.tooltip,
         size: size,
       );
     }
@@ -34,7 +33,6 @@ class DetailLabels extends StatelessWidget {
       TagInfo tagInfo = infoFromTag(tag);
       tagsList.add(CustomIcon(
         image: tagInfo.imageUrl,
-        tooltip: tagInfo.tooltip,
         size: small ? 15 : size,
       ));
     });
