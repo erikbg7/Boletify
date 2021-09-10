@@ -6,7 +6,7 @@ import 'package:futter_project_tfg/widgets/custom_icon.dart';
 
 import 'utils/index.dart';
 
-Future testDetailLabelsWidget(WidgetTester tester) async {
+Future testDefaultTagsWidget(WidgetTester tester) async {
   final widget = Scaffold(body: DetailLabels(tags: [Tag.winter, Tag.summer]));
   await tester.pumpWidget(buildTestableWidget(widget));
 
@@ -14,6 +14,14 @@ Future testDetailLabelsWidget(WidgetTester tester) async {
   expect(find.byType(CustomIcon), findsNWidgets(2));
 }
 
+Future testNoTagsWidget(WidgetTester tester) async {
+  final widget = Scaffold(body: DetailLabels(tags: []));
+  await tester.pumpWidget(buildTestableWidget(widget));
+
+  expect(find.byType(CustomIcon), findsNWidgets(1));
+}
+
 void main() {
-  testWidgets('DetailLabels widget', testDetailLabelsWidget);
+  testWidgets('DetailLabels widget', testDefaultTagsWidget);
+  testWidgets('DetailLabels widget, without tags', testNoTagsWidget);
 }
