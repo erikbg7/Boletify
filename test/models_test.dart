@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
+import 'package:futter_project_tfg/models/classifier_output_model.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
 
@@ -8,41 +11,43 @@ testTagsFromAndToJSON() {
   tags.forEach((tag) => expect(deserializedTags.contains(tag), true));
 }
 
+testOutputFromTFLite() {
+  final double confidence = 0.9;
+  final String label = labelsMap.keys.first;
+  final File image = new File('imageurl');
+
+  Map<String, dynamic> tfresult = {'confidence': confidence, 'label': label};
+  List<dynamic> data = [tfresult].toList();
+
+  ClassifierOutput output = ClassifierOutput.fromTFLite(data, image);
+
+  expect(output.confidence == confidence, true);
+  expect(output.label == labelsMap[label], true);
+  expect(output.image == image, true);
+}
+
 testMockedMushroomList() {
   var list = getMushroomsListMock();
   expect(list.length, 15);
 }
 
+testMushroomsFromFirestore() {
+  final MushroomInfo mushroom = getMushroomsListMock()[0];
+  final firestoreMushroom = MushroomInfo.fromFirestore(mushroom.toJson());
+  expect(firestoreMushroom == mushroom, true);
+}
+
 testMushroomDescriptionFromToJSON() {
-  final MushroomInfo mushroom = MushroomInfo(
-      name: 'name',
-      scientificName: 'scientificName',
-      commonNames: 'commonNames',
-      tags: [],
-      cap: 'cap',
-      gills: 'gills',
-      stalk: 'stalk',
-      flesh: 'flesh',
-      habitat: 'habitat',
-      observations: 'observations');
-
+  final MushroomInfo mushroom = getMushroomsListMock()[0];
   final MushroomInfo deserializedMushroom =
-  MushroomInfo.fromJson(mushroom.toJson());
-
-  expect(deserializedMushroom.name == mushroom.name, true);
-  expect(deserializedMushroom.scientificName == mushroom.scientificName, true);
-  expect(deserializedMushroom.commonNames == mushroom.commonNames, true);
-  expect(deserializedMushroom.cap == mushroom.cap, true);
-  expect(deserializedMushroom.gills == mushroom.gills, true);
-  expect(deserializedMushroom.stalk == mushroom.stalk, true);
-  expect(deserializedMushroom.flesh == mushroom.flesh, true);
-  expect(deserializedMushroom.habitat == mushroom.habitat, true);
-  expect(deserializedMushroom.observations == mushroom.observations, true);
-
+      MushroomInfo.fromJson(mushroom.toJson());
+  expect(deserializedMushroom == mushroom, true);
 }
 
 void main() {
   test('MushroomInfo model has mocked list', testMockedMushroomList);
   test('Tags to JSON and from JSON', testTagsFromAndToJSON);
+  test('ClassifierOutput from TFLite', testOutputFromTFLite);
   test('MushroomDescription from/to JSON', testMushroomDescriptionFromToJSON);
+  test('Mushroom info from Firestore', testMushroomsFromFirestore);
 }

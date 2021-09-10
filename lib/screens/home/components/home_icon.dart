@@ -16,29 +16,16 @@ class HomeIcon extends StatelessWidget {
     final List<MushroomInfo> mushroomList = getMushroomsListMock();
 
     final String image = tagInfo.imageUrl;
-    final String tooltip = tagInfo.tooltip;
     final String text = tagInfo.label;
 
     return InkWell(
+      key: new Key('NavigateSearchScreen'),
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute<void>(builder: (BuildContext context) {
+          MaterialPageRoute(builder: (BuildContext context) {
             return Scaffold(
-              appBar: AppBar(
-                title: Text('Búsqueda'),
-//                actions: [
-//                  Padding(
-//                      padding: EdgeInsets.only(right: 20.0),
-//                      child: GestureDetector(
-//                        onTap: () {},
-//                        child: Icon(
-//                          Icons.filter_list,
-//                          size: 26.0,
-//                        ),
-//                      )),
-//                ],
-              ),
+              appBar: AppBar(title: Text('Búsqueda')),
               body: SearchScreen(filter: [tag], mushroomsList: mushroomList),
             );
           }),
@@ -54,7 +41,7 @@ class HomeIcon extends StatelessWidget {
             padding: EdgeInsets.all(10),
             height: MediaQuery.of(context).size.height * 0.15,
             width: MediaQuery.of(context).size.height * 0.15,
-            child: CustomIcon(image: image, tooltip: tooltip, size: 10),
+            child: CustomIcon(image: image, size: 10),
           ),
           Text(text, style: TextStyle(height: 1.5))
         ],

@@ -1,7 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equatable/equatable.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
 
-class MushroomInfo {
+class MushroomInfo extends Equatable {
   final String name;
   final String scientificName;
   final String? commonNames;
@@ -13,19 +13,50 @@ class MushroomInfo {
   final String habitat;
   final String observations;
 
-  MushroomInfo(
-      {required this.name,
-      required this.scientificName,
-      this.commonNames,
-      required this.tags,
-      required this.cap,
-      required this.gills,
-      required this.stalk,
-      required this.flesh,
-      required this.habitat,
-      required this.observations});
+  MushroomInfo({
+    required this.name,
+    required this.scientificName,
+    this.commonNames,
+    required this.tags,
+    required this.cap,
+    required this.gills,
+    required this.stalk,
+    required this.flesh,
+    required this.habitat,
+    required this.observations,
+  });
 
-  factory MushroomInfo.fromFirestore(DocumentSnapshot doc) {
+  @override
+  List<Object> get props => [
+        name,
+        scientificName,
+        tags,
+        cap,
+        gills,
+        stalk,
+        flesh,
+        habitat,
+        observations
+      ];
+
+  MushroomInfo copyWith({
+    String? name,
+    String? scientificName,
+    List<Tag>? tags,
+  }) {
+    return MushroomInfo(
+        name: name ?? this.name,
+        scientificName: scientificName ?? this.scientificName,
+        tags: tags ?? this.tags,
+        cap: this.cap,
+        gills: this.gills,
+        stalk: this.stalk,
+        flesh: this.flesh,
+        habitat: this.habitat,
+        observations: this.observations);
+  }
+
+  factory MushroomInfo.fromFirestore(Map<String, dynamic> doc) {
     return MushroomInfo(
         name: doc['name'],
         scientificName: doc['scientificName'],

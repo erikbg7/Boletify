@@ -4,13 +4,13 @@ enum Tag { spring, summer, autumn, winter, edible, toxic, unknown }
 class TagInfo {
   final String imageUrl;
   final String label;
-  final String tooltip;
+  final String description;
   final Tag tag;
 
   TagInfo({
     required this.imageUrl,
     required this.label,
-    required this.tooltip,
+    required this.description,
     required this.tag,
   });
 }
