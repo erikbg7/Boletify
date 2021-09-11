@@ -12,17 +12,17 @@ class CreditsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Divider(),
-            Text('Developer: Erik Blanca Gomez'),
+            const Text('Developer: Erik Blanca Gomez'),
             const Divider(),
-            Text('Email: erik.bg7@gmail.com'),
+            const Text('Email: erik.bg7@gmail.com'),
             const Divider(),
-            Text('Github: www.github.com/erikbg7'),
+            const Text('Github: www.github.com/erikbg7'),
             const Divider(),
-            Text('Check the source code:'),
+            const Text('Check the source code:'),
             InkWell(
               onTap: () =>
                   launchUrl('https://github.com/erikbg7/Flutter-Project'),
-              child: Text(
+              child: const Text(
                 'wwww.github.com/erikbg7/Flutter-Project',
                 style: TextStyle(color: Colors.blue),
               ),
@@ -34,3 +34,4 @@ class CreditsScreen extends StatelessWidget {
     );
   }
 }
+

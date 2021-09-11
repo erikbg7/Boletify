@@ -10,6 +10,9 @@ void handleSettingsItemTap(BuildContext context, SettingsItem item) {
   if (item.screen is Widget) {
     redirectTo(context: context, screen: item.screen);
   }
+  if (item.redirectUrl is String) {
+    launchUrl(item.redirectUrl);
+  }
 }
 
 class SettingItem extends StatelessWidget {

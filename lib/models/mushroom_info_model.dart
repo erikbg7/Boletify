@@ -118,7 +118,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: 'Ou de reig',
     scientificName: 'Amanita Caesarea',
     commonNames: '',
-    tags: [Tag.spring, Tag.summer, Tag.autumn],
+    tags: [Tag.spring, Tag.summer, Tag.autumn, Tag.edible],
     cap:
         "Pot arribar a medir 20 centímetres, al principi és hemisfèric, i després es desplega; té el marge estriat i la cutícula taronja. Pot presentar restes de la volva membranosa, com escates o àmplies plaques.",
     gills:
@@ -135,7 +135,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Peu de rata bord",
     scientificName: "Ramaria formosa",
     commonNames: "",
-    tags: [Tag.summer, Tag.autumn],
+    tags: [Tag.summer, Tag.autumn, Tag.toxic],
     cap:
         "Té forma de corall. Creix fins arribar als 20 x 25 centímetres, amb ramificacions nombroses, apretades, de color rosa salmó i les puntes acabades en U de color groc llimona. El tronc és robust del mateix color que les rames amb la base blanquinosa.",
     gills: "",
@@ -165,7 +165,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Murgula",
     scientificName: "Morchella elata",
     commonNames: "Arigany",
-    tags: [Tag.spring],
+    tags: [Tag.spring, Tag.edible],
     cap:
         "Arriba a medir els 12 centímetres d’altura i es cònica; les costelles es presenten alineades, unides entre si per anastomosis, formant alvèols irregulars, de color molt variable, des d’un color mel o bru a tota la gama de grisos, amb tons violacis i costelles que ennegreixen amb la maduresa; val·lècula és ampla i poc profunda, amb superfície himenial interna coberta d’escates.",
     gills: "",
@@ -182,7 +182,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Apagallum",
     scientificName: "Macrolepiota procera",
     commonNames: "Cogomella",
-    tags: [Tag.summer, Tag.autumn],
+    tags: [Tag.summer, Tag.autumn, Tag.edible],
     cap:
         "Pot arribar a medir 30 centímetres. La superfície esta decorada amb escates marrons disposades en ziga-zaga sobre un fons color crema, anell membranós, doble, amb marges amb forma d’ona, doble, relliscant al llarg del peu.",
     gills: "Les làmines son lliures, amples i apretades, de color crema.",
@@ -198,7 +198,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Murgula borda",
     scientificName: "Gyromitra esculenta",
     commonNames: "Bolet de greix",
-    tags: [Tag.spring],
+    tags: [Tag.spring, Tag.toxic],
     cap:
         "Arriba a mesurar fins a 6 centímetres d’altura, buida, amb plecs sinuosos amb un aspecte similar a un cervell; la superfície de l’himeni pot ser des d’un color marró a un color bru rogenc, llis brillant i amb el marge enrollat.",
     gills: "",
@@ -215,7 +215,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Bolet de tinta",
     scientificName: "Coprinus comatus",
     commonNames: "",
-    tags: [Tag.summer, Tag.autumn],
+    tags: [Tag.summer, Tag.autumn, Tag.edible],
     cap:
         "Té forma parabòl·lica de 5 a 15 centímetres d’alt; la cutícula és de color blanc i sembla que estigui coberta per barbes o volants. Té un disc central llis, més fosc, i amb el desenvolupament del marge agafa un color rosat i posteriorment es liqua en un líquid negre.",
     gills:
@@ -233,7 +233,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Moixernó blanc",
     scientificName: "Clitopilus prunulus",
     commonNames: "",
-    tags: [Tag.summer, Tag.autumn],
+    tags: [Tag.summer, Tag.autumn, Tag.edible],
     cap:
         "De 3 a 10 centímetres, de consistència molt fràgil; amb forma convexa a l’inici, però que després passa a tenir una forma deprimida o lleugerament amb forma d’embut, amb el marge enrollat. Presenta una cutícula seca, llisa, brillant, blanquinosa i pruïnosa.",
     gills:
@@ -249,7 +249,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Rossinyol",
     scientificName: "Cantharellus cibarius",
     commonNames: "Vaqueta, Agerola",
-    tags: [Tag.spring, Tag.summer, Tag.autumn],
+    tags: [Tag.spring, Tag.summer, Tag.autumn, Tag.edible],
     cap:
         "Medeix entre 3 i 10 centímetres de diàmetre; al principi de forma convexa, després es torna extens i fins i tot deprimit en forma d’embut; la cutícula és llisa de color groc d’ou uniforme, amb el marge sinuós i lleument enrollat.",
     gills:
@@ -267,7 +267,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Mataparent",
     scientificName: " Boletus satanas",
     commonNames: "Matagent",
-    tags: [Tag.summer, Tag.autumn],
+    tags: [Tag.summer, Tag.autumn, Tag.toxic],
     cap:
         "És d’un color blanc brut. Arriba a mesurar els 30 centímetres i pot variar de forma des d’hemisfèric a pla-convex. També acostuma a tenir plecs i un marge que desborda el peu.",
     gills: "Els tubs són lliures, grocs i amb porus roigs (l’esponja).",
@@ -283,7 +283,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Cep",
     scientificName: "Boletus edulis",
     commonNames: "Sureny",
-    tags: [Tag.summer, Tag.autumn],
+    tags: [Tag.summer, Tag.autumn, Tag.edible],
     cap:
         "Arriba a mesurar entre 19 i 30 centímetres. És de color beix torrat o blanc, amb cutícula brillant.",
     gills: "Té tubs i porus blancs de jove i groc-verdosos a la seva maduresa.",
@@ -299,7 +299,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Pixacà",
     scientificName: "Amanita pantherina",
     commonNames: "Pigat bord",
-    tags: [Tag.autumn],
+    tags: [Tag.autumn, Tag.toxic],
     cap:
         "El seu tamany oscil·la, segons l’edat, entre els 4 i els 10 centímetres; d’aspecte globós que oscil·larà cap a un pla convex. La cutícula és de color marró, bru i presenta berrugues semblants al cotó (restes del vel) regulars d’un color blanc pur, amb el marge clarament acanalat en els exemplars més adults.",
     gills:
@@ -316,7 +316,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: 'Trompeta de la mort',
     scientificName: 'Craterellus Cornucopioides',
     commonNames: 'Rossinyol negre',
-    tags: [Tag.summer, Tag.autumn],
+    tags: [Tag.summer, Tag.autumn, Tag.edible],
     cap:
         'De 3 a 8cm, con forma de trompeta, hueco en la base, color negro o mate, fibrilloso y con pequeñas escamas tambien oscuras, margen enrollado, ondulado irregular.',
     gills: "Està format per plecs de color gris cendra a gris blavós.",
@@ -333,7 +333,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Camagroc",
     scientificName: "Craterellus Lutescens",
     commonNames: "Rossinyolic, trompea groga",
-    tags: [Tag.summer, Tag.autumn, Tag.winter],
+    tags: [Tag.summer, Tag.autumn, Tag.winter, Tag.edible],
     cap:
         "De 2 a 6cm, en forma d'embut, lobulat, marró-negrós sobre un fons groc ataronjat, fibrillós i amb petites escates, marge ondulat.",
     gills:
@@ -350,7 +350,7 @@ const List<MushroomInfo> mushroomsListMock = [
     name: "Pinatell",
     scientificName: "Lacttarius Deliciosus",
     commonNames: "Rovelló",
-    tags: [Tag.autumn, Tag.winter],
+    tags: [Tag.autumn, Tag.winter, Tag.edible],
     cap:
         "D'entre 6 i 12 cm, es convex i després extens i deprimir. De color roig-ataronjat, la cutícula es aterciopelada.",
     gills:
