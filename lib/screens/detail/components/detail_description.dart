@@ -18,27 +18,35 @@ class DetailDescription extends StatelessWidget {
         children: mushroom.name.isEmpty
             ? [Center(child: Text('not found'))]
             : [
-                ...buildSection('BARRET', mushroom.cap),
-                ...buildSection('HIMENI', mushroom.gills),
-                ...buildSection('PEU', mushroom.stalk),
-                ...buildSection('CARN', mushroom.flesh),
-                ...buildSection('HABITAT', mushroom.habitat),
-                ...buildSection('OBSERVACIONS', mushroom.observations),
+                DescriptionSection(title: 'BARRET', text: mushroom.cap),
+                DescriptionSection(title: 'HIMENI', text: mushroom.gills),
+                DescriptionSection(title: 'PEU', text: mushroom.stalk),
+                DescriptionSection(title: 'CARN', text: mushroom.flesh),
+                DescriptionSection(title: 'HABITAT', text: mushroom.habitat),
+                DescriptionSection(
+                    title: 'OBSERVACIONS', text: mushroom.observations),
               ],
       ),
     );
   }
+}
 
-  List<Widget> buildSection(String title, String text) {
-    if (text.isNotEmpty) {
-      return [
-        SizedBox(height: 10),
-        Text(title, style: TextStyles.detailSectionTitle),
-        DividerTextShort(top: 2, bottom: 10),
-        Text(text, style: TextStyles.detailSectionText)
-      ];
-    } else {
-      return [];
-    }
+class DescriptionSection extends StatelessWidget {
+  final String title;
+  final String text;
+
+  const DescriptionSection({Key? key, required this.title, required this.text})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return text.isNotEmpty
+        ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            const SizedBox(height: 10),
+            Text(title, style: TextStyles.detailSectionTitle),
+            const DividerTextShort(top: 2, bottom: 10),
+            Text(text, style: TextStyles.detailSectionText)
+          ])
+        : const SizedBox();
   }
 }
