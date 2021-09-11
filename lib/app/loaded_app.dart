@@ -45,7 +45,7 @@ class _LoadedAppState extends State<LoadedApp> {
         onTapBarItem: onTap,
         currentIndex: _currentTabIndex,
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.orangeAccent,
           child: Icon(Icons.photo_camera, size: 35),
           elevation: 0.1,
           onPressed: onPressed,

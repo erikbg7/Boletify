@@ -8,7 +8,7 @@ class DetailBackground extends StatelessWidget {
 
     return Container(
       width: size.width,
-      height: size.height * 0.38,
+      height: size.height * 0.35,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/backgrounds/forest.jpeg'),
