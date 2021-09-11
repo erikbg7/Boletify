@@ -11,13 +11,13 @@ class CreditsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Divider(),
+            const Divider(),
             Text('Developer: Erik Blanca Gomez'),
-            Divider(),
+            const Divider(),
             Text('Email: erik.bg7@gmail.com'),
-            Divider(),
+            const Divider(),
             Text('Github: www.github.com/erikbg7'),
-            Divider(),
+            const Divider(),
             Text('Check the source code:'),
             InkWell(
               onTap: () =>
@@ -27,7 +27,7 @@ class CreditsScreen extends StatelessWidget {
                 style: TextStyle(color: Colors.blue),
               ),
             ),
-            Divider(),
+            const Divider(),
           ],
         ),
       ),

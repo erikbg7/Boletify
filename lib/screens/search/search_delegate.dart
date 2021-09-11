@@ -38,7 +38,7 @@ class MushroomSearchDelegate extends SearchDelegate<MushroomInfo> {
   @override
   PreferredSizeWidget buildBottom(BuildContext context) {
     return PreferredSize(
-        child: SizedBox(),
+        child: const SizedBox(),
         preferredSize: Size.fromHeight(10));
   }
 

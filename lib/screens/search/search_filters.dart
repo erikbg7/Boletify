@@ -7,7 +7,7 @@ class SearchFilters extends StatelessWidget {
   final List<Tag> activeFilter;
   static List<TagInfo> list = allTagsInfo.where(isNotUnknownTag).toList();
 
-  SearchFilters({Key? key, required this.activeFilter}) : super(key: key);
+  const SearchFilters({Key? key, required this.activeFilter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
