@@ -9,7 +9,7 @@ class MushroomsRepository {
   Future<List<MushroomInfo>> _fetchLists() async {
     final FileManager fileManager = FileManager();
     await fileManager.initializeFileManager();
-    fileManager.setMushroomsBackupList(getMushroomsListMock());
+    fileManager.setMushroomsBackupList(mushroomsListMock);
     final List<MushroomInfo> list = await fileManager.getMushroomsBackupList();
 
     print('Mushroom List:  $list');

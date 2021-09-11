@@ -27,18 +27,17 @@ testOutputFromTFLite() {
 }
 
 testMockedMushroomList() {
-  var list = getMushroomsListMock();
-  expect(list.length, 15);
+  expect(mushroomsListMock.length, 15);
 }
 
 testMushroomsFromFirestore() {
-  final MushroomInfo mushroom = getMushroomsListMock()[0];
+  final MushroomInfo mushroom = mushroomsListMock[0];
   final firestoreMushroom = MushroomInfo.fromFirestore(mushroom.toJson());
   expect(firestoreMushroom == mushroom, true);
 }
 
 testMushroomDescriptionFromToJSON() {
-  final MushroomInfo mushroom = getMushroomsListMock()[0];
+  final MushroomInfo mushroom = mushroomsListMock[0];
   final MushroomInfo deserializedMushroom =
       MushroomInfo.fromJson(mushroom.toJson());
   expect(deserializedMushroom == mushroom, true);

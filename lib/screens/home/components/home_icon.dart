@@ -13,7 +13,6 @@ class HomeIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TagInfo tagInfo = infoFromTag(tag);
-    final List<MushroomInfo> mushroomList = getMushroomsListMock();
 
     final String image = tagInfo.imageUrl;
     final String text = tagInfo.label;
@@ -26,7 +25,7 @@ class HomeIcon extends StatelessWidget {
           MaterialPageRoute(builder: (BuildContext context) {
             return Scaffold(
               appBar: AppBar(title: Text('Búsqueda')),
-              body: SearchScreen(filter: [tag], mushroomsList: mushroomList),
+              body: SearchScreen(filter: [tag], mushroomsList: mushroomsListMock),
             );
           }),
         );

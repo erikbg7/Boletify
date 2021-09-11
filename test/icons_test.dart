@@ -13,7 +13,7 @@ Future testDetailsScreen(WidgetTester tester) async {
   final screen = Scaffold(
     body: DetailScreen(
       image: new File(''),
-      mushroom: getMushroomsListMock()[0],
+      mushroom: mushroomsListMock[0],
     ),
   );
   await tester.pumpWidget(buildTestableWidget(screen));

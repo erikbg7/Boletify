@@ -33,7 +33,7 @@ void main() {
     'Displays Search Delegate screen without any items',
     (WidgetTester tester) async {
       SearchDelegate delegate =
-          MushroomSearchDelegate(mushrooms: getMushroomsListMock());
+          MushroomSearchDelegate(mushrooms: mushroomsListMock);
       final screen = Scaffold(body: SearchDelegateTester(delegate: delegate));
 
       await tester.pumpWidget(buildTestableWidget(screen));

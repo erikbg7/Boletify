@@ -14,7 +14,7 @@ class HomeSearchButton extends StatelessWidget {
         onPressed: () async {
           await showSearch<MushroomInfo>(
             context: context,
-            delegate: MushroomSearchDelegate(mushrooms: getMushroomsListMock()),
+            delegate: MushroomSearchDelegate(mushrooms: mushroomsListMock),
           );
         },
         style: ButtonStyle(

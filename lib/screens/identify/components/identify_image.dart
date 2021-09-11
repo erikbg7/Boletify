@@ -36,8 +36,7 @@ class IdentifyImage extends StatelessWidget {
   }
 
   void _navigateTo(BuildContext context) {
-    final List<MushroomInfo> list = getMushroomsListMock();
-    final MushroomInfo selected = list.firstWhere(
+    final MushroomInfo selected = mushroomsListMock.firstWhere(
         (element) => element.name == 'Murgula',
         orElse: () => MushroomInfo.buildEmpty());
 
