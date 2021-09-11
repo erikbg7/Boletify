@@ -72,7 +72,6 @@ class SettingsScreen extends StatelessWidget {
               Text("Informació", style: TextStyles.settingsSectionTitle),
               SettingItem(item: itemFromSettings(Settings.credits)),
               SettingItem(item: itemFromSettings(Settings.privacy)),
-              SettingItem(item: itemFromSettings(Settings.terms)),
               SettingItem(item: itemFromSettings(Settings.disclaimer)),
               SettingsSplitter(),
               Text('Versió Actual', style: TextStyles.settingsSectionTitle),

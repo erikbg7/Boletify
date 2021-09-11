@@ -28,16 +28,10 @@ final SettingsItem privacySetting = SettingsItem(
   screen: PrivacyScreen(),
 );
 
-final SettingsItem termsSetting = SettingsItem(
-  icon: Icons.my_library_books,
-  text: "Termes d'us i legals",
-  screen: CreditsScreen(),
-);
-
 final SettingsItem disclaimerSetting = SettingsItem(
-  icon: Icons.warning,
+  icon: Icons.my_library_books,
   text: "Renuncia de responsabilitat",
-  screen: CreditsScreen(),
+  screen: DisclaimerScreen(),
 );
 
 final SettingsItem versionSetting = SettingsItem(
