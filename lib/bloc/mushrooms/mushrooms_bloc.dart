@@ -1,24 +1,12 @@
-import 'dart:io';
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:futter_project_tfg/models/classifier_output_model.dart';
 import 'package:futter_project_tfg/models/mushroom_info_model.dart';
 import 'package:futter_project_tfg/repositories/mushrooms_repository.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:tflite/tflite.dart';
 
-// EVENTS
-
+// ----------------- EVENTS ----------------- //
 abstract class MushroomsEvent extends Equatable {
   const MushroomsEvent();
-}
-
-class ClassifyMushroom extends MushroomsEvent {
-  final ImageSource source;
-  const ClassifyMushroom(this.source);
-  @override
-  List<Object> get props => [];
 }
 
 class GetAllMushrooms extends MushroomsEvent {
@@ -34,8 +22,7 @@ class FindMushroomById extends MushroomsEvent {
   List<Object> get props => [mushroomId];
 }
 
-// STATES
-
+// ----------------- STATES ----------------- //
 abstract class MushroomsState extends Equatable {
   const MushroomsState();
 }
@@ -44,13 +31,6 @@ class MushroomsInitial extends MushroomsState {
   const MushroomsInitial();
   @override
   List<Object> get props => [];
-}
-
-class MushroomClassified extends MushroomsState {
-  final ClassifierOutput output;
-  const MushroomClassified(this.output);
-  @override
-  List<Object> get props => [output];
 }
 
 class MushroomsLoading extends MushroomsState {
@@ -80,66 +60,32 @@ class MushroomFound extends MushroomsState {
   List<Object> get props => [mushroom];
 }
 
-// BLOC MANAGEMENT
-
+// ------------------ BLOC ------------------ //
 class MushroomsBloc extends Bloc<MushroomsEvent, MushroomsState> {
-  final MushroomsRepository _mushroomsRepository;
+  final MushroomsRepository _repository;
 
   MushroomsBloc({MushroomsRepository? mushroomsRepository})
-      : _mushroomsRepository = mushroomsRepository ?? MushroomsRepository(),
+      : _repository = mushroomsRepository ?? MushroomsRepository(),
         super(MushroomsInitial());
-
-//  @override
-//  MushroomsState get initialState => MushroomsInitial();
 
   @override
   Stream<MushroomsState> mapEventToState(MushroomsEvent event) async* {
-    // Emitting a state from the asynchronous generator
-    // yield MushroomsLoading();
-    // Branching the executed logic by checking the event type
-    if (event is ClassifyMushroom) {
-      try {
-        final XFile? pickedImage =
-            await ImagePicker().pickImage(source: event.source);
-        final File image = File(pickedImage!.path);
-        yield MushroomsLoading();
-        final tfResult = await Tflite.runModelOnImage(
-          path: image.path,
-          numResults: 2,
-          threshold: 0.5,
-          imageMean: 127.5,
-          imageStd: 127.5,
-        );
-        final output = new ClassifierOutput.fromTFLite(tfResult!, image);
-        // We delay the response a few seconds to improve UX
-        await Future.delayed(Duration(milliseconds: 500));
-        yield MushroomClassified(output);
-      } catch (error) {
-        //TODO: handle error correctly
-        print('------- ERROR: $error');
-      }
-    }
-    if (event is GetAllMushrooms) {
-      try {
-        final mushroomList = await _mushroomsRepository.getMushroomsList();
+    try {
+      yield MushroomsLoading();
+      if (event is GetAllMushrooms) {
+        final mushroomList = await _repository.getMushroomsList();
         yield MushroomsLoaded(mushroomList);
-      } catch (_) {
-        yield MushroomsError("Couldn't fetch mushrooms. Is the device online?");
       }
-    }
-    if (event is FindMushroomById) {
-      try {
-        final List<Mushroom> mushroomList =
-            await _mushroomsRepository.getMushroomsList();
-
+      if (event is FindMushroomById) {
+        final mushroomList = await _repository.getMushroomsList();
         final Mushroom result = mushroomList.firstWhere(
             (element) => element.name == event.mushroomId,
             orElse: () => Mushroom.buildEmpty());
 
         yield MushroomFound(result);
-      } catch (_) {
-        yield MushroomsError("Couldn't fetch mushrooms. Is the device online?");
       }
+    } catch (_) {
+      yield MushroomsError("Couldn't fetch mushrooms. Is the device online?");
     }
   }
 }
