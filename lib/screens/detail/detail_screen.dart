@@ -10,7 +10,7 @@ import 'package:futter_project_tfg/screens/detail/components/detail_background.d
 
 class DetailScreen extends StatelessWidget {
   final File image;
-  final MushroomInfo mushroom;
+  final Mushroom mushroom;
 
   const DetailScreen({Key? key, required this.image, required this.mushroom})
       : super(key: key);

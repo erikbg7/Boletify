@@ -12,7 +12,7 @@ void main() {
 }
 
 Future<void> fetchAllMushrooms() async {
-  final List<MushroomInfo> mushroomsList =
+  final List<Mushroom> mushroomsList =
       await MushroomsRepository().getMushroomsList();
   mushroomsList.forEach((element) => print(element.name));
 }

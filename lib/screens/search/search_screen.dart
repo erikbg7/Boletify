@@ -6,7 +6,7 @@ import 'package:futter_project_tfg/models/tag_model.dart';
 import 'package:futter_project_tfg/screens/search/components/search_view.dart';
 
 class SearchScreen extends StatelessWidget {
-  final List<MushroomInfo> mushroomsList;
+  final List<Mushroom> mushroomsList;
   final List<Tag> filter;
 
   const SearchScreen(

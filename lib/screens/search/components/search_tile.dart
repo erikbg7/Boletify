@@ -7,7 +7,7 @@ import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 import 'package:futter_project_tfg/utils/utils.dart';
 
 class SearchTile extends StatelessWidget {
-  final MushroomInfo item;
+  final Mushroom item;
 
   const SearchTile({Key? key, required this.item}) : super(key: key);
 

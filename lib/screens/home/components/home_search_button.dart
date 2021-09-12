@@ -12,7 +12,7 @@ class HomeSearchButton extends StatelessWidget {
       height: size.height * 0.07,
       child: OutlinedButton(
         onPressed: () async {
-          await showSearch<MushroomInfo>(
+          await showSearch<Mushroom>(
             context: context,
             delegate: MushroomSearchDelegate(mushrooms: mushroomsListMock),
           );
@@ -33,13 +33,3 @@ class HomeSearchButton extends StatelessWidget {
     );
   }
 }
-
-// Get result from search delegate
-//        onPressed: () async {
-//          final result = await showSearch<MushroomInfo>(
-//            context: context,
-//            delegate: NameSearch(getMushroomsListMock()),
-//          );
-//
-//          print(result.toString());
-//        },

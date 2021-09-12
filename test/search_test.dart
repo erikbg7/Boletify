@@ -63,7 +63,7 @@ void main() {
   testWidgets(
     'Displays a search tile',
     (WidgetTester tester) async {
-      final item = MushroomInfo.buildEmpty(
+      final item = Mushroom.buildEmpty(
           name: 'name', scientificName: 'scientific', tags: [Tag.winter]);
       final screen = Scaffold(body: SearchTile(item: item));
       await tester.pumpWidget(buildTestableWidget(screen));
@@ -76,8 +76,8 @@ void main() {
     'renders filters list',
     (WidgetTester tester) async {
       final List<Tag> tags = [Tag.winter];
-      final List<MushroomInfo> list = [
-        MushroomInfo.buildEmpty(
+      final List<Mushroom> list = [
+        Mushroom.buildEmpty(
             name: 'name', scientificName: 'scientific', tags: [Tag.winter])
       ];
       final Widget child = SearchView();

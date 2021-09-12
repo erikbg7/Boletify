@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
 
-class MushroomInfo extends Equatable {
+class Mushroom extends Equatable {
   final String name;
   final String scientificName;
   final String? commonNames;
@@ -13,7 +13,7 @@ class MushroomInfo extends Equatable {
   final String habitat;
   final String observations;
 
-  const MushroomInfo({
+  const Mushroom({
     required this.name,
     required this.scientificName,
     this.commonNames,
@@ -39,12 +39,12 @@ class MushroomInfo extends Equatable {
         observations
       ];
 
-  MushroomInfo copyWith({
+  Mushroom copyWith({
     String? name,
     String? scientificName,
     List<Tag>? tags,
   }) {
-    return MushroomInfo(
+    return Mushroom(
         name: name ?? this.name,
         scientificName: scientificName ?? this.scientificName,
         tags: tags ?? this.tags,
@@ -56,22 +56,23 @@ class MushroomInfo extends Equatable {
         observations: this.observations);
   }
 
-  factory MushroomInfo.fromFirestore(Map<String, dynamic> doc) {
-    return MushroomInfo(
-        name: doc['name'],
-        scientificName: doc['scientificName'],
-        commonNames: doc['commonNames'],
-        tags: tagsFromJson(doc['tags']),
-        cap: doc['cap'],
-        gills: doc['gills'],
-        stalk: doc['stalk'],
-        flesh: doc['flesh'],
-        habitat: doc['habitat'],
-        observations: doc['observations']);
+  factory Mushroom.fromFirestore(Map<String, dynamic> doc) {
+    return Mushroom(
+      name: doc['name'] ?? '',
+      scientificName: doc['scientificName'] ?? '',
+      commonNames: doc['commonNames'] ?? '',
+      tags: tagsFromJson(doc['tags'] ?? []),
+      cap: doc['cap'] ?? '',
+      gills: doc['gills'] ?? '',
+      stalk: doc['stalk'] ?? '',
+      flesh: doc['flesh'] ?? '',
+      habitat: doc['habitat'] ?? '',
+      observations: doc['observations'] ?? '',
+    );
   }
 
-  factory MushroomInfo.fromJson(Map<String, dynamic> json) {
-    return MushroomInfo(
+  factory Mushroom.fromJson(Map<String, dynamic> json) {
+    return Mushroom(
         name: json['name'],
         scientificName: json['scientificName'],
         commonNames: json['commonNames'],
@@ -84,9 +85,9 @@ class MushroomInfo extends Equatable {
         observations: json['observations']);
   }
 
-  factory MushroomInfo.buildEmpty(
+  factory Mushroom.buildEmpty(
           {String name = "", scientificName = "", List<Tag> tags = const []}) =>
-      MushroomInfo(
+      Mushroom(
         name: name,
         scientificName: "",
         commonNames: "",
@@ -113,8 +114,8 @@ class MushroomInfo extends Equatable {
       };
 }
 
-const List<MushroomInfo> mushroomsListMock = [
-  MushroomInfo(
+const List<Mushroom> mushroomsListMock = [
+  Mushroom(
     name: 'Ou de reig',
     scientificName: 'Amanita Caesarea',
     commonNames: '',
@@ -131,7 +132,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "És un bolet molt apreciat per la seva gran calitat gastronòmica i de fàcil identificació. Durant l’Imperi Romà va estar prohibida la seva recol·lecció, i el seu incompliment era castigat amb la pena de mort.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Peu de rata bord",
     scientificName: "Ramaria formosa",
     commonNames: "",
@@ -146,7 +147,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "És una de les més belles Ramarias, fàcil d’identificar pels seus tres colors: blanc a la base del tronc, rames de color rosa-salmó i les puntes grogues; a la maduresa tot el bolet canvia al color groc més o menys pàlid. Possiblement és el bolet que ha alterat més intestins per les característiques laxants que presenta al ser confosa amb altres ramarias grogues, com la Ramaria flava i Ramaria botrytis, les quals són comestibles. És tòxic, produeix síndrome de latència curta i trastorns gastrointestinals.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Peu de rata",
     scientificName: "Ramaria botrytis",
     commonNames: "Coliflor",
@@ -161,7 +162,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "És una ramaria fàcil de reconéixer amb els exemplars més joves, pel color púrpura o morat de les puntes de les seves ramificacions. Quan maduren, totes les ramarias enfosqueixen i es torna més difícil distingir-les. És tracta d’un bolet comestible i a més a més, excel·lent, però hem de recordar que es possible confondre-la amb altres ramarias que són laxants e inclús indigestes, com és el cas de Ramaria formosa, en la qual les seves puntes són de color groc or.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Murgula",
     scientificName: "Morchella elata",
     commonNames: "Arigany",
@@ -178,7 +179,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "Pot tenir d’un tamany mitjà a gran. Poden sorgir gregàries, aïllades o en grups de varis individus. Prefereixen els boscos de muntanya, en el Pirineu, sota l’avet blanc. Les costelles es troben alineades i la punta mai acaba en punta a diferència d’altres.És un bolet comestible excel·lent. Es recomanable assecar-les i posteriorment rehidratar-les amb llet per disfrutar d’una gran delícia gastro-micológica; farcir-la de lluç, marisc o carn picada és el plat ideal per a qualsevol gourmet.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Apagallum",
     scientificName: "Macrolepiota procera",
     commonNames: "Cogomella",
@@ -194,7 +195,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "És tracta comestible excel·lent. Naix d’un ou i es desenvolupa amb el barret tancat, amb forma similar a la d’una baqueta d’un tambó, per al final obrir-se com si fos un paraigües. S’ha d’anar en compte de no confondre’l amb les Lepiotes petites, la majoria d’elles verinoses.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Murgula borda",
     scientificName: "Gyromitra esculenta",
     commonNames: "Bolet de greix",
@@ -211,7 +212,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "Fins fa poc temps era considerat un bolet comestible i era molt apreciada al nord d’Europa, però va produir la mort de varies persones després d’ingerir-les de forma repetida en pocs dies; estudis recents han constatat, que conté elements cancerígens. Totes les Gyromitras són sospitoses de toxicitat, fet per el qual no s’haurien de consumir. No s’ha de confondre-les amb la família de les Morchellas, bolets comestibles excel·lents. Mortal per acumulació dels elements tòxics. ",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Bolet de tinta",
     scientificName: "Coprinus comatus",
     commonNames: "",
@@ -229,7 +230,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "És molt abundant i tot i que també es presenta en grups de nombrosos individus, és gregaria. Pot semblar una catifa en un gran tros de gespa o en els prats. És un bolet comestible excel·lent, molt delicat, que no soporta cops ni pressions. S’ha de consumir immediatament després de recol·lectar-la, ja que és deteriora molt ràpidament.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Moixernó blanc",
     scientificName: "Clitopilus prunulus",
     commonNames: "",
@@ -245,7 +246,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "Clitopilus cystydiatus és una espècie molt pròxima, on la seva diferència fonamental és microscòpica, ja que al observar-se la presència de queilocistidis (cistidis al marge de les làmines) probablement molts dels exemplars determinats fins ara com a Clitopilus prunulus, correspondran realment a Clitopilus cystidiatus. És popularment coneguda com a la “delatora o acuseta”, perquè surt a la mateixa època i hàbitat que els Boletus. És un bolet comestible bo, tot i que és necessari tenir molta precaució i coneixer-la perfectament per a no confondre-la amb els clitocybes blancs tòxics. La seva olor forta a farina i les làmines roses al madurar són característiques inconfusibles d’aquest bolet.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Rossinyol",
     scientificName: "Cantharellus cibarius",
     commonNames: "Vaqueta, Agerola",
@@ -263,7 +264,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "S’han separat varies espècies d’aquest grup, el més important el Cantharellus pallens reconeixible per la pruïna blanca del barret i per la seva robustesa. Pot crear confusió amb altres bolets com els Hygrophoropsis aurantiaca, pròpia de pinedes, però sense conseqüències, ja que no és tòxica.És un bolet comestible excel·lent, amb una gran importància econòmica en les zones on la seva recol·lecció és abundant.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Mataparent",
     scientificName: " Boletus satanas",
     commonNames: "Matagent",
@@ -279,7 +280,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "Té les mateixes característiques que els Boletus rhodopurpureus, Boletus lupinus, Boletus luridus...que també són tòxics. Es pot confondre amb excel·lents comestibles, com són els Boletus aereus, Boletus pinophilus i Boletus erythropus.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Cep",
     scientificName: "Boletus edulis",
     commonNames: "Sureny",
@@ -295,7 +296,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "Molt apreciat, és el bolet de major talla i pes. És abundant i de fàcil identificació. Excel·lent per a múltiples elaboracions culinàries, tindrem en compte que els peus precisen més temps de cocció que el barret.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Pixacà",
     scientificName: "Amanita pantherina",
     commonNames: "Pigat bord",
@@ -312,7 +313,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "Ens trobem davant d’una altra amanita que hem de reconéixer sense dubtar degut a que es tracta d’un bolet altament tòxic; es pot confondre amb l’Amanita spissa i l’Amanita rubescens. Ens haurem de fixar bé en les berrugues blanques, el marge estriat i el seu particular bulb, que ens ajudaran a identificar-la.És molt tòxica: Produeix intoxicació gastrointestinal, síndrome de latència curta, i en alguns casos ha provocat la mort de qui l’ha ingerit.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: 'Trompeta de la mort',
     scientificName: 'Craterellus Cornucopioides',
     commonNames: 'Rossinyol negre',
@@ -329,7 +330,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "Es una especie molt abundant, si en trobem un quants es probable que n'hi hagi molts més pels voltants. Es una seta comestible excelent. El seu aspecte negre pot fer-nos sentir respecte a l'hora de probar-la, peró es un bolet deliciòs, el millor del seu génere.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Camagroc",
     scientificName: "Craterellus Lutescens",
     commonNames: "Rossinyolic, trompea groga",
@@ -346,7 +347,7 @@ const List<MushroomInfo> mushroomsListMock = [
     observations:
         "En temps humits es molt abundant. La recoleció es laboriosa, ja que cal recollir-los amb molta cura i procurar posar-les netes a la cistella. Es un bolet comestible excelent, amb un aroma inconfundible i molt agradable.",
   ),
-  MushroomInfo(
+  Mushroom(
     name: "Pinatell",
     scientificName: "Lacttarius Deliciosus",
     commonNames: "Rovelló",

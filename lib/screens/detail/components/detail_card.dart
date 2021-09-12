@@ -5,7 +5,7 @@ import 'package:futter_project_tfg/theme.dart';
 import 'package:futter_project_tfg/widgets/divider_text_short.dart';
 
 class DetailCard extends StatelessWidget {
-  final MushroomInfo mushroom;
+  final Mushroom mushroom;
 
   const DetailCard({Key? key, required this.mushroom}) : super(key: key);
 

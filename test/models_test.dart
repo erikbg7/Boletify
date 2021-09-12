@@ -31,20 +31,20 @@ testMockedMushroomList() {
 }
 
 testMushroomsFromFirestore() {
-  final MushroomInfo mushroom = mushroomsListMock[0];
-  final firestoreMushroom = MushroomInfo.fromFirestore(mushroom.toJson());
+  final Mushroom mushroom = mushroomsListMock[0];
+  final firestoreMushroom = Mushroom.fromFirestore(mushroom.toJson());
   expect(firestoreMushroom == mushroom, true);
 }
 
 testMushroomDescriptionFromToJSON() {
-  final MushroomInfo mushroom = mushroomsListMock[0];
-  final MushroomInfo deserializedMushroom =
-      MushroomInfo.fromJson(mushroom.toJson());
+  final Mushroom mushroom = mushroomsListMock[0];
+  final Mushroom deserializedMushroom =
+      Mushroom.fromJson(mushroom.toJson());
   expect(deserializedMushroom == mushroom, true);
 }
 
 void main() {
-  test('MushroomInfo model has mocked list', testMockedMushroomList);
+  test('Mushroom model has mocked list', testMockedMushroomList);
   test('Tags to JSON and from JSON', testTagsFromAndToJSON);
   test('ClassifierOutput from TFLite', testOutputFromTFLite);
   test('MushroomDescription from/to JSON', testMushroomDescriptionFromToJSON);

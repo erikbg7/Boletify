@@ -5,16 +5,17 @@ import 'package:futter_project_tfg/screens/settings/credits/credits_screen.dart'
 import 'package:futter_project_tfg/screens/settings/disclaimer/disclaimer_screen.dart';
 import 'package:futter_project_tfg/screens/settings/privacy/privacy_screen.dart';
 
-const SettingsItem donateSetting = SettingsItem(
+final SettingsItem donateSetting = SettingsItem(
   icon: Icons.card_giftcard,
   text: 'Fes una donació',
 );
 
 final SettingsItem rateSetting = SettingsItem(
-    icon: Icons.star,
-    text: "Qualifica l'applicació",
-    redirectUrl:
-        "https://play.google.com/store/apps/details?id=com.ebgapps.boletify");
+  icon: Icons.star,
+  text: "Qualifica l'applicació",
+  redirectUrl:
+      "https://play.google.com/store/apps/details?id=com.ebgapps.boletify",
+);
 
 final SettingsItem creditsSetting = SettingsItem(
   icon: Icons.info,

@@ -67,17 +67,17 @@ class MushroomsError extends MushroomsState {
 }
 
 class MushroomsLoaded extends MushroomsState {
-  final List<MushroomInfo> mushrooms;
-  const MushroomsLoaded(this.mushrooms);
+  final List<Mushroom> mushroomList;
+  const MushroomsLoaded(this.mushroomList);
   @override
-  List<Object> get props => [mushrooms];
+  List<Object> get props => [mushroomList];
 }
 
 class MushroomFound extends MushroomsState {
-  final MushroomInfo mushroomInfo;
-  const MushroomFound(this.mushroomInfo);
+  final Mushroom mushroom;
+  const MushroomFound(this.mushroom);
   @override
-  List<Object> get props => [mushroomInfo];
+  List<Object> get props => [mushroom];
 }
 
 // BLOC MANAGEMENT
@@ -121,20 +121,20 @@ class MushroomsBloc extends Bloc<MushroomsEvent, MushroomsState> {
     }
     if (event is GetAllMushrooms) {
       try {
-        final activities = await _mushroomsRepository.getMushroomsList();
-        yield MushroomsLoaded(activities);
+        final mushroomList = await _mushroomsRepository.getMushroomsList();
+        yield MushroomsLoaded(mushroomList);
       } catch (_) {
         yield MushroomsError("Couldn't fetch mushrooms. Is the device online?");
       }
     }
     if (event is FindMushroomById) {
       try {
-        final List<MushroomInfo> activities =
+        final List<Mushroom> mushroomList =
             await _mushroomsRepository.getMushroomsList();
 
-        final MushroomInfo result = activities.firstWhere(
+        final Mushroom result = mushroomList.firstWhere(
             (element) => element.name == event.mushroomId,
-            orElse: () => MushroomInfo.buildEmpty());
+            orElse: () => Mushroom.buildEmpty());
 
         yield MushroomFound(result);
       } catch (_) {
