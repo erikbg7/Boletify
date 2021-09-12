@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'components/search_tile.dart';
 
 class SearchResults extends StatelessWidget {

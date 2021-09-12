@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_card.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_description.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_information.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:futter_project_tfg/bloc/filter/filters_bloc.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
 import 'package:futter_project_tfg/screens/search/components/search_view.dart';
 

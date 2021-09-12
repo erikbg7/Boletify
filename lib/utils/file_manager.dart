@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
 
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:path_provider/path_provider.dart';
 
 const String fileName = 'mushroomsBackup.json';

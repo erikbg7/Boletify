@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/theme.dart';
 import 'package:futter_project_tfg/widgets/divider_text_short.dart';
 

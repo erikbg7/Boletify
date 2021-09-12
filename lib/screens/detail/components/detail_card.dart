@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 import 'package:futter_project_tfg/theme.dart';
 import 'package:futter_project_tfg/widgets/divider_text_short.dart';

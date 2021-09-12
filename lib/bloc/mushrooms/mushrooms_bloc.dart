@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/repositories/mushrooms_repository.dart';
 
 // ----------------- EVENTS ----------------- //
@@ -63,6 +63,8 @@ class MushroomFound extends MushroomsState {
 // ------------------ BLOC ------------------ //
 class MushroomsBloc extends Bloc<MushroomsEvent, MushroomsState> {
   final MushroomsRepository _repository;
+  static const fetchingError =
+      "Couldn't fetch mushrooms. Is the device online?";
 
   MushroomsBloc({MushroomsRepository? mushroomsRepository})
       : _repository = mushroomsRepository ?? MushroomsRepository(),
@@ -85,7 +87,7 @@ class MushroomsBloc extends Bloc<MushroomsEvent, MushroomsState> {
         yield MushroomFound(result);
       }
     } catch (_) {
-      yield MushroomsError("Couldn't fetch mushrooms. Is the device online?");
+      yield MushroomsError(fetchingError);
     }
   }
 }
