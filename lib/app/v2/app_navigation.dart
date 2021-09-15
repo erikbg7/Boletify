@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/models/mushroom_model.dart';
+import 'package:futter_project_tfg/config/mushroom_mock_config.dart';
 import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 import 'package:futter_project_tfg/screens/home/home_screen.dart';
 
