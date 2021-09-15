@@ -15,7 +15,10 @@ class IdentifyView extends StatelessWidget {
           return IdentifyMethods();
         }
         if (state is ClassifierResultState) {
-          return IdentifyResults(result: state.output);
+          return IdentifyResults(
+            result: state.output,
+            mushroom: state.mushroom,
+          );
         }
         if (state is ClassifierStateLoading) {
           return Container(

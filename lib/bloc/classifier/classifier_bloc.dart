@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:futter_project_tfg/config/mushroom_mock_config.dart';
 import 'package:futter_project_tfg/models/classifier_output_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
 
@@ -33,8 +35,9 @@ class ClassifierMethodState extends ClassifierState {
 }
 
 class ClassifierResultState extends ClassifierState {
+  final Mushroom mushroom;
   final ClassifierOutput output;
-  const ClassifierResultState(this.output);
+  const ClassifierResultState(this.output, this.mushroom);
 }
 
 class ClassifierStateLoading extends ClassifierState {
@@ -55,8 +58,8 @@ class ClassifierBloc extends Bloc<ClassifierEvent, ClassifierState> {
   ClassifierBloc() : super(ClassifierStateInitial());
 
   @override
-  Future<void> close() {
-    Tflite.close();
+  Future<void> close() async {
+    await Tflite.close();
     return super.close();
   }
 
@@ -85,13 +88,16 @@ class ClassifierBloc extends Bloc<ClassifierEvent, ClassifierState> {
     if (event is ClassifyEvent) {
       try {
         final XFile? xFile = await _picker.pickImage(source: event.source);
+        yield ClassifierStateLoading();
         if (xFile == null) {
           yield ClassifierMethodState();
         } else {
-          yield ClassifierStateLoading();
           final ClassifierOutput output = await classifyImage(File(xFile.path));
+          final Mushroom mushroom = mushroomsListMock.firstWhere(
+              (element) => element.id == output.label,
+              orElse: () => Mushroom.buildEmpty());
           await Future.delayed(Duration(milliseconds: 500));
-          yield ClassifierResultState(output);
+          yield ClassifierResultState(output, mushroom);
         }
       } catch (error) {
         print('error $error');
