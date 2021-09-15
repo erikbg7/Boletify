@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 import 'package:futter_project_tfg/theme.dart';
 import 'package:futter_project_tfg/widgets/divider_text_short.dart';
 
 class DetailCard extends StatelessWidget {
-  final MushroomInfo mushroom;
+  final Mushroom mushroom;
 
   const DetailCard({Key? key, required this.mushroom}) : super(key: key);
 
@@ -17,23 +17,24 @@ class DetailCard extends StatelessWidget {
       width: size.width * 0.9,
       height: size.height * 0.25,
       decoration: BoxDecoration(
-        color: Color(0xFF183A26),
-        borderRadius: new BorderRadius.circular(8.0),
+        color: const Color(0xFF183A26),
+        borderRadius: BorderRadius.circular(8.0),
         boxShadow: <BoxShadow>[
-          new BoxShadow(
-              color: Colors.black,
-              blurRadius: 10.0,
-              offset: new Offset(0.0, 10.0))
+          const BoxShadow(
+            color: Colors.black,
+            blurRadius: 10.0,
+            offset: Offset(0.0, 10.0),
+          )
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Text(mushroom.name, style: TextStyles.detailCardTitle),
           Text(mushroom.scientificName, style: TextStyles.detailCardSubtitle),
-          DividerTextShort(),
+          const DividerTextShort(),
           DetailLabels(tags: mushroom.tags, size: 30)
         ],
       ),

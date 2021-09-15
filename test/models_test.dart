@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:futter_project_tfg/models/classifier_output_model.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
 
 testTagsFromAndToJSON() {
@@ -27,25 +27,24 @@ testOutputFromTFLite() {
 }
 
 testMockedMushroomList() {
-  var list = getMushroomsListMock();
-  expect(list.length, 15);
+  expect(mushroomsListMock.length, 15);
 }
 
 testMushroomsFromFirestore() {
-  final MushroomInfo mushroom = getMushroomsListMock()[0];
-  final firestoreMushroom = MushroomInfo.fromFirestore(mushroom.toJson());
+  final Mushroom mushroom = mushroomsListMock[0];
+  final firestoreMushroom = Mushroom.fromFirestore(mushroom.toJson());
   expect(firestoreMushroom == mushroom, true);
 }
 
 testMushroomDescriptionFromToJSON() {
-  final MushroomInfo mushroom = getMushroomsListMock()[0];
-  final MushroomInfo deserializedMushroom =
-      MushroomInfo.fromJson(mushroom.toJson());
+  final Mushroom mushroom = mushroomsListMock[0];
+  final Mushroom deserializedMushroom =
+      Mushroom.fromJson(mushroom.toJson());
   expect(deserializedMushroom == mushroom, true);
 }
 
 void main() {
-  test('MushroomInfo model has mocked list', testMockedMushroomList);
+  test('Mushroom model has mocked list', testMockedMushroomList);
   test('Tags to JSON and from JSON', testTagsFromAndToJSON);
   test('ClassifierOutput from TFLite', testOutputFromTFLite);
   test('MushroomDescription from/to JSON', testMushroomDescriptionFromToJSON);

@@ -6,10 +6,12 @@ class SettingsItem {
   final IconData icon;
   final String text;
   final Widget? screen;
+  final String? redirectUrl;
 
-  SettingsItem({
+  const SettingsItem({
     required this.icon,
     required this.text,
     this.screen,
+    this.redirectUrl,
   });
 }

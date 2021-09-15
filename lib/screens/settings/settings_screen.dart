@@ -10,6 +10,9 @@ void handleSettingsItemTap(BuildContext context, SettingsItem item) {
   if (item.screen is Widget) {
     redirectTo(context: context, screen: item.screen);
   }
+  if (item.redirectUrl is String) {
+    launchUrl(item.redirectUrl);
+  }
 }
 
 class SettingItem extends StatelessWidget {
@@ -69,7 +72,6 @@ class SettingsScreen extends StatelessWidget {
               Text("Informació", style: TextStyles.settingsSectionTitle),
               SettingItem(item: itemFromSettings(Settings.credits)),
               SettingItem(item: itemFromSettings(Settings.privacy)),
-              SettingItem(item: itemFromSettings(Settings.terms)),
               SettingItem(item: itemFromSettings(Settings.disclaimer)),
               SettingsSplitter(),
               Text('Versió Actual', style: TextStyles.settingsSectionTitle),

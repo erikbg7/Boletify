@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/settings_model.dart';
 import 'package:futter_project_tfg/screens/buttons/fetch_buttons_screen.dart';
 import 'package:futter_project_tfg/screens/settings/credits/credits_screen.dart';
+import 'package:futter_project_tfg/screens/settings/disclaimer/disclaimer_screen.dart';
 import 'package:futter_project_tfg/screens/settings/privacy/privacy_screen.dart';
 
 final SettingsItem donateSetting = SettingsItem(
@@ -12,6 +13,8 @@ final SettingsItem donateSetting = SettingsItem(
 final SettingsItem rateSetting = SettingsItem(
   icon: Icons.star,
   text: "Qualifica l'applicació",
+  redirectUrl:
+      "https://play.google.com/store/apps/details?id=com.ebgapps.boletify",
 );
 
 final SettingsItem creditsSetting = SettingsItem(
@@ -26,16 +29,10 @@ final SettingsItem privacySetting = SettingsItem(
   screen: PrivacyScreen(),
 );
 
-final SettingsItem termsSetting = SettingsItem(
-  icon: Icons.my_library_books,
-  text: "Termes d'us i legals",
-  screen: CreditsScreen(),
-);
-
 final SettingsItem disclaimerSetting = SettingsItem(
-  icon: Icons.warning,
+  icon: Icons.my_library_books,
   text: "Renuncia de responsabilitat",
-  screen: CreditsScreen(),
+  screen: DisclaimerScreen(),
 );
 
 final SettingsItem versionSetting = SettingsItem(
@@ -54,8 +51,6 @@ SettingsItem itemFromSettings(Settings setting) {
       return creditsSetting;
     case Settings.privacy:
       return privacySetting;
-    case Settings.terms:
-      return termsSetting;
     case Settings.disclaimer:
       return disclaimerSetting;
     default:

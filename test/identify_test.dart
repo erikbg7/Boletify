@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/bloc/classifier/classifier_bloc.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:futter_project_tfg/bloc/mushrooms/mushrooms_bloc.dart';
 import 'package:futter_project_tfg/models/classifier_output_model.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_button.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_methods.dart';
@@ -15,34 +15,34 @@ import 'package:futter_project_tfg/screens/identify/components/identify_view.dar
 
 import 'utils/index.dart';
 
-class MockMushroomsBloc extends MockBloc<MushroomsEvent, MushroomsState>
-    implements MushroomsBloc {}
+class MockClassifierBloc extends MockBloc<ClassifierEvent, ClassifierState>
+    implements ClassifierBloc {}
 
-class FallbackState extends Fake implements MushroomsState {}
+class FallbackState extends Fake implements ClassifierState {}
 
-class FallbackEvent extends Fake implements MushroomsEvent {}
+class FallbackEvent extends Fake implements ClassifierEvent {}
 
 void main() {
-  late MockMushroomsBloc mockMushroomsBloc;
+  late MockClassifierBloc mockClassifierBloc;
 
   setUpAll(() {
-    registerFallbackValue<MushroomsState>(FallbackState());
-    registerFallbackValue<MushroomsEvent>(FallbackEvent());
+    registerFallbackValue<ClassifierState>(FallbackState());
+    registerFallbackValue<ClassifierEvent>(FallbackEvent());
   });
 
   setUp(() {
-    mockMushroomsBloc = MockMushroomsBloc();
+    mockClassifierBloc = MockClassifierBloc();
   });
 
   tearDown(() {
-    mockMushroomsBloc.close();
+    mockClassifierBloc.close();
   });
 
   Widget buildMushroomBlocWidget() {
     return buildTestableWidget(
       Scaffold(
-        body: BlocProvider<MushroomsBloc>.value(
-          value: mockMushroomsBloc,
+        body: BlocProvider<ClassifierBloc>.value(
+          value: mockClassifierBloc,
           child: IdentifyView(),
         ),
       ),
@@ -52,7 +52,7 @@ void main() {
   testWidgets(
     'Displays identification methods screen as initial state',
     (WidgetTester tester) async {
-      when(() => mockMushroomsBloc.state).thenReturn(MushroomsInitial());
+      when(() => mockClassifierBloc.state).thenReturn(ClassifierMethodState());
       await tester.pumpWidget(buildMushroomBlocWidget());
       expect(find.byType(IdentifyMethods), findsWidgets);
     },
@@ -62,7 +62,8 @@ void main() {
     'Displays identification methods screen as result state',
     (WidgetTester tester) async {
       final out = ClassifierOutput(99.00, 'amanita', File('test'));
-      when(() => mockMushroomsBloc.state).thenReturn(MushroomClassified(out));
+      when(() => mockClassifierBloc.state)
+          .thenReturn(ClassifierResultState(out));
       await tester.pumpWidget(buildMushroomBlocWidget());
       expect(find.byType(IdentifyResults), findsWidgets);
     },
@@ -71,7 +72,7 @@ void main() {
   testWidgets(
     'Displays loading screen as loading state',
     (WidgetTester tester) async {
-      when(() => mockMushroomsBloc.state).thenReturn(MushroomsLoading());
+      when(() => mockClassifierBloc.state).thenReturn(ClassifierStateLoading());
       await tester.pumpWidget(buildMushroomBlocWidget());
       expect(find.byType(CircularProgressIndicator), findsWidgets);
     },

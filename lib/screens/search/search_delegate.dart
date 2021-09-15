@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/screens/search/search_results.dart';
 
-class MushroomSearchDelegate extends SearchDelegate<MushroomInfo> {
-  final List<MushroomInfo> mushrooms;
-  late MushroomInfo result = MushroomInfo.buildEmpty();
+class MushroomSearchDelegate extends SearchDelegate<Mushroom> {
+  final List<Mushroom> mushrooms;
+  late Mushroom result = Mushroom.buildEmpty();
 
   MushroomSearchDelegate({required this.mushrooms});
 
@@ -38,7 +38,7 @@ class MushroomSearchDelegate extends SearchDelegate<MushroomInfo> {
   @override
   PreferredSizeWidget buildBottom(BuildContext context) {
     return PreferredSize(
-        child: SizedBox(),
+        child: const SizedBox(),
         preferredSize: Size.fromHeight(10));
   }
 

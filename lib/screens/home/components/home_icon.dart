@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/config/tags_config.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
 import 'package:futter_project_tfg/screens/search/search_screen.dart';
 import 'package:futter_project_tfg/widgets/custom_icon.dart';
@@ -13,7 +13,6 @@ class HomeIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TagInfo tagInfo = infoFromTag(tag);
-    final List<MushroomInfo> mushroomList = getMushroomsListMock();
 
     final String image = tagInfo.imageUrl;
     final String text = tagInfo.label;
@@ -26,7 +25,7 @@ class HomeIcon extends StatelessWidget {
           MaterialPageRoute(builder: (BuildContext context) {
             return Scaffold(
               appBar: AppBar(title: Text('Búsqueda')),
-              body: SearchScreen(filter: [tag], mushroomsList: mushroomList),
+              body: SearchScreen(filter: [tag], mushroomsList: mushroomsListMock),
             );
           }),
         );

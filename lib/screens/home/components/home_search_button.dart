@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/screens/search/search_delegate.dart';
 
 class HomeSearchButton extends StatelessWidget {
@@ -12,9 +12,9 @@ class HomeSearchButton extends StatelessWidget {
       height: size.height * 0.07,
       child: OutlinedButton(
         onPressed: () async {
-          await showSearch<MushroomInfo>(
+          await showSearch<Mushroom>(
             context: context,
-            delegate: MushroomSearchDelegate(mushrooms: getMushroomsListMock()),
+            delegate: MushroomSearchDelegate(mushrooms: mushroomsListMock),
           );
         },
         style: ButtonStyle(
@@ -33,13 +33,3 @@ class HomeSearchButton extends StatelessWidget {
     );
   }
 }
-
-// Get result from search delegate
-//        onPressed: () async {
-//          final result = await showSearch<MushroomInfo>(
-//            context: context,
-//            delegate: NameSearch(getMushroomsListMock()),
-//          );
-//
-//          print(result.toString());
-//        },

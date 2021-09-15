@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_card.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_description.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_information.dart';
@@ -10,7 +10,7 @@ import 'package:futter_project_tfg/screens/detail/components/detail_background.d
 
 class DetailScreen extends StatelessWidget {
   final File image;
-  final MushroomInfo mushroom;
+  final Mushroom mushroom;
 
   const DetailScreen({Key? key, required this.image, required this.mushroom})
       : super(key: key);

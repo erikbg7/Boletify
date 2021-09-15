@@ -2,12 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/colors.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 import 'package:futter_project_tfg/utils/utils.dart';
 
 class SearchTile extends StatelessWidget {
-  final MushroomInfo item;
+  final Mushroom item;
 
   const SearchTile({Key? key, required this.item}) : super(key: key);
 

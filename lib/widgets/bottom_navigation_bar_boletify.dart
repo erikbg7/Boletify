@@ -36,7 +36,7 @@ class BottomNavigationBarBoletify extends StatelessWidget {
                     icon: Icon(
                       Icons.home,
                       color: currentIndex == 0
-                          ? Colors.orange
+                          ? Colors.white
                           : Colors.grey.shade400,
                     ),
                     onPressed: () => onTapBarItem(0)),
@@ -45,7 +45,7 @@ class BottomNavigationBarBoletify extends StatelessWidget {
                     icon: Icon(
                       Icons.settings,
                       color: currentIndex == 1
-                          ? Colors.orange
+                          ? Colors.white
                           : Colors.grey.shade400,
                     ),
                     onPressed: () => onTapBarItem(1)),

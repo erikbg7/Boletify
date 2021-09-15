@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
 
 // EVENTS
@@ -36,14 +36,14 @@ abstract class FilterState {
 
 class FilterResultState extends FilterState {
   final List<Tag> filter;
-  final List<MushroomInfo> list;
+  final List<Mushroom> list;
   const FilterResultState(this.filter, this.list);
 }
 
 // BLOC
 class SearchFilterBloc extends Bloc<FilterEvent, FilterState> {
   final List<Tag> filter;
-  final List<MushroomInfo> initialList;
+  final List<Mushroom> initialList;
 
   SearchFilterBloc(this.filter, this.initialList)
       : super(FilterResultState(filter, applyFilter(filter, initialList)));
@@ -66,7 +66,7 @@ class SearchFilterBloc extends Bloc<FilterEvent, FilterState> {
   }
 }
 
-applyFilter(List<Tag> filter, List<MushroomInfo> list) {
+applyFilter(List<Tag> filter, List<Mushroom> list) {
   return list
       .where((item) => filter.every((tag) => item.tags.contains(tag)))
       .toList();

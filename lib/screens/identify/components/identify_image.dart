@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 
 class IdentifyImage extends StatelessWidget {
@@ -36,10 +36,9 @@ class IdentifyImage extends StatelessWidget {
   }
 
   void _navigateTo(BuildContext context) {
-    final List<MushroomInfo> list = getMushroomsListMock();
-    final MushroomInfo selected = list.firstWhere(
+    final Mushroom selected = mushroomsListMock.firstWhere(
         (element) => element.name == 'Murgula',
-        orElse: () => MushroomInfo.buildEmpty());
+        orElse: () => Mushroom.buildEmpty());
 
     Navigator.of(context).push(MaterialPageRoute(
       builder: (ctx) => DetailScreen(image: image, mushroom: selected),

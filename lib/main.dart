@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:futter_project_tfg/app/app_theme.dart';
 import 'package:futter_project_tfg/app/loaded_app.dart';
-import 'package:futter_project_tfg/models/mushroom_info_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/repositories/mushrooms_repository.dart';
 import 'package:futter_project_tfg/screens/offline/offline_screen.dart';
 import 'package:futter_project_tfg/screens/splash/splash_screen.dart';
@@ -12,7 +12,7 @@ void main() {
 }
 
 Future<void> fetchAllMushrooms() async {
-  final List<MushroomInfo> mushroomsList =
+  final List<Mushroom> mushroomsList =
       await MushroomsRepository().getMushroomsList();
   mushroomsList.forEach((element) => print(element.name));
 }
