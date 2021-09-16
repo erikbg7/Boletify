@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:futter_project_tfg/models/mushroom_model.dart';
+import 'package:futter_project_tfg/config/mushroom_mock_config.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_card.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
@@ -12,7 +12,7 @@ import 'utils/index.dart';
 Future testDetailsScreen(WidgetTester tester) async {
   final screen = Scaffold(
     body: DetailScreen(
-      image: new File(''),
+      image: FileImage(File('')),
       mushroom: mushroomsListMock[0],
     ),
   );

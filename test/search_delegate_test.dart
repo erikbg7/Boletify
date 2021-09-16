@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/config/mushroom_mock_config.dart';
 import 'package:futter_project_tfg/screens/search/search_delegate.dart';
 import 'package:futter_project_tfg/screens/search/search_results.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:futter_project_tfg/models/mushroom_model.dart';
 
 import 'utils/index.dart';
 

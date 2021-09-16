@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:futter_project_tfg/config/mushroom_mock_config.dart';
 import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_image.dart';
 
@@ -11,7 +12,13 @@ void main() {
   testWidgets(
     'Displays IdentifyImage widget',
     (WidgetTester tester) async {
-      final screen = Scaffold(body: IdentifyImage(image: File('imageUrl')));
+      final mushroom = mushroomsListMock[0];
+      final screen = Scaffold(
+        body: IdentifyImage(
+          image: File('imageUrl'),
+          mushroom: mushroom,
+        ),
+      );
       await tester.pumpWidget(buildTestableWidget(screen));
 
       expect(find.byType(GestureDetector), findsOneWidget);

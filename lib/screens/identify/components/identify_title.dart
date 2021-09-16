@@ -13,7 +13,7 @@ class IdentifyTitle extends StatelessWidget {
       child: Text(
         text,
         textAlign: TextAlign.center,
-        style: TextStyles.resultsNameTitle,
+        style: TextStyles.resultsTitle,
       ),
     );
   }

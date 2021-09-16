@@ -5,7 +5,7 @@ import 'package:futter_project_tfg/bloc/classifier/classifier_bloc.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_view.dart';
 
 class IdentifyScreen extends StatelessWidget {
-  final int bgImage = Random().nextInt(4);
+  final int bgImage = Random().nextInt(3);
 
   @override
   Widget build(BuildContext context) {

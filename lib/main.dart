@@ -7,6 +7,12 @@ import 'package:futter_project_tfg/repositories/mushrooms_repository.dart';
 import 'package:futter_project_tfg/screens/offline/offline_screen.dart';
 import 'package:futter_project_tfg/screens/splash/splash_screen.dart';
 
+
+//https://www.devopsschool.com/blog/flutter-core-no-app-no-firebase-app-default-has-been-created-call-firebase-initializeapp/
+//WidgetsFlutterBinding.ensureInitialized();
+//await Firebase.initializeApp();
+//runApp(MyApp());
+
 void main() {
   runApp(MyApp());
 }

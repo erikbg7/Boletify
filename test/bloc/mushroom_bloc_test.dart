@@ -2,6 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:futter_project_tfg/bloc/mushrooms/mushrooms_bloc.dart';
+import 'package:futter_project_tfg/config/mushroom_mock_config.dart';
 import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/repositories/mushrooms_repository.dart';
 import 'package:mocktail/mocktail.dart';

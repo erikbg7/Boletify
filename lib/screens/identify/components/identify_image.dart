@@ -5,8 +5,13 @@ import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 
 class IdentifyImage extends StatelessWidget {
   final File image;
+  final Mushroom mushroom;
 
-  const IdentifyImage({Key? key, required this.image}) : super(key: key);
+  const IdentifyImage({
+    Key? key,
+    required this.image,
+    required this.mushroom,
+  }) : super(key: key);
 
 //  Hero tag for this item?
 //  Would have a nice transition to details screen, would look cool
@@ -15,7 +20,7 @@ class IdentifyImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _navigateTo(context),
+      onTap: () => _navigateTo(context, mushroom),
       child: Hero(
         tag: 'result-image',
         child: Container(
@@ -35,13 +40,10 @@ class IdentifyImage extends StatelessWidget {
     );
   }
 
-  void _navigateTo(BuildContext context) {
-    final Mushroom selected = mushroomsListMock.firstWhere(
-        (element) => element.name == 'Murgula',
-        orElse: () => Mushroom.buildEmpty());
-
+  void _navigateTo(BuildContext context, Mushroom mushroom) {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (ctx) => DetailScreen(image: image, mushroom: selected),
+      builder: (ctx) =>
+          DetailScreen(image: FileImage(image), mushroom: mushroom),
     ));
   }
 }

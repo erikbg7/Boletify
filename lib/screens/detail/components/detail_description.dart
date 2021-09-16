@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/colors.dart';
 import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/theme.dart';
-import 'package:futter_project_tfg/widgets/divider_text_short.dart';
 
 class DetailDescription extends StatelessWidget {
   final Mushroom mushroom;
@@ -11,7 +12,7 @@ class DetailDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.only(bottom: 100, left: 20, right: 20),
+      padding: EdgeInsets.only(bottom: 50, left: 20, right: 20),
       scrollDirection: Axis.vertical, //.horizontal
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,8 +45,18 @@ class DescriptionSection extends StatelessWidget {
         ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             const SizedBox(height: 10),
             Text(title, style: TextStyles.detailSectionTitle),
-            const DividerTextShort(top: 2, bottom: 10),
-            Text(text, style: TextStyles.detailSectionText)
+            const SizedBox(height: 10),
+            Container(
+              padding: EdgeInsets.only(left: 10),
+              decoration: BoxDecoration(
+                border: Border(
+                  left: BorderSide(
+                      width: 2.0, color: BoletifyColors.skyBlue500),
+                ),
+              ),
+              child: Text(text, style: TextStyles.detailSectionText),
+            ),
+            const SizedBox(height: 10),
           ])
         : const SizedBox();
   }

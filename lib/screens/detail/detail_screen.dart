@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_card.dart';
@@ -9,7 +7,7 @@ import 'package:futter_project_tfg/screens/detail/components/detail_thumbnail.da
 import 'package:futter_project_tfg/screens/detail/components/detail_background.dart';
 
 class DetailScreen extends StatelessWidget {
-  final File image;
+  final ImageProvider image;
   final Mushroom mushroom;
 
   const DetailScreen({Key? key, required this.image, required this.mushroom})
@@ -32,8 +30,8 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
             Align(
-              alignment: FractionalOffset(0.5, 0.21),
-              child: DetailThumbnail(),
+              alignment: FractionalOffset(0.5, 0.2),
+              child: DetailThumbnail(image: image),
             ),
           ],
         ),

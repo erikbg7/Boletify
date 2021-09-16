@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:futter_project_tfg/config/classifier_config.dart';
+import 'package:futter_project_tfg/config/mushroom_mock_config.dart';
 import 'package:futter_project_tfg/models/classifier_output_model.dart';
 import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/models/tag_model.dart';
@@ -13,7 +15,7 @@ testTagsFromAndToJSON() {
 
 testOutputFromTFLite() {
   final double confidence = 0.9;
-  final String label = labelsMap.keys.first;
+  final String label = mushroomIdByLabelMap.keys.first;
   final File image = new File('imageurl');
 
   Map<String, dynamic> tfresult = {'confidence': confidence, 'label': label};
@@ -22,7 +24,7 @@ testOutputFromTFLite() {
   ClassifierOutput output = ClassifierOutput.fromTFLite(data, image);
 
   expect(output.confidence == confidence, true);
-  expect(output.label == labelsMap[label], true);
+  expect(output.label == mushroomIdByLabelMap[label], true);
   expect(output.image == image, true);
 }
 

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/bloc/classifier/classifier_bloc.dart';
+import 'package:futter_project_tfg/config/mushroom_mock_config.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,8 +63,9 @@ void main() {
     'Displays identification methods screen as result state',
     (WidgetTester tester) async {
       final out = ClassifierOutput(99.00, 'amanita', File('test'));
+      final mushroom = mushroomsListMock[0];
       when(() => mockClassifierBloc.state)
-          .thenReturn(ClassifierResultState(out));
+          .thenReturn(ClassifierResultState(out, mushroom));
       await tester.pumpWidget(buildMushroomBlocWidget());
       expect(find.byType(IdentifyResults), findsWidgets);
     },

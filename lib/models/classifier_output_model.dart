@@ -1,9 +1,6 @@
 import 'dart:io';
 
-Map<String, String> labelsMap = {
-  '0 amanita': 'Amanita Muscaria',
-  '1 mushroom': 'Champinyó Comú'
-};
+import 'package:futter_project_tfg/config/classifier_config.dart';
 
 class ClassifierOutput {
   final double confidence;
@@ -17,7 +14,7 @@ class ClassifierOutput {
   factory ClassifierOutput.fromTFLite(List<dynamic> data, File image) {
     final output = data.first;
     final confidence = double.parse('${output["confidence"]}');
-    final label = labelsMap[output["label"]] ?? 'Unknown';
+    final label = mushroomIdByLabelMap[output["label"]] ?? 'Unknown';
     return ClassifierOutput(confidence, label, image);
   }
 }

@@ -4,9 +4,9 @@ class BoletifyColors {
 
   static const Color green900 = Color(0xFF112523);
   static const Color green500 = Color(0xFF183A26);
-  static const Color textSplitter = Color(0xFF00C6FF);
   static const Color sectionSplitter = Colors.greenAccent;
 
+  static const Color skyBlue500 = Color(0xFF00C6FF);
   static const Color skyBlue = Color(0xFF3cbbdb);
 
   static const Color bottomNavBar = Colors.black;

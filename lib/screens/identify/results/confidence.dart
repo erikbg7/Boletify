@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/models/classifier_output_model.dart';
-import 'package:futter_project_tfg/models/tag_model.dart';
+import 'package:futter_project_tfg/models/mushroom_model.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_image.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_title.dart';
@@ -8,8 +8,13 @@ import 'package:futter_project_tfg/theme.dart';
 
 class HighConfidence extends StatelessWidget {
   final ClassifierOutput result;
+  final Mushroom mushroom;
 
-  const HighConfidence({Key? key, required this.result}) : super(key: key);
+  const HighConfidence({
+    Key? key,
+    required this.result,
+    required this.mushroom,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +25,12 @@ class HighConfidence extends StatelessWidget {
         SizedBox(height: 10),
         Text("N'estic ${result.confidencePercentage} segur!"),
         SizedBox(height: 10),
-        IdentifyImage(image: result.image),
+        IdentifyImage(image: result.image, mushroom: mushroom),
         SizedBox(height: 5),
-        DetailLabels(tags: [Tag.toxic, Tag.autumn]),
+        DetailLabels(tags: mushroom.tags),
         SizedBox(width: double.infinity, height: 15),
-        Text('Amanita'.toUpperCase(), style: TextStyles.resultsNameTitle),
-        Text('Amanita Muscaria', style: TextStyles.resultsNameSubtitle,
-        ),
+        Text(mushroom.name.toUpperCase(), style: TextStyles.resultsNameTitle),
+        Text(mushroom.scientificName, style: TextStyles.resultsNameSubtitle),
       ],
     );
   }
