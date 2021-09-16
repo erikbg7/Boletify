@@ -42,7 +42,8 @@ class IdentifyImage extends StatelessWidget {
 
   void _navigateTo(BuildContext context, Mushroom mushroom) {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (ctx) => DetailScreen(image: image, mushroom: mushroom),
+      builder: (ctx) =>
+          DetailScreen(image: FileImage(image), mushroom: mushroom),
     ));
   }
 }
