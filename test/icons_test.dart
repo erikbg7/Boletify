@@ -12,7 +12,7 @@ import 'utils/index.dart';
 Future testDetailsScreen(WidgetTester tester) async {
   final screen = Scaffold(
     body: DetailScreen(
-      image: new File(''),
+      image: FileImage(File('')),
       mushroom: mushroomsListMock[0],
     ),
   );
