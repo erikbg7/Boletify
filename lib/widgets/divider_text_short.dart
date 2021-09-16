@@ -13,7 +13,7 @@ class DividerTextShort extends StatelessWidget {
     return Container(
       width: 24.0,
       height: 2.0,
-      color: BoletifyColors.textSplitter,
+      color: BoletifyColors.skyBlue500,
       margin: EdgeInsets.only(top: top, bottom: bottom),
     );
   }

@@ -20,7 +20,7 @@ class TextStyles {
 
   static const TextStyle detailSectionText = const TextStyle(
     color: Color(0x9FFFFFFF),
-    fontSize: 14,
+    fontSize: 15,
   );
 
   static const TextStyle resultsTitle = const TextStyle(
