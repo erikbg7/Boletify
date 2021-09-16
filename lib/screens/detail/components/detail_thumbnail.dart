@@ -7,15 +7,24 @@ class DetailThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+
     return Hero(
       tag: 'result-image',
       child: Container(
-        width: 75,
-        height: 75,
+        width: size.width * 0.2,
+        height: size.width * 0.2,
         decoration: BoxDecoration(
           image: DecorationImage(image: image, fit: BoxFit.cover),
           color: Colors.grey,
           borderRadius: BorderRadius.circular(100),
+          boxShadow: <BoxShadow>[
+            const BoxShadow(
+              color: Colors.black,
+              blurRadius: 10.0,
+              offset: Offset(0.0, 0.0),
+            )
+          ],
         ),
       ),
     );

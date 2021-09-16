@@ -30,7 +30,7 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
             Align(
-              alignment: FractionalOffset(0.5, 0.21),
+              alignment: FractionalOffset(0.5, 0.2),
               child: DetailThumbnail(image: image),
             ),
           ],

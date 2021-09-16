@@ -22,9 +22,15 @@ class IdentifyView extends StatelessWidget {
         }
         if (state is ClassifierStateLoading) {
           return Container(
-            color: Colors.black12,
             alignment: Alignment.center,
-            child: CircularProgressIndicator(),
+            child: SizedBox(
+              child: CircularProgressIndicator(
+                strokeWidth: 6,
+                color: Colors.black54,
+              ),
+              height: 70.0,
+              width: 70.0,
+            ),
           );
         }
         return Container(
