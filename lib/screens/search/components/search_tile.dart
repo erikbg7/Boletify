@@ -13,12 +13,14 @@ class SearchTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imageFile = File('assets/search_background/2.jpg');
+
     return Material(
       child: InkWell(
         onTap: () => redirectTo(
             context: context,
             screen: DetailScreen(
-                image: File('assets/search_background/0.jpg'), mushroom: item)),
+                image: AssetImage(imageFile.path), mushroom: item)),
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           width: double.infinity,

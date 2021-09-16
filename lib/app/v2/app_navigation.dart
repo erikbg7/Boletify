@@ -1,8 +1,6 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:futter_project_tfg/config/mushroom_mock_config.dart';
-import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 import 'package:futter_project_tfg/screens/home/home_screen.dart';
+import 'package:futter_project_tfg/screens/settings/settings_screen.dart';
 
 Container buildBottomNavBar(Function(int) onTap, int currentIndex) {
   return Container(
@@ -31,8 +29,5 @@ final _navBarItems = <BottomNavigationBarItem>[
 
 final appPages = <Widget>[
   HomeScreen(),
-  DetailScreen(image: File(''), mushroom: mushroomsListMock[0])
-//  SettingsScreen(),
-//  DetailScreen(
-//      image: File('assets/search_background/0.jpg'), mushroom: m),
+  SettingsScreen(),
 ];

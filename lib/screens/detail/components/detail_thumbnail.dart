@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 
 class DetailThumbnail extends StatelessWidget {
+  final ImageProvider image;
+
+  const DetailThumbnail({Key? key, required this.image}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 75,
-      height: 75,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/search_background/2.jpg'),
-            fit: BoxFit.fill),
-        color: Colors.grey,
-        borderRadius: BorderRadius.circular(100),
+    return Hero(
+      tag: 'result-image',
+      child: Container(
+        width: 75,
+        height: 75,
+        decoration: BoxDecoration(
+          image: DecorationImage(image: image, fit: BoxFit.cover),
+          color: Colors.grey,
+          borderRadius: BorderRadius.circular(100),
+        ),
       ),
     );
   }
