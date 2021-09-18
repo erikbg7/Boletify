@@ -56,6 +56,8 @@ void main() {
       when(() => mockClassifierBloc.state).thenReturn(ClassifierMethodState());
       await tester.pumpWidget(buildMushroomBlocWidget());
       expect(find.byType(IdentifyMethods), findsWidgets);
+      expect(find.byType(IdentifyTitle), findsOneWidget);
+      expect(find.byType(IdentifyButton), findsNWidgets(2));
     },
   );
 
@@ -77,16 +79,6 @@ void main() {
       when(() => mockClassifierBloc.state).thenReturn(ClassifierStateLoading());
       await tester.pumpWidget(buildMushroomBlocWidget());
       expect(find.byType(CircularProgressIndicator), findsWidgets);
-    },
-  );
-
-  testWidgets(
-    'Displays loading screen as loading state',
-    (WidgetTester tester) async {
-      final screen = Scaffold(body: IdentifyMethods());
-      await tester.pumpWidget(buildTestableWidget(screen));
-      expect(find.byType(IdentifyTitle), findsOneWidget);
-      expect(find.byType(IdentifyButton), findsNWidgets(2));
     },
   );
 }
