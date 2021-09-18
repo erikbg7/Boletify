@@ -24,6 +24,9 @@ Future testCreditsScreen(WidgetTester tester) async {
   expect(find.text('Credits'), findsOneWidget);
   expect(find.byType(Column), findsOneWidget);
   expect(find.text('wwww.github.com/erikbg7/Flutter-Project'), findsOneWidget);
+
+  await tester.tap(find.byType(InkWell));
+  await tester.pumpAndSettle();
 }
 
 Future testPrivacyScreen(WidgetTester tester) async {

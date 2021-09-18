@@ -86,4 +86,13 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsWidgets);
     },
   );
+
+  testWidgets(
+    'Displays error screen when no result, methods or loading',
+    (WidgetTester tester) async {
+      when(() => mockClassifierBloc.state).thenReturn(ClassifierStateError(''));
+      await tester.pumpWidget(buildMushroomBlocWidget());
+      expect(find.byType(Container), findsOneWidget);
+    },
+  );
 }

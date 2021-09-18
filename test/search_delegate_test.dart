@@ -14,17 +14,23 @@ class SearchDelegateTester extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      ...delegate.buildActions(context),
-      Container(
-        height: 100,
-        child: delegate.buildResults(context),
+    return Scaffold(
+      appBar: AppBar(
+        leading: delegate.buildLeading(context),
+        bottom: delegate.buildBottom(context),
       ),
-      Container(
-        height: 100,
-        child: delegate.buildSuggestions(context),
-      )
-    ]);
+      body: Column(children: [
+        ...delegate.buildActions(context),
+        Container(
+          height: 100,
+          child: delegate.buildResults(context),
+        ),
+        Container(
+          height: 100,
+          child: delegate.buildSuggestions(context),
+        )
+      ]),
+    );
   }
 }
 
@@ -37,7 +43,8 @@ void main() {
       final screen = Scaffold(body: SearchDelegateTester(delegate: delegate));
 
       await tester.pumpWidget(buildTestableWidget(screen));
-      expect(find.byType(IconButton), findsOneWidget);
+      expect(find.byType(PreferredSize), findsOneWidget);
+      expect(find.byType(IconButton), findsNWidgets(2));
       expect(find.byType(SearchResults), findsNWidgets(2));
     },
   );
