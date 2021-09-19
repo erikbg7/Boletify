@@ -24,16 +24,17 @@ class IdentifyResults extends StatelessWidget {
         IdentifyTitle(text: 'RESULTATS'),
         SizedBox(height: 10),
         Text("N'estic ${result.confidencePercentage} segur!"),
-        SizedBox(height: 10),
-        IdentifyImage(image: result.image, mushroom: mushroom),
-        SizedBox(height: 5),
-        DetailLabels(tags: mushroom.tags),
-        SizedBox(width: double.infinity, height: 15),
-//        ShowUp(
-//          child:
-        Text(
-          mushroom.name.toUpperCase(),
-          style: TextStyles.resultsNameTitle,
+        const SizedBox(height: 10),
+        FadeIn(
+            child: IdentifyImage(image: result.image, mushroom: mushroom),
+            delay: 100),
+        const SizedBox(height: 5),
+        FadeIn(child: DetailLabels(tags: mushroom.tags), delay: 100),
+        const SizedBox(height: 15),
+        ShowUp(
+          child: Text(mushroom.name.toUpperCase(),
+              style: TextStyles.resultsNameTitle),
+          delay: 200,
         ),
 //          delay: 200,
 //        ),
