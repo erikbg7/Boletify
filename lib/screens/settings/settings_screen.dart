@@ -4,7 +4,7 @@ import 'package:futter_project_tfg/config/settings_config.dart';
 import 'package:futter_project_tfg/theme.dart';
 import 'package:futter_project_tfg/utils/utils.dart';
 import 'package:futter_project_tfg/models/settings_model.dart';
-import 'package:futter_project_tfg/widgets/gradient_full_screen.dart';
+import 'package:futter_project_tfg/widgets/layout/gradient_full_screen.dart';
 
 void handleSettingsItemTap(BuildContext context, SettingsItem item) {
   if (item.screen is Widget) {

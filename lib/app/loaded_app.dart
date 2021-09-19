@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:futter_project_tfg/colors.dart';
 import 'package:futter_project_tfg/app/app_navigation.dart';
 import 'package:futter_project_tfg/screens/identify/identify_screen.dart';
-import 'package:futter_project_tfg/widgets/bottom_navigation_bar_boletify.dart';
-import 'package:futter_project_tfg/widgets/scaffold_boletify.dart';
+import 'package:futter_project_tfg/widgets/layout/bottom_navigation_bar_boletify.dart';
+import 'package:futter_project_tfg/widgets/layout/scaffold_boletify.dart';
 
 class LoadedApp extends StatefulWidget {
   const LoadedApp({Key? key}) : super(key: key);
