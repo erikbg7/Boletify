@@ -5,19 +5,19 @@ import 'package:flutter/material.dart';
 class IdentifyButton extends StatelessWidget {
   final IconData icon;
   final String text;
-  final Function()? onPressed;
+  final Function()? onTap;
 
   const IdentifyButton(
       {Key? key,
       required this.icon,
       required this.text,
-      required this.onPressed})
+      required this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: onTap,
       child: ClipRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),

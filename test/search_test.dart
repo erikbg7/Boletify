@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futter_project_tfg/screens/detail/detail_screen.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,6 +70,20 @@ void main() {
       await tester.pumpWidget(buildTestableWidget(screen));
       expect(find.text(item.name), findsOneWidget);
       expect(find.text(item.scientificName), findsOneWidget);
+    },
+  );
+
+  testWidgets(
+    'SearchTile redirects to DetailsScreen',
+    (WidgetTester tester) async {
+      final item = Mushroom.buildEmpty(
+          name: 'name', scientificName: 'scientific', tags: [Tag.winter]);
+      final screen = Scaffold(body: SearchTile(item: item));
+      await tester.pumpWidget(buildTestableWidget(screen));
+      await tester.tap(find.byType(InkWell));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(DetailScreen), findsOneWidget);
     },
   );
 

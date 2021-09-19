@@ -10,6 +10,7 @@ class IdentifyMethods extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 60, horizontal: 0),
       child: Column(
@@ -23,7 +24,7 @@ class IdentifyMethods extends StatelessWidget {
                 IdentifyButton(
                   text: 'Camara',
                   icon: Icons.photo_camera_outlined,
-                  onPressed: () {
+                  onTap: () {
                     BlocProvider.of<ClassifierBloc>(context)
                         .add(ClassifyEvent(ImageSource.camera));
                   },
@@ -31,7 +32,7 @@ class IdentifyMethods extends StatelessWidget {
                 IdentifyButton(
                   text: 'Galeria',
                   icon: Icons.broken_image_outlined,
-                  onPressed: () {
+                  onTap: () {
                     BlocProvider.of<ClassifierBloc>(context)
                         .add(ClassifyEvent(ImageSource.gallery));
                   },

@@ -4,7 +4,7 @@ import 'package:futter_project_tfg/screens/detail/components/detail_background.d
 import 'package:futter_project_tfg/screens/home/components/home_icons_list.dart';
 import 'package:futter_project_tfg/screens/home/components/home_search_button.dart';
 import 'package:futter_project_tfg/screens/home/components/home_title.dart';
-import 'package:futter_project_tfg/widgets/gradient_full_screen.dart';
+import 'package:futter_project_tfg/widgets/layout/gradient_full_screen.dart';
 import 'package:futter_project_tfg/widgets/security_disclaimer.dart';
 
 class HomeScreen extends StatelessWidget {

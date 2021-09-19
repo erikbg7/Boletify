@@ -19,9 +19,19 @@ void main() {
     await Firebase.initializeApp();
     mockMushroomsRepository = MockMushroomsRepository();
   });
-
   group('getAllMushrooms', () {
     final List<Mushroom> response = [mushroomsListMock[0]];
+
+    blocTest(
+      'emits [MushroomsLoading, MushroomsLoaded] when successful getAllMushrooms event',
+      build: () {
+        when(() => mockMushroomsRepository.getMushroomsList())
+            .thenAnswer((_) async => response);
+        return MushroomsBloc(mushroomsRepository: mockMushroomsRepository);
+      },
+      act: (MushroomsBloc bloc) => bloc.emit(MushroomsInitial()),
+      expect: () => [MushroomsInitial()],
+    );
 
     blocTest(
       'emits [MushroomsLoading, MushroomsLoaded] when successful getAllMushrooms event',

@@ -2,6 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:futter_project_tfg/bloc/classifier/classifier_bloc.dart';
 import 'package:futter_project_tfg/config/mushroom_mock_config.dart';
+import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
+import 'package:futter_project_tfg/screens/identify/components/identify_image.dart';
+import 'package:futter_project_tfg/widgets/animations/fade_in.dart';
+import 'package:futter_project_tfg/widgets/animations/show_up.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,6 +60,8 @@ void main() {
       when(() => mockClassifierBloc.state).thenReturn(ClassifierMethodState());
       await tester.pumpWidget(buildMushroomBlocWidget());
       expect(find.byType(IdentifyMethods), findsWidgets);
+      expect(find.byType(IdentifyTitle), findsOneWidget);
+      expect(find.byType(IdentifyButton), findsNWidgets(2));
     },
   );
 
@@ -67,7 +73,13 @@ void main() {
       when(() => mockClassifierBloc.state)
           .thenReturn(ClassifierResultState(out, mushroom));
       await tester.pumpWidget(buildMushroomBlocWidget());
+      await tester.pumpAndSettle(const Duration(seconds: 2));
+      expect(find.byType(ShowUp), findsNWidgets(2));
+      expect(find.byType(FadeIn), findsNWidgets(2));
       expect(find.byType(IdentifyResults), findsWidgets);
+      expect(find.byType(IdentifyTitle), findsOneWidget);
+      expect(find.byType(IdentifyImage), findsOneWidget);
+      expect(find.byType(DetailLabels), findsOneWidget);
     },
   );
 
@@ -81,12 +93,11 @@ void main() {
   );
 
   testWidgets(
-    'Displays loading screen as loading state',
+    'Displays error screen when no result, methods or loading',
     (WidgetTester tester) async {
-      final screen = Scaffold(body: IdentifyMethods());
-      await tester.pumpWidget(buildTestableWidget(screen));
-      expect(find.byType(IdentifyTitle), findsOneWidget);
-      expect(find.byType(IdentifyButton), findsNWidgets(2));
+      when(() => mockClassifierBloc.state).thenReturn(ClassifierStateError(''));
+      await tester.pumpWidget(buildMushroomBlocWidget());
+      expect(find.byType(Container), findsOneWidget);
     },
   );
 }
