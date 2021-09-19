@@ -5,7 +5,8 @@ import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart'
 import 'package:futter_project_tfg/screens/identify/components/identify_image.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_title.dart';
 import 'package:futter_project_tfg/theme.dart';
-//import 'package:futter_project_tfg/widgets/show_up_transition.dart';
+import 'package:futter_project_tfg/widgets/animations/fade_in.dart';
+import 'package:futter_project_tfg/widgets/animations/show_up.dart';
 
 class IdentifyResults extends StatelessWidget {
   final ClassifierOutput result;
@@ -22,7 +23,7 @@ class IdentifyResults extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IdentifyTitle(text: 'RESULTATS'),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text("N'estic ${result.confidencePercentage} segur!"),
         const SizedBox(height: 10),
         FadeIn(
@@ -36,16 +37,13 @@ class IdentifyResults extends StatelessWidget {
               style: TextStyles.resultsNameTitle),
           delay: 200,
         ),
-//          delay: 200,
-//        ),
-//        ShowUp(
-//          child:
-        Text(
-          mushroom.scientificName,
-          style: TextStyles.resultsNameSubtitle,
+        ShowUp(
+          child: Text(
+            mushroom.scientificName,
+            style: TextStyles.resultsNameSubtitle,
+          ),
+          delay: 400,
         ),
-//          delay: 300,
-//        ),
       ],
     );
   }
