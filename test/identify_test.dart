@@ -4,6 +4,8 @@ import 'package:futter_project_tfg/bloc/classifier/classifier_bloc.dart';
 import 'package:futter_project_tfg/config/mushroom_mock_config.dart';
 import 'package:futter_project_tfg/screens/detail/components/detail_labels.dart';
 import 'package:futter_project_tfg/screens/identify/components/identify_image.dart';
+import 'package:futter_project_tfg/widgets/animations/fade_in.dart';
+import 'package:futter_project_tfg/widgets/animations/show_up.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,6 +73,9 @@ void main() {
       when(() => mockClassifierBloc.state)
           .thenReturn(ClassifierResultState(out, mushroom));
       await tester.pumpWidget(buildMushroomBlocWidget());
+      await tester.pumpAndSettle(const Duration(seconds: 2));
+      expect(find.byType(ShowUp), findsNWidgets(2));
+      expect(find.byType(FadeIn), findsNWidgets(2));
       expect(find.byType(IdentifyResults), findsWidgets);
       expect(find.byType(IdentifyTitle), findsOneWidget);
       expect(find.byType(IdentifyImage), findsOneWidget);
