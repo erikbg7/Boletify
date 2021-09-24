@@ -358,7 +358,7 @@ packages:
       name: mockito
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.11"
+    version: "5.0.15"
   mocktail:
     dependency: transitive
     description:
