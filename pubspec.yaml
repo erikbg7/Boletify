@@ -24,14 +24,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  firebase_core: ^1.4.0
-  cloud_firestore: ^2.4.0
+  firebase_core: 1.6.0
+  cloud_firestore: 2.5.3
   tflite: ^1.1.2
   image_picker: ^0.8.2
-  flutter_bloc: ^7.0.1
+  flutter_bloc: 7.3.0
   equatable: ^2.0.3
-  url_launcher: ^6.0.9
-  path_provider: ^2.0.2
+  url_launcher: 6.0.10
+  path_provider: 2.0.4
 
 
 
@@ -43,8 +43,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  bloc_test: ^8.0.2
-  mockito: ^5.0.11
+  bloc_test: 8.2.0
+  mockito: 5.0.15
 
 
 
