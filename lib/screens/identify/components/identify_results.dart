@@ -24,7 +24,7 @@ class IdentifyResults extends StatelessWidget {
       children: [
         IdentifyTitle(text: 'RESULTATS'),
         const SizedBox(height: 10),
-        Text("N'estic ${result.confidencePercentage} segur!"),
+        Text("N'estic ${result.confidencePercentage}% segur!"),
         const SizedBox(height: 10),
         FadeIn(
             child: IdentifyImage(image: result.image, mushroom: mushroom),
