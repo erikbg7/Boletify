@@ -1,18 +1,45 @@
-/////////////////// IDENTIFY RESULTS
 
-- (In identify results) When confidence is lower than 98%, instead of showing the Search labels
-and the name of the mushroom, we will show the following:
 
-- User updated image
-- Text: I'm not sure about the results, I'have doubts beween this ones:
-- First mushroom by confidence (button with name and confidence that redirects to detail)
-- Second mushroom by confidence
 
-We need 3 type of IdentifyResults. HighConfidence, MediumConfidence, LowConfidence
+Improve coverage
 
-- High confidence: Image with labels and name
-- Medium confidence: Image with several possible options
-- Low confidence: "I could not find any result, are you sure this is a mushroom?"
+
+string.contains(search.removeAny(accents))
+
+
+
+JOBS
+ Unit tests
+    - on master
+    - on pull request
+
+  Build
+    - on master
+
+  Deploy Android Play Store
+    - on deployment
+
+
+
+
+- Internet permission in Main/Android Manifest
+- flutter_launcher_icons: ^0.8.1 to manage icons and app logo
+
+
+next commit --> use launcher icons package
+
+
+/////////// RELEASES
+Update manually to Play Store
+
+Keep same name (beta) and increment the build number each time you wanna release a new version.
+
+flutter build appbundle --release --build-name beta --build-number 4
+
+
+Build 4 (31.4MB)
+
+
 
 
 /////////////////// OFFLINE MODE
@@ -37,24 +64,10 @@ update things without further application updates.
 - CD pipeline
 
 
-- Remove tooltip?
-
-
-Create BlurredContainer widget
-
-
 
 https://gitmoji.dev/
 
 
-// ovverlay mobile styles
-
-https://github.com/erikbg7/Vall-de-Boi-FlutterApp/blob/master/lib/screens/routes/routes_screen.dart
-
-
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Color(0XFF191919)),
-    );
 
 
 
@@ -68,9 +81,6 @@ Validate Feature: we should let the user validate mushrooms.
 This means that they will be able to add an image and classify the mushroom manually.
 So we are able to reinforce our learning.
 
-
--Mushroom card
-Image with icon labels in botttom left like in PlantNet
 
 
 ////////////////////////////////////////
@@ -139,3 +149,94 @@ If confidence is lower than 80% show multiple results.
             ),
           ),
         ),
+
+
+
+
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //
+ //
+ //  List<MushroomDescription> mushroomsBackup;
+ //
+ //  void _writeJson(dynamic value) {}
+ //  void _readJson(dynamic value) {}
+ //
+ //  Future<String> get _localPath async {
+ //    final directory = await getApplicationDocumentsDirectory();
+ //    print('77777777777777777');
+ //    print(directory.path);
+ //    return directory.path;
+ //  }
+ //
+ //  Future<File> get _localFile async {
+ //    final path = await _localPath;
+ //    return File('$path/$fileName');
+ //  }
+ //
+ //  List<MushroomDescription> getMushroomsBackupList() {
+ //    try {} catch (error) {}
+ //
+ //    print("/////////READ//////////");
+ //    _localFile.then((path) async {
+ //      var _fileExists = await path.exists();
+ //      if(_fileExists) {
+ //        var _jsonString = path.readAsStringSync();
+ //        var _jsonMap = jsonDecode(_jsonString);
+ //        print('RESULT:::: $_jsonString');
+ //        print('RESULT2:::: $_jsonMap');
+ //        var m = MushroomDescription.fromJson(_jsonMap);
+ //        print(m.name);
+ //        print(m.scientificName);
+ //        print(m.commonNames);
+ //        print(m.tags);
+ //        print(m.cap);
+ //        print(m.gills);
+ //        print(m.stalk);
+ //        print(m.flesh);
+ //        print(m.habitat);
+ //        print(m.observations);
+ //      }
+ //
+ ////      print(path);
+ ////      var jsonMushroom = list[0].toJson();
+ ////      var jsonString = jsonEncode(jsonMushroom);
+ ////      print(jsonMushroom);
+ ////      print(jsonString);
+ ////      path.writeAsString(jsonString);
+ //    });
+ //
+ //    // READ
+ //    // Get json file information
+ //    // Convert information from json to model
+ //    // Convert models to list
+ //    return mushroomsBackup;
+ //  }
+ //
+ //
+ //  set mushroomBackupList(List<MushroomDescription> list) {
+ //    print("///////////////////");
+ //    print("///////////////////");
+ //    print("///////////////////");
+ //    print("/////////hey//////////");
+ //    print(list.length);
+ //    _localFile.then((path) {
+ //      print(path);
+ //      var jsonMushroom = list[0].toJson();
+ //      var jsonString = jsonEncode(jsonMushroom);
+ //      print(jsonMushroom);
+ //      print(jsonString);
+ //      path.writeAsString(jsonString);
+ //    });
+ //
+ //    // save {list : [jsons]}
+ //    // WRITE
+ //    // Convert list to json
+ //    // Check if file exists
+ //    // Create or overwritte file
+ //    // Handle exceptions
+ //    // Send failed events
+ //  }
