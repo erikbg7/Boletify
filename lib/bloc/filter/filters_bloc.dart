@@ -40,28 +40,33 @@ class FilterResultState extends FilterState {
   const FilterResultState(this.filter, this.list);
 }
 
+class FilterErrorState extends FilterState {
+  final String errorMessage;
+  const FilterErrorState(this.errorMessage);
+}
+
 // BLOC
 class SearchFilterBloc extends Bloc<FilterEvent, FilterState> {
   final List<Tag> filter;
   final List<Mushroom> initialList;
+  static const filterError = "Error applying filter.";
 
   SearchFilterBloc(this.filter, this.initialList)
       : super(FilterResultState(filter, applyFilter(filter, initialList)));
 
   @override
   Stream<FilterState> mapEventToState(FilterEvent event) async* {
-    if (event is AddToFilter) {
-      try {
+    try {
+      if (event is AddToFilter) {
         filter.add(event.tag);
         yield FilterResultState(filter, applyFilter(filter, initialList));
-      } catch (error) {}
-    }
-
-    if (event is RemoveFromFilter) {
-      try {
+      }
+      if (event is RemoveFromFilter) {
         filter.removeWhere((label) => label == event.tag);
         yield FilterResultState(filter, applyFilter(filter, initialList));
-      } catch (error) {}
+      }
+    } catch (error) {
+      yield FilterErrorState(filterError);
     }
   }
 }
