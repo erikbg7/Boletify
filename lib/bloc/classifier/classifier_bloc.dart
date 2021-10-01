@@ -100,7 +100,7 @@ class ClassifierBloc extends Bloc<ClassifierEvent, ClassifierState> {
           yield ClassifierResultState(output, mushroom);
         }
       } catch (error) {
-        print('error $error');
+        print('Classifier Error: $error');
         yield ClassifierStateError("Error classifying image.");
       }
     }

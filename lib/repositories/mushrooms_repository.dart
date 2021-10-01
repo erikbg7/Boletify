@@ -21,7 +21,6 @@ class MushroomsRepository {
     //TODO: if we cannot get list from Firebase, we will use the backup one
     CollectionReference<Map<String, dynamic>> ref = _db.collection("boletus");
     final QuerySnapshot<Map<String, dynamic>> boletusQuery = await ref.get();
-    print('query $boletusQuery');
 
     final List<Mushroom> firestoreList = boletusQuery.docs
         .map((doc) => Mushroom.fromFirestore(doc.data()))
