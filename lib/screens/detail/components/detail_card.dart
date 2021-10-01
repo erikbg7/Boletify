@@ -41,8 +41,3 @@ class DetailCard extends StatelessWidget {
     );
   }
 }
-
-
-//        color: Color(0xFF434273),
-//        color: Color(0xFF1A4029),
-//        color: Colors.white.withOpacity(0.2),
