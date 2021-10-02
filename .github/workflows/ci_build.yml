@@ -19,7 +19,7 @@ jobs:
       - run: flutter analyze .
 
       - name: Build APK
-        run: flutter build apk --debug
+        run: flutter build apk --debug --scan
 
       - uses: actions/upload-artifact@v1
         with:
