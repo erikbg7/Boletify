@@ -46,21 +46,6 @@ void main() {
     },
   );
 
-//  testWidgets(
-//    'Displays a filter button',
-//    (WidgetTester tester) async {
-//      final tag = Tag.winter;
-//      final screen = Scaffold(
-//        body: FilterButton(
-//            tag: tag,
-//            isActive: true,
-//            imageUrl: '/assets/backgrounds/forest.jpeg'),
-//      );
-//      await tester.pumpWidget(buildTestableWidget(screen));
-//      expect(find.byType(Material), findsOneWidget);
-//    },
-//  );
-
   testWidgets(
     'Displays a search tile',
     (WidgetTester tester) async {
